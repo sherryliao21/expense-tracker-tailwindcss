@@ -10,22 +10,20 @@ app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-  Record.find()
-    .lean()
-    .sort({ date: 'asc' })
-    .then(records => res.render('index', { records }))
-    .catch(error => console.log(error))
-})
-
-app.get('/category', (req, res) => {
   const category = req.query.category
-  return Record.find({ category })
-    .lean()
-    .then(records => res.render('index', { records, category }))
-    .catch(error => console.log(error))
+  if (category) {
+    return Record.find({ category })
+      .lean()
+      .then(records => res.render('index', { records, category }))
+      .catch(error => console.log(error))
+  } else {
+    Record.find()
+      .lean()
+      .sort({ date: 'asc' })
+      .then(records => res.render('index', { records }))
+      .catch(error => console.log(error))
+  }
 })
-
-// 上面兩個等下合併為一個就好
 
 app.get('/records/new', (req, res) => {
   return res.render('new')
@@ -41,7 +39,19 @@ app.get('/records/:id/edit', (req, res) => {
 
 app.post('/records', (req, res) => {
   const { name, date, category, amount } = req.body
-  return Record.create({ name, date, category, amount })
+  let icon = ''
+  if (category === 'food') {
+    icon = 'fas fa-utensils'
+  } else if (category === 'transportation') {
+    icon = 'fas fa-shuttle-van'
+  } else if (category === 'entertainment') {
+    icon = 'fas fa-grin-beam'
+  } else if (category === 'housing') {
+    icon = "fas fa-home"
+  } else if (category === 'others') {
+    icon = "fas fa-pen"
+  }
+  return Record.create({ name, icon, date, category, amount })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
