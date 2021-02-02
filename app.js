@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
     .catch(error => console.log('error!'))
 })
 
+app.get('/records/new', (req, res) => {
+  return res.render('new')
+})
+
 app.listen(3000, () => {
   console.log(`App is running on localhost:3000`)
 })

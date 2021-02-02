@@ -6,6 +6,7 @@ db.once('open', () => {
   recordList.forEach(record => {
     Record.create({
       name: record.name,
+      icon: record.icon,
       category: record.category,
       date: record.date,
       amount: record.amount

@@ -5,9 +5,13 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
+  icon: {
+    type: String,
+    required: true
+  },
   category: {
     type: String,
-    require: true
+    required: true
   },
   date: {
     type: String,
