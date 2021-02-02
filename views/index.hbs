@@ -50,7 +50,10 @@
         <div class="col-sm-1 d-flex justify-content-between">
           <a href="./records/{{ this._id }}/edit" style="color:rgb(24, 165, 146); text-decoration: none;"><i
               class="far fa-edit"></i></a>
-          <a href="/delete" style="color:rgb(245, 176, 97); text-decoration: none; margin-left: 15px;">X</a>
+          <form action="/records/{{ this._id }}/delete" method="POST">
+            <button type="submit" class="btn"
+              style="color:rgb(245, 176, 97); position: relative; bottom: 5px;">X</button>
+          </form>
         </div>
       </li>
       {{/each}}
