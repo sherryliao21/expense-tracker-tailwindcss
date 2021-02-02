@@ -1,18 +1,13 @@
 const express = require('express')
 const app = express()
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/Expense', { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
+require('./config/mongoose')
+const exphbs = require('express-handlebars')
 
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
 
 app.get('/', (req, res) => {
-  res.send('Express set up succeed!')
+  res.render('index')
 })
 
 app.listen(3000, () => {
