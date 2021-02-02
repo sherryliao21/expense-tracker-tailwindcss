@@ -17,6 +17,16 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.get('/category', (req, res) => {
+  const category = req.query.category
+  return Record.find({ category })
+    .lean()
+    .then(records => res.render('index', { records, category }))
+    .catch(error => console.log(error))
+})
+
+// 上面兩個等下合併為一個就好
+
 app.get('/records/new', (req, res) => {
   return res.render('new')
 })
@@ -31,7 +41,6 @@ app.get('/records/:id/edit', (req, res) => {
 
 app.post('/records', (req, res) => {
   const { name, date, category, amount } = req.body
-  // console.log(typeof (req.body.date))
   return Record.create({ name, date, category, amount })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

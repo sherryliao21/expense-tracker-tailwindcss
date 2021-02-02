@@ -2,35 +2,35 @@
   {
     "name": "午餐",
     "icon": "fas fa-utensils",
-    "category": "餐飲食品",
+    "category": "food",
     "date": "2019-04-23",
     "amount": 60
   },
   {
     "name": "晚餐",
     "icon": "fas fa-utensils",
-    "category": "餐飲食品",
+    "category": "food",
     "date": "2019-04-23",
     "amount": 60
   },
   {
     "name": "捷運",
     "icon": "fas fa-shuttle-van",
-    "category": "交通出行",
+    "category": "transportation",
     "date": "2019-04-23",
     "amount": 120
   },
   {
     "name": "電影：驚奇隊長",
     "icon": "fas fa-grin-beam",
-    "category": "休閒娛樂",
+    "category": "entertainment",
     "date": "2019-04-23",
     "amount": 220
   },
   {
     "name": "租金",
     "icon": "fas fa-home",
-    "category": "家居物業",
+    "category": "housing",
     "date": "2019-04-01",
     "amount": 25000
   }
