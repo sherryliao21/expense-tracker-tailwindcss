@@ -2,12 +2,16 @@ const express = require('express')
 const app = express()
 require('./config/mongoose')
 const exphbs = require('express-handlebars')
+const Record = require('./models/record')
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.get('/', (req, res) => {
-  res.render('index')
+  Record.find()
+    .lean()
+    .then(records => res.render('index', { records }))
+    .catch(error => console.log('error!'))
 })
 
 app.listen(3000, () => {
