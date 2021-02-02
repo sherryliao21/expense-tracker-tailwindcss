@@ -1,0 +1,33 @@
+<div class="container d-flex flex-column justify-content-center align-items-center mt-5">
+  <h1>請編輯支出內容</h1>
+  <form action="/records/{{ record._id }}/edit" method="POST" class="mt-4">
+    <div class="d-flex">
+      <div class="labels d-flex flex-column justify-content-between align-items-center mt-1">
+        <label for="name">名稱*：</label>
+        <label for="date">日期*：</label>
+        <label for="category">類別*：</label>
+        <label for="amount">金額*：</label>
+      </div>
+      <div class="input-groups d-flex flex-column justify-content-between align-items-center">
+        <input type="text" class="form-control" placeholder="名稱" name="name" value="{{ record.name }}">
+        <input type="date" class="form-control" placeholder="日期" name="date" value="{{ record.date }}">
+        <select class="form-select form-select" name="category" aria-label=".form-select-lg example"
+          value="{{ record.category }}">
+          <option>請選擇</option>
+          <option value=" housing" name="housing">家居物業</option>
+          <option value="transportation" name="transportation">交通出行</option>
+          <option value="entertainment" name="entertainment">休閒娛樂</option>
+          <option value="food" name="food">餐飲食品</option>
+          <option value="others" name="others">其他</option>
+        </select>
+        <input type="text" class="form-control" placeholder="金額" name="amount" value="{{ record.amount }}">
+      </div>
+    </div>
+    <div class=" button d-flex justify-content-center">
+      <button type="submit" class="btn mt-4"
+        style="width: 100px; background-color: rgb(24, 165, 146); color: #fff;">儲存</button>
+    </div>
+  </form>
+  <a href="/"><button class="btn mt-4"
+      style="width: 100px; background-color: rgb(14, 82, 73); color: #fff;">返回</button></a>
+</div>

@@ -20,10 +20,33 @@ app.get('/records/new', (req, res) => {
   return res.render('new')
 })
 
+app.get('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then(record => res.render('edit', { record }))
+    .catch(error => console.log(error))
+})
+
 app.post('/records', (req, res) => {
   const { name, date, category, amount } = req.body
-  console.log(req.body)
+  // console.log(typeof (req.body.date))
   return Record.create({ name, date, category, amount })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+app.post('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  const { name, date, category, amount } = req.body
+  return Record.findById(id)
+    .then(record => {
+      record.name = name
+      record.date = date
+      record.category = category
+      record.amount = amount
+      return record.save()
+    })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
