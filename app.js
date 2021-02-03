@@ -6,7 +6,13 @@ const Record = require('./models/record')
 const Category = require('./models/category')
 const bodyParser = require('body-parser')
 
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine('hbs', exphbs({
+  defaultLayout: 'main', extname: '.hbs', helpers: {
+    isSelected: function (v1, v2) {
+      return v1 === v2
+    }
+  }
+}))
 app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -54,7 +60,7 @@ app.post('/records', (req, res) => {
   } else if (category === 'others') {
     icon = "fas fa-pen"
   }
-  return Record.create({ name, icon, date, category, amount })
+  return Record.create({ name, date, icon, category, amount })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
@@ -66,20 +72,11 @@ app.post('/records/:id/edit', (req, res) => {
   if (category) {
     Category.find({ name: category })
       .lean()
-      .then(category => { return icon = category.icon })
+      .then(item => {
+        return icon = item[0].icon
+      })
       .catch(error => console.log(error))
   }
-  // if (category === 'food') {
-  //   icon = 'fas fa-utensils'
-  // } else if (category === 'transportation') {
-  //   icon = 'fas fa-shuttle-van'
-  // } else if (category === 'entertainment') {
-  //   icon = 'fas fa-grin-beam'
-  // } else if (category === 'housing') {
-  //   icon = "fas fa-home"
-  // } else if (category === 'others') {
-  //   icon = "fas fa-pen"
-  // }
   return Record.findById(id)
     .then(record => {
       record.name = name

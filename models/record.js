@@ -7,7 +7,7 @@ const recordSchema = new Schema({
   },
   icon: {
     type: String,
-    required: false
+    required: true
   },
   category: {
     type: String,

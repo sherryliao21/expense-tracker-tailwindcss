@@ -4,11 +4,15 @@
       <select class="form-select mb-3 col-sm-6" style="width: 630px;" aria-label=".form-select-lg example"
         name="category">
         <option value="支出類別" name="" disabled selected>支出類別</option>
-        <option value="housing" name="housing">家居物業</option>
-        <option value="transportation" name="transportation">交通出行</option>
-        <option value="entertainment" name="entertainment">休閒娛樂</option>
-        <option value="food" name="food">餐飲食品</option>
-        <option value="others" name="others">其他</option>
+        <option value="housing" name="housing" {{#if (isSelected category 'housing' ) }}selected{{/if}}>家居物業</option>
+        <option value="transportation" name="transportation" {{#if (isSelected category 'transportation' )
+          }}selected{{/if}}>
+          交通出行</option>
+        <option value="entertainment" name="entertainment" {{#if (isSelected category 'entertainment' )
+          }}selected{{/if}}>
+          休閒娛樂</option>
+        <option value="food" name="food" {{#if (isSelected category 'food' ) }}selected{{/if}}>餐飲食品</option>
+        <option value="others" name="others" {{#if (isSelected category 'others' ) }}selected{{/if}}>其他</option>
       </select>
       <button class="btn col-sm-1" style="background-color: rgb(245, 176, 97); color: #fff;" type="submit">篩選</button>
     </form>

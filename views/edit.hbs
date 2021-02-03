@@ -13,12 +13,16 @@
         <input type="date" class="form-control" placeholder="日期" name="date" value="{{ record.date }}">
         <select class="form-select form-select" name="category" aria-label=".form-select-lg example"
           value="{{ record.category }}">
-          <option>請選擇</option>
-          <option value=" housing" name="housing">家居物業</option>
-          <option value="transportation" name="transportation">交通出行</option>
-          <option value="entertainment" name="entertainment">休閒娛樂</option>
-          <option value="food" name="food">餐飲食品</option>
-          <option value="others" name="others">其他</option>
+          <option name="" disabled selected>請選擇</option>
+          <option value="housing" name="housing" {{#if (isSelected record.category 'housing' ) }}selected{{/if}}>家居物業
+          </option>
+          <option value="transportation" name="transportation" {{#if (isSelected record.category 'transportation' )
+            }}selected{{/if}}>交通出行</option>
+          <option value="entertainment" name="entertainment" {{#if (isSelected record.category 'entertainment' )
+            }}selected{{/if}}>休閒娛樂</option>
+          <option value="food" name="food" {{#if (isSelected record.category 'food' ) }}selected{{/if}}>餐飲食品</option>
+          <option value="others" name="others" {{#if (isSelected record.category 'others' ) }}selected{{/if}}>其他
+          </option>
         </select>
         <input type="text" class="form-control" placeholder="金額" name="amount" value="{{ record.amount }}">
       </div>
