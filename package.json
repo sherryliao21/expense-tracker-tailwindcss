@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "seed1": "node models/seeds/recordSeeder.js && node models/seeds/categorySeeder.js",
+    "seed": "node models/seeds/recordSeeder.js && node models/seeds/categorySeeder.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
