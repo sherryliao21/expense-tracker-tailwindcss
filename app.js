@@ -3,6 +3,7 @@ const app = express()
 require('./config/mongoose')
 const exphbs = require('express-handlebars')
 const Record = require('./models/record')
+const Category = require('./models/category')
 const bodyParser = require('body-parser')
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
@@ -14,7 +15,9 @@ app.get('/', (req, res) => {
   if (category) {
     return Record.find({ category })
       .lean()
-      .then(records => res.render('index', { records, category }))
+      .then(records => {
+        res.render('index', { records, category })
+      })
       .catch(error => console.log(error))
   } else {
     Record.find()
@@ -59,10 +62,18 @@ app.post('/records', (req, res) => {
 app.post('/records/:id/edit', (req, res) => {
   const id = req.params.id
   const { name, date, category, amount } = req.body
+  let icon = ''
+  if (category) {
+    return Category.find({ name: category })
+      .lean()
+      .then(category => { return icon = category.icon })
+      .catch(error => console.log(error))
+  }
   return Record.findById(id)
     .then(record => {
       record.name = name
       record.date = date
+      record.icon = icon
       record.category = category
       record.amount = amount
       return record.save()
