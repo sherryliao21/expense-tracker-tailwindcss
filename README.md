@@ -30,12 +30,9 @@ cd restaurant-list
 ```
 npm install
 ```
-4. Run seeders (make sure you run both of them)
+4. Run seeder
 ```
-npm run seed1
-```
-```
-npm run seed2
+npm run seed
 ```
 
 5. Run project
