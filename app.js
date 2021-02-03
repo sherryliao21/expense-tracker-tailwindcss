@@ -64,11 +64,22 @@ app.post('/records/:id/edit', (req, res) => {
   const { name, date, category, amount } = req.body
   let icon = ''
   if (category) {
-    return Category.find({ name: category })
+    Category.find({ name: category })
       .lean()
       .then(category => { return icon = category.icon })
       .catch(error => console.log(error))
   }
+  // if (category === 'food') {
+  //   icon = 'fas fa-utensils'
+  // } else if (category === 'transportation') {
+  //   icon = 'fas fa-shuttle-van'
+  // } else if (category === 'entertainment') {
+  //   icon = 'fas fa-grin-beam'
+  // } else if (category === 'housing') {
+  //   icon = "fas fa-home"
+  // } else if (category === 'others') {
+  //   icon = "fas fa-pen"
+  // }
   return Record.findById(id)
     .then(record => {
       record.name = name

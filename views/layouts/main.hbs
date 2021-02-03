@@ -19,6 +19,41 @@
     </div>
   </nav>
   {{{ body }}}
+  <script>
+    function calcTotal() {
+      const totalAmount = document.querySelector('#total-amount-display')
+      const individualAmount = document.querySelectorAll('.individual-amount')
+      individualAmount.forEach(item => {
+        let total = Number(totalAmount.innerText)
+        total += Number(item.innerText)
+        return totalAmount.innerText = total
+      })
+    }
+    function checkForm() {
+      const inputs = document.querySelectorAll('.form-control')
+      const selection = document.querySelector('.form-select')
+      let checkInputs = ''
+      inputs.forEach(input => {
+        if (!input.value) {
+          return checkInputs = false
+        }
+      })
+      if (checkInputs === false || selection.value === '請選擇') {
+        alert('請完整填寫表格')
+      }
+    }
+
+    const submitNew = document.querySelector('.submit-new-btn')
+    const container = document.querySelector('.container-new')
+
+    calcTotal()
+    container.addEventListener('click', function onButtonClicked(event) {
+      if (event.target.matches('.submit-new-btn')) {
+        checkForm()
+      }
+    })
+
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
     integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
     crossorigin="anonymous"></script>

@@ -13,19 +13,19 @@
       <button class="btn col-sm-1" style="background-color: rgb(245, 176, 97); color: #fff;" type="submit">篩選</button>
     </form>
   </div>
-  <div class="total-amount d-flex justify-content-between mt-3 row">
+  <div class="d-flex justify-content-between mt-3 row">
     <div class="col-sm-4">
-      <h2 style="font-size: 28px; color: rgb(19, 168, 148);">總金額：</h2>
+      <h2 id="total-amount" style="font-size: 28px; color: rgb(19, 168, 148);">總金額：</h2>
     </div>
     <div class="col-sm-8">
-      <h1 id="total-amount-display" style="font-size: 70px; margin-left: 80px; color: rgb(245, 176, 97);">25260</h1>
+      <h1 id="total-amount-display" style="font-size: 70px; margin-left: 80px; color: rgb(245, 176, 97);">0</h1>
     </div>
   </div>
   <div class="records mt-3">
     <ul class="list-group d-flex flex-column justify-content-center">
       <a href="./records/new" style="text-decoration: none;">
         <li class="list-group-item d-flex row justify-content-between align-items-center"
-          style="background-color: rgb(243, 240, 240);">
+          style="background-color: rgb(250, 249, 249);">
           <div class="col-sm-1"></div>
           <div class="col-sm-8">
             <h2 style="font-size: 20px; color: rgb(179, 176, 176);">點擊新增支出項目</h2>
@@ -44,11 +44,11 @@
         <div class="col-sm-1">
           <i class="{{ this.icon }}" style="font-size: 20px; color: rgb(19, 168, 148);"></i>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-8 d-flex flex-column justify-content-center">
           <h2 style="font-size: 20px;">{{ this.name }}</h2>
           <h3 style="font-size: 12px;">{{ this.date }}</h3>
         </div>
-        <div class="col-sm-1 d-flex justify-content-end">
+        <div class="individual-amount col-sm-1 d-flex justify-content-end">
           <h2 style="font-size: 24px;">{{ this.amount }}</h2>
         </div>
         <div class="col-sm-1 d-flex justify-content-between">
@@ -56,7 +56,7 @@
               class="far fa-edit"></i></a>
           <form action="/records/{{ this._id }}/delete" method="POST">
             <button type="submit" class="btn"
-              style="color:rgb(245, 176, 97); position: relative; bottom: 5px;">X</button>
+              style="color:rgb(245, 176, 97); position: relative; bottom: 6px;">X</button>
           </form>
         </div>
       </li>
