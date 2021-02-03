@@ -58,7 +58,7 @@
         <div class="col-sm-1 d-flex justify-content-between">
           <a href="./records/{{ this._id }}/edit" style="color:rgb(24, 165, 146); text-decoration: none;"><i
               class="far fa-edit"></i></a>
-          <form action="/records/{{ this._id }}/delete" method="POST">
+          <form action="/records/{{ this._id }}?_method=DELETE" method="POST">
             <button type="submit" class="btn"
               style="color:rgb(245, 176, 97); position: relative; bottom: 6px;">X</button>
           </form>

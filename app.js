@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const Record = require('./models/record')
 const Category = require('./models/category')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 app.engine('hbs', exphbs({
   defaultLayout: 'main', extname: '.hbs', helpers: {
@@ -15,6 +16,7 @@ app.engine('hbs', exphbs({
 }))
 app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   const category = req.query.category
@@ -65,7 +67,7 @@ app.post('/records', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/records/:id/edit', (req, res) => {
+app.put('/records/:id', (req, res) => {
   const id = req.params.id
   const { name, date, category, amount } = req.body
   let icon = ''
@@ -90,7 +92,7 @@ app.post('/records/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/records/:id/delete', (req, res) => {
+app.delete('/records/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())

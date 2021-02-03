@@ -1,6 +1,6 @@
 <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
   <h1>請編輯支出內容</h1>
-  <form action="/records/{{ record._id }}/edit" method="POST" class="mt-4">
+  <form action="/records/{{ record._id }}?_method=PUT" method="POST" class="mt-4">
     <div class="d-flex">
       <div class="labels d-flex flex-column justify-content-between align-items-center mt-1">
         <label for="name">名稱*：</label>
