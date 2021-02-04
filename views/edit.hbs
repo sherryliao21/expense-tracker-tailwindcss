@@ -24,7 +24,7 @@
           <option value="others" name="others" {{#if (isSelected record.category 'others' ) }}selected{{/if}}>其他
           </option>
         </select>
-        <input type="text" class="form-control" placeholder="金額" name="amount" value="{{ record.amount }}">
+        <input type="number" class="form-control amount" placeholder="金額" name="amount" value="{{ record.amount }}">
       </div>
     </div>
     <div class=" button d-flex justify-content-center">

@@ -20,7 +20,7 @@
   </nav>
   {{{ body }}}
   <script>
-    function calcTotal() {
+    function displayTotal() {
       const totalAmount = document.querySelector('#total-amount-display')
       const individualAmount = document.querySelectorAll('.individual-amount')
       individualAmount.forEach(item => {
@@ -46,7 +46,7 @@
     const submitNew = document.querySelector('.submit-new-btn')
     const container = document.querySelector('.container-new')
 
-    calcTotal()
+    displayTotal()
     container.addEventListener('click', function onButtonClicked(event) {
       if (event.target.matches('.submit-new-btn')) {
         checkForm()
