@@ -5,7 +5,8 @@ const Record = require('../../models/record')
 
 router.get('/', (req, res) => {
   const category = req.query.category
-  if (category) {
+  console.log(category)
+  if (category && category !== 'all') {
     return Record.find({ category })
       .lean()
       .then(records => {

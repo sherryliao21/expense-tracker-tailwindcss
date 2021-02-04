@@ -4,6 +4,7 @@
       <select class="form-select mb-3 col-sm-6" style="width: 630px;" aria-label=".form-select-lg example"
         name="category">
         <option value="支出類別" name="" disabled selected>支出類別</option>
+        <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option>
         <option value="housing" name="housing" {{#if (isSelected category 'housing' ) }}selected{{/if}}>家居物業</option>
         <option value="transportation" name="transportation" {{#if (isSelected category 'transportation' )
           }}selected{{/if}}>
