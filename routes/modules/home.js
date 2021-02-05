@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     return Record.find({ category })
       .lean()
       .then(records => {
-        res.render('index', { records, category })
+        res.render('index', { records })
       })
       .catch(error => console.log(error))
   } else {

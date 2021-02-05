@@ -34,7 +34,7 @@
       const selection = document.querySelector('.form-select')
       let checkInputs = ''
       inputs.forEach(input => {
-        if (!input.value) {
+        if (!input.value || input.value === '0') {
           return checkInputs = false
         }
       })
