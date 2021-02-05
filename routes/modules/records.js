@@ -43,7 +43,7 @@ router.put('/:id', (req, res) => {
     Category.find({ name: category })
       .lean()
       .then(item => {
-        return icon = item[0].icon
+        icon = item[0].icon
       })
       .catch(error => console.log(error))
   }
