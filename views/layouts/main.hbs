@@ -18,51 +18,19 @@
           style="margin-right: 8px;"></i><strong>鳴人の錢包</strong></a>
     </div>
   </nav>
-  {{{ body }}}
-  <script>
-    function displayTotal() {
-      const totalAmount = document.querySelector('#total-amount-display')
-      const individualAmount = document.querySelectorAll('.individual-amount')
-      individualAmount.forEach(item => {
-        let total = Number(totalAmount.innerText)
-        total += Number(item.innerText)
-        return totalAmount.innerText = total
-      })
-    }
-    function checkForm() {
-      const inputs = document.querySelectorAll('.form-control')
-      const selection = document.querySelector('.form-select')
-      let checkInputs = ''
-      inputs.forEach(input => {
-        if (!input.value || input.value === '0') {
-          return checkInputs = false
-        }
-      })
-      if (checkInputs === false || selection.value === '請選擇') {
-        alert('請完整填寫表格')
-      }
-    }
-
-    const submitNew = document.querySelector('.submit-new-btn')
-    const container = document.querySelector('.container-new')
-
-    displayTotal()
-    container.addEventListener('click', function onButtonClicked(event) {
-      if (event.target.matches('.submit-new-btn')) {
-        checkForm()
-      }
-    })
-
-  </script>
+  <div class="container">
+    {{{ body }}}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
     integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
     integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/javascripts/displayTotal.js"></script>
 </body>
 
 </html>
