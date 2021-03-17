@@ -16,7 +16,7 @@
     "amount": 60
   },
   {
-    "name": "移動卷軸",
+    "name": "逆通靈卷軸",
     "icon": "fas fa-shuttle-van",
     "category": "transportation",
     "date": "2019-04-23",
@@ -24,7 +24,7 @@
     "amount": 25000
   },
   {
-    "name": "跟卡卡西老師泡溫泉",
+    "name": "跟鹿丸泡溫泉",
     "icon": "fas fa-grin-beam",
     "category": "entertainment",
     "date": "2019-04-23",
@@ -32,11 +32,11 @@
     "amount": 220
   },
   {
-    "name": "買花祭拜自來也老師",
+    "name": "大和隊長木遁蓋房子",
     "icon": "fas fa-home",
     "category": "housing",
     "date": "2019-04-01",
-    "merchant": "山中花店",
+    "merchant": "大和",
     "amount": 300
   }
 ]
