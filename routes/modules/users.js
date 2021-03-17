@@ -11,6 +11,11 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
+router.get('/logout', (req, res) => {
+  req.logOut() // a function which eliminates this session at the moment, provided by passport.js
+  res.redirect('/users/login')
+})
+
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/users/login'
