@@ -1,5 +1,6 @@
 const express = require('express')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 const app = express()
 require('./config/mongoose')
 const routes = require('./routes')
@@ -25,7 +26,7 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
-
+usePassport(app)
 app.use(routes)
 
 app.listen(PORT, () => {
