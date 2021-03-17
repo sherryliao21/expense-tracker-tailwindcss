@@ -14,8 +14,15 @@
 <body>
   <nav class="navbar navbar-secondary" style="background-color: rgb(19, 168, 148);">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/" style="text-decoration: none; color: #fff"><i class="fas fa-wallet"
-          style="margin-right: 8px;"></i><strong>鳴人の錢包</strong></a>
+      <a class="navbar-brand" href="/" style="text-decoration: none; color: #fff">
+        <i class="fas fa-wallet" style="margin-right: 8px;"></i>
+        <strong>{{#if isAuthenticated}}{{ user.name }} の{{/if}}記帳本</strong>
+      </a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+      {{else}}
+      <a href="/users/login" class="btn btn-outline-light">Login</a>
+      {{/if}}
     </div>
   </nav>
   <div class="container">
