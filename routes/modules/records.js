@@ -17,7 +17,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const { name, date, category, amount } = req.body
+  const { name, date, category, amount, merchant } = req.body
   let icon = ''
   if (category === 'food') {
     icon = 'fas fa-utensils'
@@ -30,14 +30,14 @@ router.post('/', (req, res) => {
   } else if (category === 'others') {
     icon = "fas fa-pen"
   }
-  return Record.create({ name, date, icon, category, amount })
+  return Record.create({ name, date, icon, category, amount, merchant })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  const { name, date, category, amount } = req.body
+  const { name, date, category, amount, merchant } = req.body
   let icon = ''
   if (category) {
     Category.find({ name: category })
@@ -54,6 +54,7 @@ router.put('/:id', (req, res) => {
       record.icon = icon
       record.category = category
       record.amount = amount
+      record.merchant = merchant
       return record.save()
     })
     .then(() => res.redirect('/'))

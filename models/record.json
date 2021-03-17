@@ -1,37 +1,42 @@
 [
   {
-    "name": "午餐",
+    "name": "午餐-拉麵",
     "icon": "fas fa-utensils",
     "category": "food",
     "date": "2019-04-23",
+    "merchant": "一樂拉麵",
     "amount": 60
   },
   {
-    "name": "晚餐",
+    "name": "晚餐-拉麵",
     "icon": "fas fa-utensils",
     "category": "food",
     "date": "2019-04-23",
+    "merchant": "一樂拉麵",
     "amount": 60
   },
   {
-    "name": "捷運",
+    "name": "移動卷軸",
     "icon": "fas fa-shuttle-van",
     "category": "transportation",
     "date": "2019-04-23",
-    "amount": 120
+    "merchant": "天天的忍具店",
+    "amount": 25000
   },
   {
-    "name": "電影：驚奇隊長",
+    "name": "跟卡卡西老師泡溫泉",
     "icon": "fas fa-grin-beam",
     "category": "entertainment",
     "date": "2019-04-23",
+    "merchant": "木葉溫泉",
     "amount": 220
   },
   {
-    "name": "租金",
+    "name": "買花祭拜自來也老師",
     "icon": "fas fa-home",
     "category": "housing",
     "date": "2019-04-01",
-    "amount": 25000
+    "merchant": "山中花店",
+    "amount": 300
   }
 ]

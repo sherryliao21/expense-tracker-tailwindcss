@@ -6,6 +6,7 @@
         <label for="name">名稱*：</label>
         <label for="date">日期*：</label>
         <label for="category">類別*：</label>
+        <label for="merchant">商家*：</label>
         <label for="amount">金額*：</label>
       </div>
       <div class="input-groups d-flex flex-column justify-content-between align-items-center">
@@ -24,6 +25,7 @@
           <option value="others" name="others" {{#if (isSelected record.category 'others' ) }}selected{{/if}}>其他
           </option>
         </select>
+        <input type="text" class="form-control" placeholder="商家名稱" name="merchant" value="{{ record.merchant }}">
         <input type="number" class="form-control amount" placeholder="金額" name="amount" value="{{ record.amount }}">
       </div>
     </div>

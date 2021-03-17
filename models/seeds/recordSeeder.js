@@ -11,7 +11,8 @@ db.once('open', () => {
         icon: record.icon,
         category: record.category,
         date: record.date,
-        amount: record.amount
+        amount: record.amount,
+        merchant: record.merchant
       })
     )
   })
