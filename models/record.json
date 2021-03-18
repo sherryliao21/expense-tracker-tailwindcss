@@ -38,5 +38,13 @@
     "date": "2019-04-01",
     "merchant": "大和",
     "amount": 300
+  },
+  {
+    "name": "到風之國找我愛羅",
+    "icon": "fas fa-shuttle-van",
+    "category": "transportation",
+    "date": "2019-04-02",
+    "merchant": "雷車",
+    "amount": 750
   }
 ]
