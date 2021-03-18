@@ -7,14 +7,19 @@ module.exports = app => {
   app.use(passport.initialize())
   app.use(passport.session())
   // local strategy settings
-  passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+  passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passReqToCallback: true
+  }, (req, email, password, done) => {
     User.findOne({ email })
       .then(user => {
         if (!user) {
-          return done(null, false, { message: '此信箱未註冊' })
+          req.flash('warning_msg', '此信箱未註冊')
+          return done(null, false)
         }
         if (user.password !== password) {
-          return done(null, false, { message: '信箱或密碼輸入錯誤' })
+          req.flash('warning_msg', '信箱或密碼輸入錯誤')
+          return done(null, false)
         }
         return done(null, user)
       })
