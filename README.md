@@ -1,5 +1,5 @@
 # Expense Tracker
-![Imgur](https://imgur.com/9MHk4gq.png)
+![Imgur](https://imgur.com/UEVMlko.png)
 An Naruto-style expense tracker web app built with Express.js
 
 ## Features
