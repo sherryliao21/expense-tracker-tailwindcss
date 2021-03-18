@@ -8,8 +8,13 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
-const PORT = process.env.PORT || 3000
 
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const PORT = process.env.PORT
 
 app.engine('hbs', exphbs({
   defaultLayout: 'main', extname: '.hbs', helpers: {
@@ -20,7 +25,7 @@ app.engine('hbs', exphbs({
 }))
 app.set('view engine', 'hbs')
 app.use(session({
-  secret: 'narutosWalletSecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
