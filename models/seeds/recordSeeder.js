@@ -38,6 +38,7 @@ db.once('open', () => {
               icon: recordItem[(i + (index * 3))].icon,
               category: recordItem[(i + (index * 3))].category,
               date: recordItem[(i + (index * 3))].date,
+              month: recordItem[(i + (index * 3))].date.split('-')[0] + recordItem[(i + (index * 3))].date.split('-')[1],
               merchant: recordItem[(i + (index * 3))].merchant,
               amount: recordItem[(i + (index * 3))].amount,
               userId
