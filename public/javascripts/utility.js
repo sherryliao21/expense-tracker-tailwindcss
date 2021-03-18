@@ -17,7 +17,8 @@ function checkForm() {
     }
   })
   if (checkInputs === false || selection.value === '請選擇') {
-    alert('請完整填寫表格')
+    if (confirm('請完整填寫表格')) return false
+    return false
   }
 }
 
@@ -25,8 +26,8 @@ const submitNew = document.querySelector('.submit-new-btn')
 const container = document.querySelector('.container-new')
 
 displayTotal()
-container.addEventListener('click', function onButtonClicked(event) {
-  if (event.target.matches('.submit-new-btn')) {
-    checkForm()
-  }
-})
+// container.addEventListener('click', function onButtonClicked(event) {
+//   if (event.target.matches('.submit-new-btn')) {
+//     checkForm()
+//   }
+// })

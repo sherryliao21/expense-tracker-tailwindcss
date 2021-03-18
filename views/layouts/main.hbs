@@ -10,17 +10,20 @@
   <link rel="stylesheet" href="/stylesheets/bootstrap.css">
 </head>
 
-<body>
-  <nav class="navbar navbar-secondary" style="background-color: rgb(19, 168, 148);">
+<body
+  style="background-image: url('/naruto_background.jpg'); width: 100vw; height: 100vh; background-size: cover; z-index: -5">
+  <div class="background-overlay" style="background-color: rgba(255, 255, 255, 0.85);
+  height: 100vh; width: 100vw; position: fixed; z-index: -1;"></div>
+  <nav class="navbar navbar-secondary" style="background-color: rgb(44, 44, 44);">
     <div class="container-fluid">
       <a class="navbar-brand" href="/" style="text-decoration: none; color: #fff">
-        <i class="fas fa-wallet" style="margin-right: 8px;"></i>
+        <i class="fas fa-wallet" style="margin-right: 8px; color: rgb(255, 190, 116);"></i>
         <strong>{{#if isAuthenticated}}{{ user.name }} の{{/if}}記帳本</strong>
       </a>
       {{#if isAuthenticated}}
-      <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+      <a href="/users/logout" class="btn btn-outline-light" style="background-color: rgb(245, 162, 67)">Logout</a>
       {{else}}
-      <a href="/users/login" class="btn btn-outline-light">Login</a>
+      <a href="/users/login" class="btn btn-outline-light" style="background-color: rgb(245, 162, 67)">Login</a>
       {{/if}}
     </div>
   </nav>
