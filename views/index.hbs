@@ -1,22 +1,22 @@
 <div class="container d-flex flex-column justify-content-center mt-5" style="width: 700px;">
   <div class="filter d-flex justify-content-between">
-    <form action="/" class="row d-flex justify-content-between align-items-start" onchange="submit()">
-      <select class="form-select form-control mb-3 col-sm-4" style="width: 630px;" aria-label=".form-select-lg example"
+    <form action="/" class="row d-flex  align-items-center justify-content-between mb-3" onchange="submit()">
+      <select class="form-select-month form-control col-sm-4" style="width: 630px;" aria-label=".form-select-lg example"
         name="month">
         <option value="支出月份" name="" disabled selected>支出月份</option>
         <option value="all" name="all" {{#if (isSelected month 'all' ) }}selected{{/if}}>全部</option>
         {{#each monthOptions}}
-        <option value="{{this.month}}" name="{{this.month}}" {{#if (isSelected month '{{this.month}}' )
-          }}selected{{/if}}>{{this.month}}</option>
+        <option value="{{this.month}}" name="{{this.month}}" {{#if (isSelected month "{{this.month}}" )
+          }}selected{{/if}}>
+          {{this.month}}</option>
         {{/each}}
-        {{!-- <option value="201904" name="201904" {{#if (isSelected month '201904' ) }}selected{{/if}}>201904</option>
-        <option value="202102" name="202102" {{#if (isSelected month '202102' ) }}selected{{/if}}>202102</option>
-        <option value="202103" name="202103" {{#if (isSelected month '202103' ) }}selected{{/if}}>202103</option>
-        <option value="202104" name="202104" {{#if (isSelected month '202104' ) }}selected{{/if}}>202104</option>
-        <option value="202105" name="202105" {{#if (isSelected month '202105' ) }}selected{{/if}}>202105</option> --}}
       </select>
-      <select class="form-select form-control mb-3 col-sm-5" style="width: 630px;" aria-label=".form-select-lg example"
-        name="category">
+      <div class="reset-button">
+        <a href="/"><button class="btn reset-btn"
+            style="width: 100px; background-color: rgb(245, 162, 67); color: #fff;">RESET</button></a>
+      </div>
+      <select class="form-select form-category form-control col-sm-5" style="width: 630px;"
+        aria-label=".form-select-lg example" name="category">
         <option value="支出類別" name="" disabled selected>支出類別</option>
         <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option>
         <option value="housing" name="housing" {{#if (isSelected category 'housing' ) }}selected{{/if}}>家居物業</option>
