@@ -7,8 +7,7 @@
         <option value="all" name="all" {{#if (isSelected month 'all' ) }}selected{{/if}}>全部</option>
         {{#each monthOptions}}
         <option value="{{this.month}}" name="{{this.month}}" {{#if (isSelected month "{{this.month}}" )
-          }}selected{{/if}}>
-          {{this.month}}</option>
+          }}selected{{/if}}>{{this.month}}</option>
         {{/each}}
       </select>
       <div class="reset-button">
@@ -82,5 +81,3 @@
     </ul>
   </div>
 </div>
-
-<script src="/javascripts/index.js"></script>
