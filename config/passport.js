@@ -30,6 +30,7 @@ module.exports = app => {
       })
       .catch(err => console.log(err))
   }))
+  // Facebook strategy settings
   passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_ID,
     clientSecret: process.env.FACEBOOK_SECRET,
