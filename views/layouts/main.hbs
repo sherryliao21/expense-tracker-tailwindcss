@@ -8,22 +8,21 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
     integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 
-<body
-  style="background-image: url('/naruto_background.jpg'); width: 100vw; height: 100vh; background-size: cover; z-index: -5">
-  <div class="background-overlay" style="background-color: rgba(255, 255, 255, 0.85);
-  height: 100vh; width: 100vw; position: fixed; z-index: -1;"></div>
-  <nav class="navbar navbar-secondary" style="background-color: rgb(44, 44, 44);">
+<body>
+  <div class="background-overlay"></div>
+  <nav class="navbar navbar-secondary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/" style="text-decoration: none; color: #fff">
-        <i class="fas fa-wallet" style="margin-right: 8px; color: rgb(255, 190, 116);"></i>
+      <a class="navbar-brand" href="/">
+        <i class="fas fa-wallet"></i>
         <strong>{{#if isAuthenticated}}{{ user.name }} の{{/if}}記帳本</strong>
       </a>
       {{#if isAuthenticated}}
-      <a href="/users/logout" class="btn btn-outline-light" style="background-color: rgb(245, 162, 67)">Logout</a>
+      <a href="/users/logout" class="btn btn-outline-light">Logout</a>
       {{else}}
-      <a href="/users/login" class="btn btn-outline-light" style="background-color: rgb(245, 162, 67)">Login</a>
+      <a href="/users/login" class="btn btn-outline-light">Login</a>
       {{/if}}
     </div>
   </nav>
@@ -40,7 +39,7 @@
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="/javascripts/utility.js"></script>
-  <script src="/javascripts/index.js"></script>
+  <script src="/javascripts/main.js"></script>
 </body>
 
 </html>

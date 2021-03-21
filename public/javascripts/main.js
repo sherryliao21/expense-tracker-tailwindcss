@@ -8,7 +8,7 @@ const monthForm = document.querySelector('.form-select-month')
 const categoryForm = document.querySelector('.form-category')
 resetBtn.addEventListener('click', (e) => {
   if (e.target === resetBtn) {
-    categoryForm.value = 'all'
-    monthForm.value = 'all'
+    categoryForm.value = ''
+    monthForm.value = ''
   }
 })

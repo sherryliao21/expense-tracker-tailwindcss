@@ -1,22 +1,25 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/newEdit.css">
+</head>
+
 <div class="container-new d-flex flex-column justify-content-center align-items-center mt-5">
-  <h1 style="color: rgb(44, 44, 44);">輸入你的支出</h1>
-  <div class="naruto-wallet-img" style="width: 300px; height: 200px; margin: 30px 0 10px;">
-    <img src="/naruto_wallet_2.jpg" alt="naruto_wallet" style="width: 100%; height: 100%; border-radius: 8px;">
+  <h1 class="title">輸入你的支出</h1>
+  <div class="new-img">
+    <img class="naruto-wallet-img" src="/naruto_wallet_2.jpg" alt="naruto_wallet">
   </div>
   <form action="/records" method="POST" class="mt-4" id="form-new">
-    <div class="labels d-flex flex-column justify-content-between align-items-center mt-1" style="width: 300px;">
+    <div class="labels d-flex flex-column justify-content-between align-items-start mt-1">
       <div class="name d-flex align-items-center mb-2">
-        <label for="name" style="width: 80px">名稱：</label>
+        <label class="label" for="name">名稱：</label>
         <input type="text" class="form-control" placeholder="ex: 請佐助吃飯" name="name">
       </div>
       <div class="date d-flex align-items-center mb-2">
-        <label for="date" style="width: 62px">日期：</label>
-        <input type="date" class="form-control" placeholder="請選擇" name="date" style="width: 226px">
+        <label class="label-long" for="date">日期：</label>
+        <input type="date" class="form-control form-date" placeholder="請選擇" name="date">
       </div>
       <div class="category d-flex justify-content-center align-items-center mb-2">
-        <label for="category" style="width: 62px">類別：</label>
-        <select class="form-select form-control" style="width: 226px;" name="category"
-          aria-label=".form-select-lg example">
+        <label class="label-long" for="category">類別：</label>
+        <select class="form-select form-control" name="category" aria-label=".form-select-lg example">
           <option name="" disabled selected>請選擇</option>
           <option value="housing" name="housing" {{#if (isSelected record.category 'housing' ) }}selected{{/if}}>家居物業
           </option>
@@ -30,17 +33,15 @@
         </select>
       </div>
       <div class="merchant d-flex align-items-center mb-2">
-        <label for="merchant" style="width: 80px">商家：</label>
+        <label class="label" for="merchant">商家：</label>
         <input type="text" class="form-control" placeholder="ex: 一樂拉麵" name="merchant">
       </div>
       <div class="amount d-flex align-items-center mb-2">
-        <label for="amount" style="width: 80px">金額：</label>
+        <label class="label" for="amount">金額：</label>
         <input type="number" class="form-control amount" placeholder="ex: 120" name="amount">
       </div>
       <div class="button d-flex justify-content-center">
-        <button type="submit" class="submit-new-btn btn mt-3"
-          style="width: 100px; background-color: rgb(245, 162, 67); color: #fff;"
-          onclick="return checkForm()">建立</button>
+        <button type="submit" class="submit-new-btn btn mt-3" onclick="return checkForm()">建立</button>
       </div>
 
   </form>

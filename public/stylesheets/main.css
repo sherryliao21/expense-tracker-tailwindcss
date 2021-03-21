@@ -1,0 +1,42 @@
+body {
+  background-image: url('/naruto_background.jpg'); 
+  width: 100vw; 
+  height: 100vh; 
+  background-size: cover; 
+  z-index: -5
+}
+
+.nav-title {
+  text-decoration: none;
+}
+
+.background-overlay {
+  background-color: rgba(255, 255, 255, 0.85);
+  height: 100vh;
+  width: 100vw; 
+  position: fixed; 
+  z-index: -1;
+}
+
+.navbar-secondary {
+  background-color: rgb(44, 44, 44);
+}
+
+.navbar-brand {
+  text-decoration: none; 
+  color: #fff
+}
+
+.navbar-brand:hover {
+  text-decoration: none; 
+  color: #fff
+}
+
+.fa-wallet {
+  margin-right: 8px; 
+  color: rgb(255, 190, 116);
+}
+
+.btn-outline-light {
+  background-color: rgb(245, 162, 67)
+}

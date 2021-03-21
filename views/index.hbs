@@ -1,8 +1,10 @@
-<div class="container d-flex flex-column justify-content-center mt-5" style="width: 700px;">
+<head>
+  <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+<div class="container d-flex flex-column justify-content-center mt-5">
   <div class="filter d-flex justify-content-between">
     <form action="/" class="row d-flex  align-items-center justify-content-between mb-3" onchange="submit()">
-      <select class="form-select-month form-control col-sm-4" style="width: 630px;" aria-label=".form-select-lg example"
-        name="month">
+      <select class="form-select-month form-control col-sm-4" aria-label=".form-select-lg example" name="month">
         <option value="支出月份" name="" disabled selected>支出月份</option>
         <option value="all" name="all" {{#if (isSelected month 'all' ) }}selected{{/if}}>全部</option>
         {{#each monthOptions}}
@@ -11,11 +13,10 @@
         {{/each}}
       </select>
       <div class="reset-button">
-        <a href="/"><button class="btn reset-btn"
-            style="width: 100px; background-color: rgb(245, 162, 67); color: #fff;">RESET</button></a>
+        <a href="/"><button class="btn reset-btn">RESET</button></a>
       </div>
-      <select class="form-select form-category form-control col-sm-5" style="width: 630px;"
-        aria-label=".form-select-lg example" name="category">
+      <select class="form-category form-select form-control col-sm-5" aria-label=".form-select-lg example"
+        name="category">
         <option value="支出類別" name="" disabled selected>支出類別</option>
         <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option>
         <option value="housing" name="housing" {{#if (isSelected category 'housing' ) }}selected{{/if}}>家居物業</option>
@@ -32,48 +33,45 @@
   </div>
   <div class="d-flex justify-content-between mt-3 row">
     <div class="col-sm-4">
-      <h2 id="total-amount" style="font-size: 28px; color: rgb(44, 44, 44);">總金額：</h2>
+      <h2 id="total-amount">總金額：</h2>
     </div>
     <div class="col-sm-8">
-      <h1 id="total-amount-display" style="font-size: 70px; margin-left: 80px; color: rgb(245, 162, 67);">0</h1>
+      <h1 id="total-amount-display">0</h1>
     </div>
   </div>
   <div class="records mt-3">
     <ul class="list-group d-flex flex-column justify-content-center">
-      <a href="./records/new" style="text-decoration: none;">
-        <li class="list-group-item d-flex row justify-content-between align-items-center"
-          style="background-color: rgb(243, 239, 239);">
-          <div class="col-sm-1"></div>
+      <a class="add-new-item" href="./records/new">
+        <div id="add-new-btn" class="list-group-item d-flex row justify-content-between align-items-center">
+          <div class="col-sm-1"><i class="far fa-hand-point-right"></i></div>
           <div class="col-sm-8">
-            <h2 style="font-size: 20px; color: rgb(179, 176, 176);">點擊新增支出項目</h2>
-            <h3 style=" font-size: 12px; color: rgb(179, 176, 176);">新增日期</h3>
+            <h2 class="add-new-title">點擊新增支出項目</h2>
+            <h3 class="add-new-date">新增日期</h3>
           </div>
           <div class="col-sm-1 d-flex justify-content-end">
-            <h2 style="font-size: 24px; color: rgb(179, 176, 176);">$$$</h2>
+            <h2 class="add-new-amount">$$$</h2>
           </div>
-          <div class="col-sm-1 d-flex justify-content-between">
-            <i class="fas fa-plus-circle" style="font-size: 20px; color: rgb(179, 176, 176);"></i>
+          <div class="col-sm-1 d-flex justify-content-end">
+            <i class="fas fa-plus-circle"></i>
           </div>
-        </li>
+        </div>
       </a>
       {{#each records}}
       <li class="list-group-item d-flex row justify-content-between align-items-center">
         <div class="col-sm-1">
-          <i class="{{ this.icon }}" style="font-size: 20px; color: rgb(245, 162, 67);"></i>
+          <i class="item-icon {{ this.icon }}"></i>
         </div>
         <div class="col-sm-8 d-flex flex-column justify-content-center">
-          <h2 style="font-size: 20px;">{{ this.name }}</h2>
-          <h3 style="font-size: 12px;">{{ this.date }}</h3>
+          <h2 class="item-title">{{ this.name }}</h2>
+          <h3 class="item-date">{{ this.date }}</h3>
         </div>
         <div class="individual-amount col-sm-1 d-flex justify-content-end">
-          <h2 style="font-size: 24px;">{{ this.amount }}</h2>
+          <h2 class="item-amount">{{ this.amount }}</h2>
         </div>
         <div class="col-sm-1 d-flex justify-content-between">
-          <a href="./records/{{ this._id }}/edit" style="color:rgb(245, 162, 67); text-decoration: none;"><i
-              class="far fa-edit"></i></a>
+          <a href="./records/{{ this._id }}/edit"><i class="far fa-edit"></i></a>
           <form action="/records/{{ this._id }}?_method=DELETE" method="POST">
-            <button type="submit" class="btn" onclick="return confirmDelete()"
-              style="color:rgb(255, 82, 2); position: relative; bottom: 6px;">X</button>
+            <button type="submit" class="btn btn-delete" onclick="return confirmDelete()">X</button>
           </form>
         </div>
       </li>

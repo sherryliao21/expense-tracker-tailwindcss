@@ -1,0 +1,50 @@
+.title {
+  style="color: rgb(44, 44, 44)
+}
+
+.new-img, .edit-img {
+  width: 300px; 
+  height: 200px; 
+  margin: 30px 0 10px;
+}
+
+.naruto-wallet-img {
+  width: 100%; 
+  height: 100%; 
+  border-radius: 8px;
+}
+
+.labels {
+  width: 300px;
+  padding-left: 18px;
+}
+
+.label {
+  width: 62px;
+  margin: 0
+}
+
+.form-select, 
+.form-date {
+  width: 213px;
+}
+
+.submit-new-btn {
+  width: 100px; 
+  background-color: rgb(245, 162, 67); 
+  color: #fff;
+  margin-left: 90px;
+}
+
+.save-btn {
+  width: 100px; 
+  background-color: rgb(245, 162, 67); 
+  color: #fff;
+}
+
+.back-btn {
+  width: 100px; 
+  background-color: rgb(91, 92, 92); 
+  color: #fff; 
+  margin-left: 20px;
+}
