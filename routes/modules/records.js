@@ -5,8 +5,6 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 
 router.get('/new', (req, res) => {
-
-  // add
   const categoryOptions = []
   Category.find()
     .lean()
@@ -14,18 +12,26 @@ router.get('/new', (req, res) => {
       category.forEach(item => {
         categoryOptions.push(item.name)
       })
-      console.log(categoryOptions)
     })
     .catch(err => console.lo(err))
-  //
-
-
   return res.render('new', { categoryOptions })
 })
 
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
+
+  // const categoryOptions = []
+  // Category.find()
+  //   .lean()
+  //   .then(category => {
+  //     category.forEach(item => {
+  //       categoryOptions.push(item.name)
+  //     })
+  //     console.log(categoryOptions)
+  //   })
+  //   .catch(err => console.lo(err))
+
   return Record.findOne({ userId, _id })
     .lean()
     .then(record => res.render('edit', { record }))

@@ -21,8 +21,8 @@ app.engine('hbs', exphbs({
   defaultLayout: 'main',
   extname: '.hbs',
   helpers: {
-    isSelected: function (v1, v2) {
-      return v1 === v2
+    isSelected: (v1, v2) => {
+      if (v1 === v2) return true
     }
   }
 }))
