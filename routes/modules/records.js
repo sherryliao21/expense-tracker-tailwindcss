@@ -5,7 +5,22 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 
 router.get('/new', (req, res) => {
-  return res.render('new')
+
+  // add
+  const categoryOptions = []
+  Category.find()
+    .lean()
+    .then(category => {
+      category.forEach(item => {
+        categoryOptions.push(item.name)
+      })
+      console.log(categoryOptions)
+    })
+    .catch(err => console.lo(err))
+  //
+
+
+  return res.render('new', { categoryOptions })
 })
 
 router.get('/:id/edit', (req, res) => {
@@ -22,16 +37,17 @@ router.post('/', (req, res) => {
   const { name, date, category, amount, merchant } = req.body
   const month = date.split('-')[0] + date.split('-')[1]
   let icon = ''
-  if (category === 'food') {
+
+  if (category === '餐飲食品') {
     icon = 'fas fa-utensils'
-  } else if (category === 'transportation') {
+  } else if (category === '交通出行') {
     icon = 'fas fa-shuttle-van'
-  } else if (category === 'entertainment') {
+  } else if (category === '休閒娛樂') {
     icon = 'fas fa-grin-beam'
-  } else if (category === 'housing') {
-    icon = "fas fa-home"
-  } else if (category === 'others') {
-    icon = "fas fa-pen"
+  } else if (category === '家居物業') {
+    icon = 'fas fa-home'
+  } else if (category === '其他') {
+    icon = 'fas fa-pen'
   }
   return Record.create({ name, date, month, icon, category, amount, merchant, userId })
     .then(() => res.redirect('/'))

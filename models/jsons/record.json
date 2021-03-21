@@ -2,7 +2,7 @@
   {
     "name": "午餐-拉麵",
     "icon": "fas fa-utensils",
-    "category": "food",
+    "category": "餐飲食品",
     "date": "2019-04-23",
     "merchant": "一樂拉麵",
     "amount": 60
@@ -10,7 +10,7 @@
   {
     "name": "晚餐-拉麵",
     "icon": "fas fa-utensils",
-    "category": "food",
+    "category": "餐飲食品",
     "date": "2019-04-23",
     "merchant": "一樂拉麵",
     "amount": 60
@@ -18,7 +18,7 @@
   {
     "name": "逆通靈卷軸",
     "icon": "fas fa-shuttle-van",
-    "category": "transportation",
+    "category": "交通出行",
     "date": "2019-04-23",
     "merchant": "天天的忍具店",
     "amount": 25000
@@ -26,7 +26,7 @@
   {
     "name": "跟鹿丸泡溫泉",
     "icon": "fas fa-grin-beam",
-    "category": "entertainment",
+    "category": "休閒娛樂",
     "date": "2019-04-23",
     "merchant": "木葉溫泉",
     "amount": 220
@@ -34,7 +34,7 @@
   {
     "name": "大和隊長木遁蓋房子",
     "icon": "fas fa-home",
-    "category": "housing",
+    "category": "家居物業",
     "date": "2019-04-01",
     "merchant": "大和",
     "amount": 300
@@ -42,7 +42,7 @@
   {
     "name": "到風之國找我愛羅",
     "icon": "fas fa-shuttle-van",
-    "category": "transportation",
+    "category": "交通出行",
     "date": "2019-04-02",
     "merchant": "雷車",
     "amount": 750

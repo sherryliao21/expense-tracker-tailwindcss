@@ -6,7 +6,7 @@
     <form action="/" class="row d-flex  align-items-center justify-content-between mb-3" onchange="submit()">
       <select class="form-select-month form-control col-sm-4" aria-label=".form-select-lg example" name="month">
         <option value="支出月份" name="" disabled selected>支出月份</option>
-        <option value="all" name="all" {{#if (isSelected month 'all' ) }}selected{{/if}}>全部</option>
+        {{!-- <option value="all" name="all" {{#if (isSelected month 'all' ) }}selected{{/if}}>全部</option> --}}
         {{#each monthOptions}}
         <option value="{{this.month}}" name="{{this.month}}" {{#if (isSelected month "{{this.month}}" )
           }}selected{{/if}}>{{this.month}}</option>
@@ -18,16 +18,14 @@
       <select class="form-category form-select form-control col-sm-5" aria-label=".form-select-lg example"
         name="category">
         <option value="支出類別" name="" disabled selected>支出類別</option>
-        <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option>
-        <option value="housing" name="housing" {{#if (isSelected category 'housing' ) }}selected{{/if}}>家居物業</option>
-        <option value="transportation" name="transportation" {{#if (isSelected category 'transportation' )
-          }}selected{{/if}}>
+        {{!-- <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option> --}}
+        <option value="家居物業" name="家居物業" {{#if (isSelected category '家居物業' ) }}selected{{/if}}>家居物業</option>
+        <option value="交通出行" name="交通出行" {{#if (isSelected category '交通出行' ) }}selected{{/if}}>
           交通出行</option>
-        <option value="entertainment" name="entertainment" {{#if (isSelected category 'entertainment' )
-          }}selected{{/if}}>
+        <option value="休閒娛樂" name="休閒娛樂" {{#if (isSelected category '休閒娛樂' ) }}selected{{/if}}>
           休閒娛樂</option>
-        <option value="food" name="food" {{#if (isSelected category 'food' ) }}selected{{/if}}>餐飲食品</option>
-        <option value="others" name="others" {{#if (isSelected category 'others' ) }}selected{{/if}}>其他</option>
+        <option value="餐飲食品" name="餐飲食品" {{#if (isSelected category '餐飲食品' ) }}selected{{/if}}>餐飲食品</option>
+        <option value="其他" name="其他" {{#if (isSelected category '其他' ) }}selected{{/if}}>其他</option>
       </select>
     </form>
   </div>

@@ -23,14 +23,12 @@
           <select class="form-select form-control" name="category" aria-label=".form-select-lg example"
             value="{{ record.category }}">
             <option name="" disabled selected>請選擇</option>
-            <option value="housing" name="housing" {{#if (isSelected record.category 'housing' ) }}selected{{/if}}>家居物業
+            <option value="家居物業" name="家居物業" {{#if (isSelected record.category '家居物業' ) }}selected{{/if}}>家居物業
             </option>
-            <option value="transportation" name="transportation" {{#if (isSelected record.category 'transportation' )
-              }}selected{{/if}}>交通出行</option>
-            <option value="entertainment" name="entertainment" {{#if (isSelected record.category 'entertainment' )
-              }}selected{{/if}}>休閒娛樂</option>
-            <option value="food" name="food" {{#if (isSelected record.category 'food' ) }}selected{{/if}}>餐飲食品</option>
-            <option value="others" name="others" {{#if (isSelected record.category 'others' ) }}selected{{/if}}>其他
+            <option value="交通出行" name="交通出行" {{#if (isSelected record.category '交通出行' ) }}selected{{/if}}>交通出行</option>
+            <option value="休閒娛樂" name="休閒娛樂" {{#if (isSelected record.category '休閒娛樂' ) }}selected{{/if}}>休閒娛樂</option>
+            <option value="餐飲食品" name="餐飲食品" {{#if (isSelected record.category '餐飲食品' ) }}selected{{/if}}>餐飲食品</option>
+            <option value="其他" name="其他" {{#if (isSelected record.category '其他' ) }}selected{{/if}}>其他
             </option>
           </select>
         </div>
