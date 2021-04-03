@@ -13,7 +13,7 @@ router.get('/new', (req, res) => {
         categoryOptions.push(item.name)
       })
     })
-    .catch(err => console.lo(err))
+    .catch(err => console.log(err))
   return res.render('new', { categoryOptions })
 })
 
@@ -28,36 +28,30 @@ router.get('/:id/edit', (req, res) => {
       category.forEach(item => {
         categoryOptions.push(item.name)
       })
-      console.log(categoryOptions)
     })
     .catch(err => console.log(err))
 
   return Record.findOne({ userId, _id })
     .lean()
     .then(record => res.render('edit', { record, categoryOptions }))
-    .catch(error => console.log(error))
+    .catch(err => console.log(err))
 })
 
 router.post('/', (req, res) => {
   const userId = req.user._id
   const { name, date, category, amount, merchant } = req.body
   const month = date.split('-')[0] + date.split('-')[1]
-  let icon = ''
 
-  if (category === '餐飲食品') {
-    icon = 'fas fa-utensils'
-  } else if (category === '交通出行') {
-    icon = 'fas fa-shuttle-van'
-  } else if (category === '休閒娛樂') {
-    icon = 'fas fa-grin-beam'
-  } else if (category === '家居物業') {
-    icon = 'fas fa-home'
-  } else if (category === '其他') {
-    icon = 'fas fa-pen'
+  if (category) {
+    return Category.find({ name: category })
+      .lean()
+      .then(item => {
+        return Record.create({ name, date, month, icon: item[0].icon, category, amount, merchant, userId })
+          .then(() => res.redirect('/'))
+          .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
   }
-  return Record.create({ name, date, month, icon, category, amount, merchant, userId })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
 })
 
 router.put('/:id', (req, res) => {
@@ -65,28 +59,27 @@ router.put('/:id', (req, res) => {
   const _id = req.params.id
   const { name, date, category, amount, merchant } = req.body
   const month = date.split('-')[0] + date.split('-')[1]
-  let icon = ''
   if (category) {
     Category.find({ name: category })
       .lean()
       .then(item => {
-        icon = item[0].icon
+        return Record.findOne({ userId, _id })
+          .then(record => {
+            record.name = name
+            record.date = date
+            record.month = month
+            record.icon = item[0].icon
+            record.category = category
+            record.amount = amount
+            record.merchant = merchant
+            return record.save()
+          })
+          .then(() => res.redirect('/'))
+          .catch(err => console.log(err))
       })
-      .catch(error => console.log(error))
+      .catch(err => console.log(err))
   }
-  return Record.findOne({ userId, _id })
-    .then(record => {
-      record.name = name
-      record.date = date
-      record.month = month
-      record.icon = icon
-      record.category = category
-      record.amount = amount
-      record.merchant = merchant
-      return record.save()
-    })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+
 })
 
 router.delete('/:id', (req, res) => {
