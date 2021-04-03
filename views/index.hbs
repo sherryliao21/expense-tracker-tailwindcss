@@ -3,16 +3,19 @@
 </head>
 <div class="container d-flex flex-column justify-content-center mt-5">
   <div class="filter d-flex justify-content-between">
-    <form action="/" class="row d-flex  align-items-center justify-content-between mb-3" onchange="submit()">
-      <select class="form-select-month form-control col-sm-4" aria-label=".form-select-lg example" name="yearMonth">
+    <form action="/" class="row d-flex  align-items-end justify-content-between mb-3" onchange="submit()">
+      <label for="month">支出月份：</label>
+      <select class="form-select-month form-control col-sm-4" aria-label=".form-select-lg example" name="yearMonth"
+        id="month">
         <option value="all" name="all" {{#if (isSelected yearMonth 'all' ) }}selected{{/if}}>全部</option>
         {{#each monthOptions}}
         <option value="{{this}}" name="{{this}}" {{#if (isSelected ../yearMonth this ) }}selected{{/if}}>{{this}}
         </option>
         {{/each}}
       </select>
-      <select class="form-category form-select form-control col-sm-5" aria-label=".form-select-lg example"
-        name="category">
+      <label for="category">支出類別：</label>
+      <select class="form-category form-select form-control col-sm-4" aria-label=".form-select-lg example"
+        name="category" id="category">
         <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option>
         {{#each categoryOptions }}
         <option value="{{this}}" name="{{this}}" {{#if (isSelected ../category this ) }}selected{{/if}}>{{this}}
