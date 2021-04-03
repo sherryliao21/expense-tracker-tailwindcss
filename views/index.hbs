@@ -4,28 +4,20 @@
 <div class="container d-flex flex-column justify-content-center mt-5">
   <div class="filter d-flex justify-content-between">
     <form action="/" class="row d-flex  align-items-center justify-content-between mb-3" onchange="submit()">
-      <select class="form-select-month form-control col-sm-4" aria-label=".form-select-lg example" name="month">
-        <option value="支出月份" name="" disabled selected>支出月份</option>
-        {{!-- <option value="all" name="all" {{#if (isSelected month 'all' ) }}selected{{/if}}>全部</option> --}}
+      <select class="form-select-month form-control col-sm-4" aria-label=".form-select-lg example" name="yearMonth">
+        <option value="all" name="all" {{#if (isSelected yearMonth 'all' ) }}selected{{/if}}>全部</option>
         {{#each monthOptions}}
-        <option value="{{this.month}}" name="{{this.month}}" {{#if (isSelected month "{{this.month}}" )
-          }}selected{{/if}}>{{this.month}}</option>
+        <option value="{{this}}" name="{{this}}" {{#if (isSelected ../yearMonth this ) }}selected{{/if}}>{{this}}
+        </option>
         {{/each}}
       </select>
-      <div class="reset-button">
-        <a href="/"><button class="btn reset-btn">RESET</button></a>
-      </div>
       <select class="form-category form-select form-control col-sm-5" aria-label=".form-select-lg example"
         name="category">
-        <option value="支出類別" name="" disabled selected>支出類別</option>
-        {{!-- <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option> --}}
-        <option value="家居物業" name="家居物業" {{#if (isSelected category '家居物業' ) }}selected{{/if}}>家居物業</option>
-        <option value="交通出行" name="交通出行" {{#if (isSelected category '交通出行' ) }}selected{{/if}}>
-          交通出行</option>
-        <option value="休閒娛樂" name="休閒娛樂" {{#if (isSelected category '休閒娛樂' ) }}selected{{/if}}>
-          休閒娛樂</option>
-        <option value="餐飲食品" name="餐飲食品" {{#if (isSelected category '餐飲食品' ) }}selected{{/if}}>餐飲食品</option>
-        <option value="其他" name="其他" {{#if (isSelected category '其他' ) }}selected{{/if}}>其他</option>
+        <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option>
+        {{#each categoryOptions }}
+        <option value="{{this}}" name="{{this}}" {{#if (isSelected ../category this ) }}selected{{/if}}>{{this}}
+        </option>
+        {{/each}}
       </select>
     </form>
   </div>

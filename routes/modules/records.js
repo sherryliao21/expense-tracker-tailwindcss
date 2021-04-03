@@ -14,7 +14,7 @@ router.get('/new', (req, res) => {
       })
     })
     .catch(err => console.log(err))
-  return res.render('new', { categoryOptions })
+  return res.render('new', { categoryOptions })   //  check this out later
 })
 
 router.get('/:id/edit', (req, res) => {
@@ -40,13 +40,13 @@ router.get('/:id/edit', (req, res) => {
 router.post('/', (req, res) => {
   const userId = req.user._id
   const { name, date, category, amount, merchant } = req.body
-  const month = date.split('-')[0] + date.split('-')[1]
+  // const month = date.split('-')[0] + date.split('-')[1]   //  不要放進 model
 
   if (category) {
     return Category.find({ name: category })
       .lean()
       .then(item => {
-        return Record.create({ name, date, month, icon: item[0].icon, category, amount, merchant, userId })
+        return Record.create({ name, date, icon: item[0].icon, category, amount, merchant, userId })
           .then(() => res.redirect('/'))
           .catch(err => console.log(err))
       })
@@ -58,7 +58,7 @@ router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
   const { name, date, category, amount, merchant } = req.body
-  const month = date.split('-')[0] + date.split('-')[1]
+  // const month = date.split('-')[0] + date.split('-')[1]  //  不要放進 model
   if (category) {
     Category.find({ name: category })
       .lean()
@@ -67,7 +67,7 @@ router.put('/:id', (req, res) => {
           .then(record => {
             record.name = name
             record.date = date
-            record.month = month
+            // record.month = month
             record.icon = item[0].icon
             record.category = category
             record.amount = amount
