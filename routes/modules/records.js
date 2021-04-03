@@ -5,42 +5,41 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 
 router.get('/new', (req, res) => {
-  const categoryOptions = []
+  const categoryOptions = new Set()
   Category.find()
     .lean()
     .then(category => {
       category.forEach(item => {
-        categoryOptions.push(item.name)
+        categoryOptions.add(item.name)
       })
+      return res.render('new', { categoryOptions })
     })
     .catch(err => console.log(err))
-  return res.render('new', { categoryOptions })   //  check this out later
 })
 
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-
-  const categoryOptions = []
+  const categoryOptions = new Set()
   Category.find()
     .lean()
     .then(category => {
       category.forEach(item => {
-        categoryOptions.push(item.name)
+        categoryOptions.add(item.name)
       })
+      return Record.findOne({ userId, _id })
+        .lean()
+        .then(record => res.render('edit', { record, categoryOptions }))
+        .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 
-  return Record.findOne({ userId, _id })
-    .lean()
-    .then(record => res.render('edit', { record, categoryOptions }))
-    .catch(err => console.log(err))
+
 })
 
 router.post('/', (req, res) => {
   const userId = req.user._id
   const { name, date, category, amount, merchant } = req.body
-  // const month = date.split('-')[0] + date.split('-')[1]   //  不要放進 model
 
   if (category) {
     return Category.find({ name: category })
@@ -58,7 +57,7 @@ router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
   const { name, date, category, amount, merchant } = req.body
-  // const month = date.split('-')[0] + date.split('-')[1]  //  不要放進 model
+
   if (category) {
     Category.find({ name: category })
       .lean()
@@ -67,7 +66,6 @@ router.put('/:id', (req, res) => {
           .then(record => {
             record.name = name
             record.date = date
-            // record.month = month
             record.icon = item[0].icon
             record.category = category
             record.amount = amount
@@ -79,7 +77,6 @@ router.put('/:id', (req, res) => {
       })
       .catch(err => console.log(err))
   }
-
 })
 
 router.delete('/:id', (req, res) => {
