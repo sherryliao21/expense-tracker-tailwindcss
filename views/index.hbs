@@ -5,11 +5,11 @@
   <div class="filter d-flex justify-content-between">
     <form action="/" class="row d-flex  align-items-end justify-content-between mb-3" onchange="submit()">
       <label for="month">支出月份：</label>
-      <select class="form-select-month form-control col-sm-4" aria-label=".form-select-lg example" name="yearMonth"
+      <select class="form-select-month form-control col-sm-4" aria-label=".form-select-lg example" name="date"
         id="month">
-        <option value="all" name="all" {{#if (isSelected yearMonth 'all' ) }}selected{{/if}}>全部</option>
+        <option value="all" name="all" {{#if (isSelected date 'all' ) }}selected{{/if}}>全部</option>
         {{#each monthOptions}}
-        <option value="{{this}}" name="{{this}}" {{#if (isSelected ../yearMonth this ) }}selected{{/if}}>{{this}}
+        <option value="{{this}}" name="{{this}}" {{#if (isSelected ../date this ) }}selected{{/if}}>{{this}}
         </option>
         {{/each}}
       </select>
