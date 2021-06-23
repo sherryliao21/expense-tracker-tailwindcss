@@ -9,50 +9,55 @@ module.exports = app => {
   app.use(passport.initialize())
   app.use(passport.session())
   // local strategy settings
-  passport.use(new LocalStrategy({
+  passport.use(new LocalStrategy(
+    {
     usernameField: 'email',
     passReqToCallback: true
-  }, (req, email, password, done) => {
-    User.findOne({ email })
-      .then(user => {
+    }, 
+    async(req, email, password, done) => {
+      try {
+        const user = await User.findOne({ email })
         if (!user) {
           req.flash('warning_msg', '此信箱未註冊')
           return done(null, false)
         }
-        return bcrypt.compare(password, user.password)
-          .then(isMatch => {
-            if (!isMatch) {
-              req.flash('warning_msg', '信箱或密碼輸入錯誤')
-              return done(null, false)
-            }
-            return done(null, user)
-          })
-      })
-      .catch(err => console.log(err))
-  }))
+        const isMatch = await bcrypt.compare(password, user.password)
+        if (!isMatch) {
+          req.flash('warning_msg', '信箱或密碼輸入錯誤')
+          return done(null, false)
+        }
+        return done(null, user)
+      }
+      catch (error) {
+        console.log(error)
+      } 
+    }
+  ))
   // Facebook strategy settings
-  passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_ID,
-    clientSecret: process.env.FACEBOOK_SECRET,
-    callbackURL: process.env.FACEBOOK_CALLBACK,
-    profileFields: ['email', 'displayName'],
-  }, (accessToken, refreshToken, profile, done) => {
-    const { name, email } = profile._json
-    User.findOne({ email })
-      .then(user => {
+  passport.use(new FacebookStrategy(
+    {
+      clientID: process.env.FACEBOOK_ID,
+      clientSecret: process.env.FACEBOOK_SECRET,
+      callbackURL: process.env.FACEBOOK_CALLBACK,
+      profileFields: ['email', 'displayName']
+    }, 
+    async(accessToken, refreshToken, profile, done) => {
+      try {
+        const { name, email } = profile._json
+        const user = await User.findOne({ email })
         if (user) return done(null, user)
         const randomPassword = Math.random.toString(36).slice(-8)
-        bcrypt
-          .genSalt(10)
-          .then(salt => bcrypt.hash(randomPassword, salt))
-          .then(hash => {
-            User.create({
-              name, email, password: hash
-            })
-          })
-      })
-      .then(user => done(null, user))
-      .catch(err => done(err, false))
+        const salt = await bcrypt.genSalt(10)
+        const hash = await bcrypt.hash(randomPassword, salt)
+        await User.create({
+          name, email, password: hash
+        })
+        return done(null, user)  
+      }
+      catch (error) {
+        console.log(error)
+        return done(error, false)
+      }
   }))
   // store/get data
   passport.serializeUser((user, done) => {
