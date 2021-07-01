@@ -1,45 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expense Tracker</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
-    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-  <link rel="stylesheet" href="/stylesheets/main.css">
-</head>
-
-<body>
-  <div class="background-overlay"></div>
-  <nav class="navbar navbar-secondary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <i class="fas fa-wallet"></i>
-        <strong>{{#if isAuthenticated}}{{ user.name }} の{{/if}}記帳本</strong>
-      </a>
-      {{#if isAuthenticated}}
-      <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>{{#if isAuthenticated}}{{user.name}}
+        の 記帳本
       {{else}}
-      <a href="/users/login" class="btn btn-outline-light">Login</a>
-      {{/if}}
+        私 の 記帳本
+      {{/if}}</title>
+    <link
+      rel='stylesheet'
+      href='https://use.fontawesome.com/releases/v5.15.2/css/all.css'
+      integrity='sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu'
+      crossorigin='anonymous'
+    />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/main.css' />
+
+  </head>
+
+  <body>
+    <div class='background-overlay'></div>
+    <nav class='navbar navbar-secondary'>
+      <div class='container-fluid d-flex justify-content-start'>
+        {{#if isAuthenticated}}
+          <input type='checkbox' class='navbar-toggle' id='navbar-toggle' />
+          <nav class='nav-settings'>
+            <ul class='nav-list'>
+              <li class='nav-item nav-item-avatar'>
+                <img class='avatar' src='' alt='' />
+              </li>
+              <li class='nav-item nav-item-name'>
+                {{#if isAuthenticated}}{{user.name}}{{/if}}
+              </li>
+              <li class='nav-item'><a class='nav-link' href=''>Home</a></li>
+              <li class='nav-item'><a class='nav-link' href=''>Account Settings</a></li>
+              <li class='nav-item'><a class='nav-link' href=''>Charts / Analysis</a></li>
+              <li class='nav-item'>
+                <a class='nav-link' href='/users/logout'>Logout</a>
+              </li>
+            </ul>
+          </nav>
+          <label class='navbar-toggle-label' for='navbar-toggle'>
+            <span class='hamburger'></span>
+          </label>
+        {{/if}}
+        <span class='greetings'>{{#if isAuthenticated}}Hi,
+            {{user.name}}{{/if}}</span>
+        <a class='navbar-brand' href='/'>
+          {{#if isAuthenticated}}{{user.name}}
+            の 記帳本
+          {{else}}
+            私 の 記帳本
+          {{/if}}
+        </a>
+        {{#if isAuthenticated}}
+          <a href='/users/logout' class='btn btn-outline-light'>Logout</a>
+        {{else}}
+          <a href='/users/login' class='btn btn-outline-light'>Login</a>
+        {{/if}}
+      </div>
+    </nav>
+    <div class='container'>
+      {{{body}}}
     </div>
-  </nav>
-  <div class="container">
-    {{{ body }}}
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-    crossorigin="anonymous"></script>
-  <script type="text/javascript" src="/javascripts/utility.js"></script>
-  <script src="/javascripts/main.js"></script>
-</body>
+    <script
+      src='https://code.jquery.com/jquery-3.3.1.slim.min.js'
+      integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo'
+      crossorigin='anonymous'
+    ></script>
+    <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js'
+      integrity='sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut'
+      crossorigin='anonymous'
+    ></script>
+    <script
+      src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js'
+      integrity='sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k'
+      crossorigin='anonymous'
+    ></script>
+    <script type='text/javascript' src='/javascripts/utility.js'></script>
+    <script src='/javascripts/main.js'></script>
+  </body>
 
 </html>
