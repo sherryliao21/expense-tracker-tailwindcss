@@ -31,6 +31,10 @@ const recordSchema = new Schema({
     index: true,
     required: true,
   },
+  recordType: {
+    type: String,
+    required: true,
+  },
 })
 
 module.exports = mongoose.model('Record', recordSchema)

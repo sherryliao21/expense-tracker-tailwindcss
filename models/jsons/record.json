@@ -5,7 +5,8 @@
     "category": "餐飲食品",
     "date": "2019-04-23",
     "merchant": "一樂拉麵",
-    "amount": 60
+    "amount": 60,
+    "recordType": "expense"
   },
   {
     "name": "晚餐-拉麵",
@@ -13,15 +14,17 @@
     "category": "餐飲食品",
     "date": "2019-04-23",
     "merchant": "一樂拉麵",
-    "amount": 60
+    "amount": 60,
+    "recordType": "expense"
   },
   {
-    "name": "逆通靈卷軸",
+    "name": "任務報酬",
     "icon": "fas fa-shuttle-van",
     "category": "交通出行",
     "date": "2019-04-23",
-    "merchant": "天天的忍具店",
-    "amount": 25000
+    "merchant": "火影辦公室",
+    "amount": 25000,
+    "recordType": "income"
   },
   {
     "name": "跟鹿丸泡溫泉",
@@ -29,15 +32,17 @@
     "category": "休閒娛樂",
     "date": "2019-04-23",
     "merchant": "木葉溫泉",
-    "amount": 220
+    "amount": 220,
+    "recordType": "expense"
   },
   {
-    "name": "大和隊長木遁蓋房子",
+    "name": "幫大和隊長蓋房子",
     "icon": "fas fa-home",
     "category": "家居物業",
     "date": "2019-04-01",
     "merchant": "大和",
-    "amount": 300
+    "amount": 300,
+    "recordType": "income"
   },
   {
     "name": "到風之國找我愛羅",
@@ -45,6 +50,7 @@
     "category": "交通出行",
     "date": "2019-04-02",
     "merchant": "雷車",
-    "amount": 750
+    "amount": 750,
+    "recordType": "expense"
   }
 ]
