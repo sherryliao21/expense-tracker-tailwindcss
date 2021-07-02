@@ -3,9 +3,27 @@
 </head>
 <div class="container d-flex flex-column justify-content-center mt-5">
   <div class="filter d-flex justify-content-between">
-    <form action="/" class="row d-flex  align-items-end justify-content-between mb-3" onchange="submit()">
-      <label for="month">支出月份：</label>
-      <select class="form-select-month form-control col-sm-4" aria-label=".form-select-lg example" name="date"
+    <form action="/" class="row d-flex align-items-center justify-content-around mb-3" onchange="submit()">
+      <div class="form-check col-lg-1">
+        <input class="form-check-input" type="radio" name="display" id="income" value="income">
+        <label class="form-check-label" for="income">
+          收入
+        </label>
+      </div>
+      <div class="form-check col-lg-1">
+        <input class="form-check-input" type="radio" name="display" id="expense" value="expense">
+        <label class="form-check-label" for="expense">
+          支出
+        </label>
+      </div>
+      <div class="form-check col-lg-1">
+        <input class="form-check-input" type="radio" name="display" id="total" value="total" checked>
+        <label class="form-check-label" for="total">
+          全部
+        </label>
+      </div>
+      <label for="month">月份：</label>
+      <select class="form-select-month form-control col-lg-2" aria-label=".form-select-lg example" name="date"
         id="month">
         <option value="all" name="all" {{#if (isSelected date 'all' ) }}selected{{/if}}>全部</option>
         {{#each monthOptions}}
@@ -13,8 +31,8 @@
         </option>
         {{/each}}
       </select>
-      <label for="category">支出類別：</label>
-      <select class="form-category form-select form-control col-sm-4" aria-label=".form-select-lg example"
+      <label for="category">類別：</label>
+      <select class="form-category form-select form-control col-lg-2" aria-label=".form-select-lg example"
         name="category" id="category">
         <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option>
         {{#each categoryOptions }}

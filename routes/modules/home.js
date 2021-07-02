@@ -2,16 +2,15 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
 
-router.get('/', async(req, res) => {
+router.get('/', async (req, res) => {
   try {
     const userId = req.user._id
-    const category = req.query.category
-    const date = req.query.date
-    const monthOptions = new Set();
+    const { category, date, total, income, expense } = req.query
+    const monthOptions = new Set()
     const categoryOptions = new Set()
 
     // create filterCondition object to store query filters
-    let filterCondition = { userId }  // first pass in userId
+    let filterCondition = { userId } // first pass in userId
     // add month filter
     if (date && date !== 'all') {
       const [year, month] = date.split('-')
@@ -21,31 +20,38 @@ router.get('/', async(req, res) => {
         ...filterCondition,
         date: {
           $gte: startDate.toISOString().split('T')[0],
-          $lt: endDate.toISOString().split('T')[0]
-        }
+          $lt: endDate.toISOString().split('T')[0],
+        },
       }
     }
     // add category filter
     if (category && category !== 'all') {
       filterCondition = {
         ...filterCondition,
-        category
+        category,
       }
     }
     const records = await Record.find(filterCondition)
       .sort({ date: 'asc' })
       .lean()
-    await records.forEach(record => {
-      const date = new Date(record.date);
-      monthOptions.add(date.getFullYear().toString() + "-" + (date.getMonth() + 1).toString())
+    await records.forEach((record) => {
+      const date = new Date(record.date)
+      monthOptions.add(
+        date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString()
+      )
       const category = record.category
       categoryOptions.add(category)
     })
-    return res.render('index', { records, monthOptions, categoryOptions, category, date })
-    }
-    catch (error) {
-      console.log(error)
-    }
+    return res.render('index', {
+      records,
+      monthOptions,
+      categoryOptions,
+      category,
+      date,
+    })
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 module.exports = router

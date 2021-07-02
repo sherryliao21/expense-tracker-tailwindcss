@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-image: url('/naruto_background.jpg');
   width: 100vw;

@@ -2,14 +2,16 @@
   width: 700px;
 }
 
-.form-select-month {
-  width: 630px;
+.form-check-label {
+  width: 50px;
 }
 
-.reset-btn {
-  width: 100px; 
-  background-color: rgb(245, 162, 67); 
-  color: #fff;
+label {
+  margin: 0;
+}
+
+.form-select-month {
+  width: 630px;
 }
 
 .form-category {
@@ -17,13 +19,13 @@
 }
 
 #total-amount {
-  font-size: 28px; 
+  font-size: 28px;
   color: rgb(44, 44, 44);
 }
 
 #total-amount-display {
-  font-size: 70px; 
-  margin-left: 80px; 
+  font-size: 70px;
+  margin-left: 80px;
   color: rgb(245, 162, 67);
 }
 
@@ -36,32 +38,32 @@
 }
 
 .fa-hand-point-right {
-  font-size: 20px; 
+  font-size: 20px;
   color: rgb(179, 176, 176);
 }
 
 .add-new-title {
-  font-size: 20px; 
+  font-size: 20px;
   color: rgb(179, 176, 176);
 }
 
 .add-new-date {
-  font-size: 12px; 
+  font-size: 12px;
   color: rgb(179, 176, 176);
 }
 
 .add-new-amount {
-  font-size: 24px; 
+  font-size: 24px;
   color: rgb(179, 176, 176);
 }
 
 .fa-plus-circle {
-  font-size: 20px; 
+  font-size: 20px;
   color: rgb(179, 176, 176);
 }
 
 .item-icon {
-  font-size: 20px; 
+  font-size: 20px;
   color: rgb(245, 162, 67);
 }
 
@@ -78,12 +80,12 @@
 }
 
 .fa-edit {
-  color:rgb(245, 162, 67); 
+  color: rgb(245, 162, 67);
   text-decoration: none;
 }
 
 .btn-delete {
-  color:rgb(255, 82, 2); 
-  position: relative; 
+  color: rgb(255, 82, 2);
+  position: relative;
   bottom: 6px;
 }
