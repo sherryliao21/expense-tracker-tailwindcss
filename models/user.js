@@ -3,25 +3,25 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   avatar: {
     type: String,
     required: false,
-    default: '../../public/Portrait_Placeholder.png'
-  }
+    default: '../../public/Portrait_Placeholder.png',
+  },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 })
 
 module.exports = mongoose.model('User', userSchema)
