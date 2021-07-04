@@ -5,12 +5,21 @@ const Record = require('../../models/record')
 router.get('/', async (req, res) => {
   try {
     const userId = req.user._id
-    const { category, date, total, income, expense } = req.query
+    const { category, date, type } = req.query
     const monthOptions = new Set()
     const categoryOptions = new Set()
+    const typeOptions = new Set()
 
     // create filterCondition object to store query filters
     let filterCondition = { userId } // first pass in userId
+
+    // add type filter
+    if (type && type !== 'total') {
+      filterCondition = {
+        ...filterCondition,
+        recordType: type,
+      }
+    }
     // add month filter
     if (date && date !== 'all') {
       const [year, month] = date.split('-')
@@ -41,6 +50,9 @@ router.get('/', async (req, res) => {
       )
       const category = record.category
       categoryOptions.add(category)
+
+      const type = record.recordType
+      typeOptions.add(type)
     })
     return res.render('index', {
       records,
@@ -48,6 +60,7 @@ router.get('/', async (req, res) => {
       categoryOptions,
       category,
       date,
+      type,
     })
   } catch (error) {
     console.log(error)

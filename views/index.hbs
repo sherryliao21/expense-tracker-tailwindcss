@@ -5,19 +5,19 @@
   <div class="filter d-flex justify-content-between">
     <form action="/" class="row d-flex align-items-center justify-content-around mb-3" onchange="submit()">
       <div class="form-check col-lg-1">
-        <input class="form-check-input" type="radio" name="display" id="income" value="income">
+        <input class="form-check-input" type="radio" name="type" id="income" value="income"{{#if (isSelected type 'income' ) }}checked{{/if}}>
         <label class="form-check-label" for="income">
           收入
         </label>
       </div>
       <div class="form-check col-lg-1">
-        <input class="form-check-input" type="radio" name="display" id="expense" value="expense">
+        <input class="form-check-input" type="radio" name="type" id="expense" value="expense"{{#if (isSelected type 'expense' ) }}checked{{/if}}>
         <label class="form-check-label" for="expense">
           支出
         </label>
       </div>
       <div class="form-check col-lg-1">
-        <input class="form-check-input" type="radio" name="display" id="total" value="total" checked>
+        <input class="form-check-input" type="radio" name="type" id="total" value="total" {{#if (isSelected type 'total' ) }}checked{{/if}}>
         <label class="form-check-label" for="total">
           全部
         </label>
