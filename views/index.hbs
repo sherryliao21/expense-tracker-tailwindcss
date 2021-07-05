@@ -47,7 +47,7 @@
       <h2 id="total-amount">總金額：</h2>
     </div>
     <div class="col-sm-8">
-      <h1 id="total-amount-display">0</h1>
+      <h1 id="total-amount-display">{{ totalAmount }}</h1>
     </div>
   </div>
   <div class="records mt-3">
@@ -69,19 +69,28 @@
       </a>
       {{#each records}}
       <li class="list-group-item d-flex row justify-content-between align-items-center">
-        <div class="col-sm-1">
-          <i class="item-icon {{ this.icon }}"></i>
+        <div class="col-lg-1" >
+          <i class="item-icon {{ this.icon }}" {{#if (isSelected this.recordType 'expense') }} style="color: rgb(252, 174, 86);" 
+          {{else}}
+          style="color: rgb(99, 187, 99);"
+          {{/if}}></i>
         </div>
-        <div class="col-sm-8 d-flex flex-column justify-content-center">
+        <div class="col-lg-1.5">
+          {{#if (isSelected this.recordType 'expense') }}<span style="color: rgb(252, 174, 86);">支出</span>
+          {{else}}
+          <span style="color: rgb(99, 187, 99);">收入</span>
+          {{/if}}
+        </div>
+        <div class="col-lg-7 d-flex flex-column justify-content-center">
           <h2 class="item-title">{{ this.name }}</h2>
           <h3 class="item-date">{{ this.date }}</h3>
         </div>
-        <div class="individual-amount col-sm-1 d-flex justify-content-end">
+        <div class="individual-amount col-lg-1 d-flex justify-content-end">
           <h2 class="item-amount">{{ this.amount }}</h2>
         </div>
-        <div class="col-sm-1 d-flex justify-content-between">
-          <a href="./records/{{ this._id }}/edit"><i class="far fa-edit"></i></a>
-          <form action="/records/{{ this._id }}?_method=DELETE" method="POST">
+        <div class="col-lg-1 d-flex justify-content-between">
+          <a href="./records/{{ this._id }}/edit" class="edit-btn"><i class="far fa-edit"></i></a>
+          <form action="/records/{{ this._id }}?_method=DELETE" method="POST" class="d-flex align-items-center delete-record">
             <button type="submit" class="btn btn-delete" onclick="return confirmDelete()">X</button>
           </form>
         </div>

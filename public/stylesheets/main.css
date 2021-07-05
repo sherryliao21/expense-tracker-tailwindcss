@@ -22,6 +22,10 @@ body {
   background-color: rgb(44, 44, 44);
   position: relative;
   height: 60px;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 .navbar-toggle-label {
@@ -147,4 +151,12 @@ body {
   background-color: rgb(245, 162, 67);
   position: absolute;
   right: 30px;
+}
+
+.delete-record {
+  margin: 0;
+}
+
+.edit-btn {
+  padding: 6px 0;
 }

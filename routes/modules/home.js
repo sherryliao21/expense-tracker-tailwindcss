@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
     const { category, date, type } = req.query
     const monthOptions = new Set()
     const categoryOptions = new Set()
-    const typeOptions = new Set()
 
     // create filterCondition object to store query filters
     let filterCondition = { userId } // first pass in userId
@@ -43,6 +42,9 @@ router.get('/', async (req, res) => {
     const records = await Record.find(filterCondition)
       .sort({ date: 'asc' })
       .lean()
+
+    let totalAmount = 0
+
     await records.forEach((record) => {
       const date = new Date(record.date)
       monthOptions.add(
@@ -51,9 +53,13 @@ router.get('/', async (req, res) => {
       const category = record.category
       categoryOptions.add(category)
 
-      const type = record.recordType
-      typeOptions.add(type)
+      if (record.recordType === 'income') {
+        totalAmount += record.amount
+      } else {
+        totalAmount -= record.amount
+      }
     })
+
     return res.render('index', {
       records,
       monthOptions,
@@ -61,6 +67,7 @@ router.get('/', async (req, res) => {
       category,
       date,
       type,
+      totalAmount,
     })
   } catch (error) {
     console.log(error)
