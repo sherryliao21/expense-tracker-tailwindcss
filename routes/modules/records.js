@@ -35,7 +35,7 @@ router.get('/:id/edit', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const userId = req.user._id
-    const { name, date, category, amount, merchant } = req.body
+    const { name, date, category, amount, merchant, type } = req.body
     if (category) {
       const selectedCategory = await Category.find({ name: category }).lean()
       await Record.create({
@@ -46,6 +46,7 @@ router.post('/', async (req, res) => {
         amount,
         merchant,
         userId,
+        recordType: type,
       })
       return res.redirect('/')
     }
