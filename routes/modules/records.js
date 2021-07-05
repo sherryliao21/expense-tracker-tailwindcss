@@ -58,7 +58,7 @@ router.put('/:id', async (req, res) => {
   try {
     const userId = req.user._id
     const _id = req.params.id
-    const { name, date, category, amount, merchant } = req.body
+    const { name, date, category, amount, merchant, type } = req.body
     if (category) {
       const selectedCategory = await Category.find({ name: category }).lean()
       const record = await Record.findOne({ userId, _id })
@@ -69,6 +69,7 @@ router.put('/:id', async (req, res) => {
       record.category = category
       record.amount = amount
       record.merchant = merchant
+      record.recordType = type
 
       await record.save()
 

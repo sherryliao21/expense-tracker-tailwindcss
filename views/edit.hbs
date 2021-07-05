@@ -9,6 +9,18 @@
   </div>
   <form action="/records/{{ record._id }}?_method=PUT" method="POST" class="mt-4">
     <div class="d-flex">
+      <div class="form-check col-lg-1">
+        <input class="form-check-input" type="radio" name="type" id="income" value="income"{{#if (isSelected record.recordType 'income' ) }}checked{{/if}}>
+        <label class="form-check-label" for="income">
+          收入
+        </label>
+      </div>
+      <div class="form-check col-lg-1">
+        <input class="form-check-input" type="radio" name="type" id="expense" value="expense"{{#if (isSelected record.recordType 'expense' ) }}checked{{/if}}>
+        <label class="form-check-label" for="expense">
+          支出
+        </label>
+      </div>
       <div class="labels d-flex flex-column justify-content-between align-items-center mt-1">
         <div class="name d-flex align-items-center mb-2">
           <label class="label" for="name">名稱：</label>
