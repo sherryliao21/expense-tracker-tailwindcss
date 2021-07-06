@@ -11,6 +11,11 @@ body {
   position: relative;
 }
 
+.container {
+  min-height: calc(100vh - 168px);
+  /* margin-bottom: auto; */
+}
+
 .background-overlay {
   background-color: rgba(255, 255, 255, 0.85);
   height: 100vh;
@@ -68,7 +73,7 @@ body {
   left: 0px;
   background: #ffffff;
   width: 300px;
-  height: 100vh;
+  height: calc(100vh - 120px);
   /* 移除這行：display: none; */
   /* 修改下列這行，將 display 改成 transform */
   transition: transform 0.2s ease-out;
@@ -162,15 +167,12 @@ body {
 }
 
 footer {
-  margin: 60px 0 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(44, 44, 44);
   width: 100vw;
   height: 60px;
-  position: sticky;
-  bottom: 0px;
 }
 
 #footer-text {

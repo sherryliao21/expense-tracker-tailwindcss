@@ -1,8 +1,12 @@
 .btn-info {
-  background-color: rgb(245, 162, 67); 
+  background-color: rgb(245, 162, 67);
   border: none;
 }
 
 .btn-info:hover {
-  background-color: rgb(231, 136, 27); 
+  background-color: rgb(231, 136, 27);
+}
+
+.row {
+  margin-bottom: 60px;
 }
