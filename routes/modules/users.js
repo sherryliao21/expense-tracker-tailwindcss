@@ -4,6 +4,10 @@ const User = require('../../models/user')
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const { authenticator } = require('../../middleware/auth')
+const imgur = require('imgur-node-api')
+const IMGUR_CLIENT_ID = process.env.IMGUR_CLIENT_ID
+const multer = require('multer') // file upload middleware
+const upload = multer({ dest: 'temp/' }) // upload to temp folder
 
 router.get('/login', (req, res) => {
   res.render('login')
@@ -84,42 +88,54 @@ router.route('/settings/edit').get(authenticator, async (req, res) => {
   }
 })
 
-router.route('/settings').put(authenticator, async (req, res) => {
-  try {
-    const { _id } = req.user
-    const user = await User.findOne({ _id })
+router
+  .route('/settings')
+  .put(authenticator, upload.single('avatar'), async (req, res) => {
+    try {
+      const { _id } = req.user
+      const user = await User.findOne({ _id })
 
-    const { name, newPassword, confirmPassword } = req.body
+      const { name, newPassword, confirmPassword } = req.body
 
-    const errors = []
-    if (!name || !newPassword || !confirmPassword) {
-      errors.push({ message: '所有欄位都是必填！' })
+      const errors = []
+      if (!name || !newPassword || !confirmPassword) {
+        errors.push({ message: '所有欄位都是必填！' })
+      }
+      if (newPassword !== confirmPassword) {
+        errors.push({ message: '密碼與確認密碼不一致！' })
+      }
+
+      if (errors.length) {
+        return res.render('settings', {
+          errors,
+          user: user.toJSON(),
+        })
+      }
+
+      const salt = await bcrypt.genSalt(10)
+      const hash = await bcrypt.hash(newPassword, salt)
+      user.name = name || user.name
+      user.email = user.email
+      user.password = hash
+
+      const file = req.file
+      if (file) {
+        imgur.setClientID(IMGUR_CLIENT_ID)
+        await new Promise((resolve, reject) => {
+          imgur.upload(file.path, (err, img) => {
+            resolve((user.avatar = img.data.link))
+          })
+        })
+      } else {
+        user.avatar = user.avatar
+      }
+
+      await user.save()
+
+      return res.redirect('/')
+    } catch (error) {
+      console.log(error)
     }
-    if (newPassword !== confirmPassword) {
-      errors.push({ message: '密碼與確認密碼不一致！' })
-    }
-
-    if (errors.length) {
-      return res.render('settings', {
-        errors,
-        user: user.toJSON(),
-      })
-    }
-
-    const salt = await bcrypt.genSalt(10)
-    const hash = await bcrypt.hash(newPassword, salt)
-
-    user.name = name || user.name
-    user.email = user.email
-    user.avatar = user.avatar
-    user.password = hash
-
-    await user.save()
-
-    return res.redirect('/')
-  } catch (error) {
-    console.log(error)
-  }
-})
+  })
 
 module.exports = router

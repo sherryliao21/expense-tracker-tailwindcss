@@ -12,10 +12,10 @@
     <img
       class='naruto-wallet-img'
       src='{{user.avatar}}'
-      alt='naruto_wallet'
+      alt='profile avatar'
     />
   </div>
-  <form action='/users/settings?_method=PUT' method='POST' class='mt-4'>
+  <form action='/users/settings?_method=PUT' method='POST' class='mt-4' enctype="multipart/form-data">
     <div class='d-flex flex-column'>
       <div
         class='labels d-flex flex-column justify-content-between align-items-center mt-1'
@@ -56,9 +56,9 @@
             name='confirmPassword'
           />
         </div>
-        <div class="avatar d-flex align-items-center mb-2">
-          <label class='label' for='avatar'>頭像：</label>
-          <button class="btn"><input type="file" id="img" name="avatar" accept="image/*"></button>
+        <div class="mb-3 avatar">
+          <label class='form-label' for='avatar'>頭像：</label>
+          <input type="file" class="form-control" id="avatar" name="avatar">
         </div>
       </div>
     </div>

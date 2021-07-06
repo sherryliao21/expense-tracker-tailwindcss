@@ -35,6 +35,7 @@ app.use(session({
 }))
 
 app.use(express.static('public'))
+app.use('/upload', express.static(__dirname + '/upload'))
 app.use(express.urlencoded({ extended: true }))   // replace body-parser(deprecated)
 app.use(express.json())   // replace body-parser(deprecated)
 app.use(methodOverride('_method'))

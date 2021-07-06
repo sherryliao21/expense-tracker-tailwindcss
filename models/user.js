@@ -15,7 +15,7 @@ const userSchema = new Schema({
   },
   avatar: {
     type: String,
-    required: false,
+    required: true,
     default: '/Portrait_Placeholder.png',
   },
   createdAt: {
