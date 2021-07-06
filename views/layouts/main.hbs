@@ -28,7 +28,7 @@
           <nav class='nav-settings'>
             <ul class='nav-list'>
               <li class='nav-item nav-item-avatar'>
-                <img class='avatar' src='' alt='' />
+                <img class='avatar' src='{{user.avatar}}' alt='user-avatar' />
               </li>
               <li class='nav-item nav-item-name'>
                 {{#if isAuthenticated}}{{user.name}}{{/if}}
@@ -36,7 +36,7 @@
               <li class='nav-item'><a class='nav-link' href='/'>Home</a></li>
               <li class='nav-item'><a
                   class='nav-link'
-                  href='/users/settings'
+                  href='/users/settings/edit'
                 >Account Settings</a></li>
               <li class='nav-item'><a class='nav-link' href='/analysis'>Charts /
                   Analysis</a></li>
@@ -69,11 +69,9 @@
       {{{body}}}
     </div>
     <footer>
-      <div class='footer-container'>
-        <span id='footer-text'>Made with
-          <span style='color: #e25555;'>&#9829;</span>
-          by Sherry Liao 2021</span>
-      </div>
+      <span id='footer-text'>Made with
+        <span style='color: #e25555;'>&#9829;</span>
+        by Sherry Liao 2021</span>
     </footer>
     <script
       src='https://code.jquery.com/jquery-3.3.1.slim.min.js'
