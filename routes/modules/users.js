@@ -72,13 +72,51 @@ router.post('/register', async (req, res) => {
   }
 })
 
-router.route('/settings').get(authenticator, async (req, res) => {
+router.route('/settings/edit').get(authenticator, async (req, res) => {
   try {
     const { _id } = req.user
     const user = await User.findOne({ _id }).lean()
     return res.render('settings', {
       user,
     })
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+router.route('/settings').put(authenticator, async (req, res) => {
+  try {
+    const { _id } = req.user
+    const user = await User.findOne({ _id })
+
+    const { name, newPassword, confirmPassword } = req.body
+
+    const errors = []
+    if (!name || !newPassword || !confirmPassword) {
+      errors.push({ message: '所有欄位都是必填！' })
+    }
+    if (newPassword !== confirmPassword) {
+      errors.push({ message: '密碼與確認密碼不一致！' })
+    }
+
+    if (errors.length) {
+      return res.render('settings', {
+        errors,
+        user: user.toJSON(),
+      })
+    }
+
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(newPassword, salt)
+
+    user.name = name || user.name
+    user.email = user.email
+    user.avatar = user.avatar
+    user.password = hash
+
+    await user.save()
+
+    return res.redirect('/')
   } catch (error) {
     console.log(error)
   }
