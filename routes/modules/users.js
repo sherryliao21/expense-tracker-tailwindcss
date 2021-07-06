@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../../models/user')
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
+const { authenticator } = require('../../middleware/auth')
 
 router.get('/login', (req, res) => {
   res.render('login')
@@ -66,6 +67,18 @@ router.post('/register', async (req, res) => {
       })
       return res.redirect('/')
     }
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+router.route('/settings').get(authenticator, async (req, res) => {
+  try {
+    const { _id } = req.user
+    const user = await User.findOne({ _id }).lean()
+    return res.render('settings', {
+      user,
+    })
   } catch (error) {
     console.log(error)
   }
