@@ -33,9 +33,13 @@
               <li class='nav-item nav-item-name'>
                 {{#if isAuthenticated}}{{user.name}}{{/if}}
               </li>
-              <li class='nav-item'><a class='nav-link' href=''>Home</a></li>
-              <li class='nav-item'><a class='nav-link' href=''>Account Settings</a></li>
-              <li class='nav-item'><a class='nav-link' href=''>Charts / Analysis</a></li>
+              <li class='nav-item'><a class='nav-link' href='/'>Home</a></li>
+              <li class='nav-item'><a
+                  class='nav-link'
+                  href='/users/settings'
+                >Account Settings</a></li>
+              <li class='nav-item'><a class='nav-link' href='/analysis'>Charts /
+                  Analysis</a></li>
               <li class='nav-item'>
                 <a class='nav-link' href='/users/logout'>Logout</a>
               </li>
@@ -64,6 +68,13 @@
     <div class='container'>
       {{{body}}}
     </div>
+    <footer>
+      <div class='footer-container'>
+        <span id='footer-text'>Made with
+          <span style='color: #e25555;'>&#9829;</span>
+          by Sherry Liao 2021</span>
+      </div>
+    </footer>
     <script
       src='https://code.jquery.com/jquery-3.3.1.slim.min.js'
       integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo'

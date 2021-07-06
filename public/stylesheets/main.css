@@ -160,3 +160,19 @@ body {
 .edit-btn {
   padding: 6px 0;
 }
+
+footer {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(44, 44, 44);
+  width: 100vw;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+}
+
+#footer-text {
+  color: #ffffff;
+}
