@@ -5,6 +5,42 @@ const Record = require('../../models/record')
 router.get('/', async (req, res) => {
   try {
     const userId = req.user._id
+    const records = await Record.find({ userId }).sort({ date: 'desc' }).lean()
+    let totalAmount = 0
+    const monthOptions = new Set()
+    const categoryOptions = new Set()
+    const type = 'total'
+
+    await records.forEach((record) => {
+      const date = new Date(record.date)
+      monthOptions.add(
+        date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString()
+      )
+      const category = record.category
+      categoryOptions.add(category)
+
+      if (record.recordType === 'income') {
+        totalAmount += record.amount
+      } else {
+        totalAmount -= record.amount
+      }
+    })
+
+    return res.render('index', {
+      records,
+      monthOptions,
+      categoryOptions,
+      type,
+      totalAmount,
+    })
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+router.get('/filter', async (req, res) => {
+  try {
+    const userId = req.user._id
     const { category, date, type } = req.query
     const monthOptions = new Set()
     const categoryOptions = new Set()
@@ -40,7 +76,7 @@ router.get('/', async (req, res) => {
       }
     }
     const records = await Record.find(filterCondition)
-      .sort({ date: 'asc' })
+      .sort({ date: 'desc' })
       .lean()
 
     let totalAmount = 0
