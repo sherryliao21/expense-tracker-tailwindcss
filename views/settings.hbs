@@ -1,1 +1,70 @@
-<h1>hiiiii</h1>
+<head>
+  <link rel='stylesheet' href='/stylesheets/newEdit.css' />
+</head>
+
+<div
+  class='container d-flex flex-column justify-content-center align-items-center mt-5'
+>
+  {{> message}}
+
+  <h1 class='title'>編輯個人資料</h1>
+  <div class='edit-img'>
+    <img
+      class='naruto-wallet-img'
+      src='{{user.avatar}}'
+      alt='naruto_wallet'
+    />
+  </div>
+  <form action='/users/settings?_method=PUT' method='POST' class='mt-4'>
+    <div class='d-flex flex-column'>
+      <div
+        class='labels d-flex flex-column justify-content-between align-items-center mt-1'
+      >
+        <div class='name d-flex align-items-center mb-2'>
+          <label class='label' for='name'>名稱：</label>
+          <input
+            type='text'
+            class='form-control'
+            name='name'
+            value='{{user.name}}'
+          />
+        </div>
+        <div class='merchant d-flex align-items-center mb-2'>
+          <label class='label' for='email'>Email：</label>
+          <input
+            type='text'
+            class='form-control'
+            name='email'
+            value='{{user.email}}' disabled
+          />
+        </div>
+        <div class='amount d-flex align-items-center mb-2'>
+          <label class='label' for='newPassword'>新密碼：</label>
+          <input
+            type='text'
+            class='form-control amount'
+            placeholder='新密碼'
+            name='newPassword'
+          />
+        </div>
+        <div class='amount d-flex align-items-center mb-2'>
+          <label class='label' for='confirmPassword'>確認新密碼：</label>
+          <input
+            type='text'
+            class='form-control amount'
+            placeholder='確認密碼'
+            name='confirmPassword'
+          />
+        </div>
+        <div class="avatar d-flex align-items-center mb-2">
+          <label class='label' for='avatar'>頭像：</label>
+          <button class="btn"><input type="file" id="img" name="avatar" accept="image/*"></button>
+        </div>
+      </div>
+    </div>
+    <div class='button d-flex justify-content-center'>
+      <button type='submit' class='btn mt-4 save-btn'>儲存</button>
+      <a href='/'><button class='btn mt-4 back-btn'>返回</button></a>
+    </div>
+  </form>
+</div>
