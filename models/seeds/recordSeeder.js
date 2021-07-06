@@ -32,6 +32,7 @@ db.once('open', () => {
           name: user.name,
           email: user.email,
           password: hash,
+          avatar: '/Portrait_Placeholder.png',
         })
       )
       .then((userSeed) => {
