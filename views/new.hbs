@@ -10,13 +10,13 @@
   <form action="/records" method="POST" class="mt-4" id="form-new">
     <div class="d-flex row justify-content-center type-checkbox">
       <div class="form-check col-lg-3">
-        <input class="form-check-input" type="radio" name="type" id="income" value="income"{{#if (isSelected record.recordType 'income' ) }}checked{{/if}}>
+        <input class="form-check-input" type="radio" name="type" id="income" value="income" >
         <label class="form-check-label" for="income">
           收入
         </label>
       </div>
       <div class="form-check col-lg-3">
-        <input class="form-check-input" type="radio" name="type" id="expense" value="expense"{{#if (isSelected record.recordType 'expense' ) }}checked{{/if}}>
+        <input class="form-check-input" type="radio" name="type" id="expense" value="expense" checked>
         <label class="form-check-label" for="expense">
           支出
         </label>
