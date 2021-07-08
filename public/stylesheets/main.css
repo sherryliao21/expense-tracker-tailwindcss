@@ -72,8 +72,11 @@ body {
   top: 60px;
   left: 0px;
   background: #ffffff;
-  width: 300px;
-  height: calc(100vh - 120px);
+  width: 320px;
+  height: calc(100vh - 60px);
+  box-shadow: 7px 6px 15px -8px rgba(87, 82, 82, 0.75);
+  -webkit-box-shadow: 7px 6px 15px -8px rgba(87, 82, 82, 0.75);
+  -moz-box-shadow: 7px 6px 15px -8px rgba(87, 82, 82, 0.75);
   /* 移除這行：display: none; */
   /* 修改下列這行，將 display 改成 transform */
   transition: transform 0.2s ease-out;
