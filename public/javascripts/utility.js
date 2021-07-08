@@ -18,3 +18,8 @@ function checkForm() {
     return false
   }
 }
+
+function confirmBack() {
+  if (confirm('尚未編輯完成，直接返回？')) return true
+  return false
+}
