@@ -1,17 +1,20 @@
 function checkForm() {
   const inputs = document.querySelectorAll('.form-control')
+  const checkboxes = document.querySelectorAll('.form-check-input')
   const selection = document.querySelector('.form-select')
-  let checkInputs = ''
+  let checkInputs
   inputs.forEach((input) => {
     if (!input.value || input.value === '0') {
       return (checkInputs = false)
     }
   })
-  if (checkInputs === false || selection.value === '請選擇') {
+  checkboxes.forEach((checkbox) => {
+    if (!checkbox.value) {
+      return false
+    }
+  })
+  if (checkInputs === false || selection.value === '請選擇' || !checkboxes) {
     if (confirm('請完整填寫表格')) return false
     return false
   }
 }
-
-const submitNew = document.querySelector('.submit-new-btn')
-const container = document.querySelector('.container-new')
