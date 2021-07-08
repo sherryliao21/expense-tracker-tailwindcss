@@ -52,11 +52,10 @@
         </div>
       </div>
     </div>
-    <div class=" button d-flex justify-content-center">
-      <button type="submit" class="btn mt-4 save-btn">儲存</button>
-      <a href="/"><button class="btn mt-4 back-btn">返回</button></a>
-    </div>
+      <button type="submit" class="btn mt-4 save-btn" onclick="return checkForm()">儲存</button>
   </form>
+  <a href="/"><button class="btn mt-4 back-btn" onclick="return confirmBack()">返回</button></a>
+    
   {{else}}
   <h1 class="title">新增紀錄</h1>
   <div class="new-img">
