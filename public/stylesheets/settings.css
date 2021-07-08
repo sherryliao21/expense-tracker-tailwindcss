@@ -1,3 +1,7 @@
+.container {
+  position: relative;
+}
+
 .title {
   color: rgb(44, 44, 44);
 }
@@ -59,7 +63,7 @@ form {
   width: 100px;
   background-color: rgb(245, 162, 67);
   color: #fff;
-  margin-bottom: 60px;
+  margin: 0 0 60px 80px;
 }
 
 .back-btn {
@@ -67,4 +71,6 @@ form {
   background-color: rgb(91, 92, 92);
   color: #fff;
   margin: 0 0 60px 20px;
+  position: absolute;
+  bottom: 16px;
 }
