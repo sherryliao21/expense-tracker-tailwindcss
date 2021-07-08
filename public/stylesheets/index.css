@@ -76,6 +76,10 @@ label {
   font-size: 12px;
 }
 
+.item-merchant {
+  color: rgb(163, 162, 162);
+}
+
 .item-amount {
   font-size: 24px;
 }
