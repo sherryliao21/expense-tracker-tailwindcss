@@ -10,7 +10,7 @@ router.get('/new', async (req, res) => {
     category.forEach((item) => {
       categoryOptions.add(item.name)
     })
-    return res.render('new', { categoryOptions })
+    return res.render('newEdit', { categoryOptions })
   } catch (error) {
     console.log(error)
   }
@@ -26,7 +26,7 @@ router.get('/:id/edit', async (req, res) => {
       categoryOptions.add(item.name)
     })
     const record = await Record.findOne({ userId, _id }).lean()
-    return res.render('edit', { record, categoryOptions })
+    return res.render('newEdit', { record, categoryOptions })
   } catch (error) {
     console.log(error)
   }
