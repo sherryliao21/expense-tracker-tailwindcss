@@ -1,0 +1,46 @@
+.analysis-container {
+	height: calc(100vh - 6px);
+}
+
+.developing {
+	background-color: #ffffff;
+	width: 100%;
+	height: calc(100% - 120px);
+	position: fixed;
+	left: 0;
+	z-index: 3;
+	opacity: 0.8;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.coming-soon {
+	font-size: 80px;
+}
+
+.developing-title {
+	color: #000000;
+}
+
+.row {
+	width: 700px;
+	margin-bottom: 60px;
+}
+
+.form-check-label {
+	width: 50px;
+}
+
+label {
+	margin: 0;
+}
+
+.form-select-month {
+	width: 630px;
+}
+
+.form-category {
+	width: 630px;
+}

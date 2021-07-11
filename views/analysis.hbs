@@ -1,1 +1,109 @@
-<h1>this feature is coming soon...</h1>
+<head>
+	<link rel="stylesheet" href="/stylesheets/analysis.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"></script>
+</head>
+
+<div class="developing">
+  <h2 class="developing-title mb-2">This Feature Is Under Development</h2>
+  <h1 class="coming-soon">Coming Soon</h1>
+</div>
+
+<div class="analysis-container d-flex flex-column align-items-center">
+	<h1 class="analysis-title mt-5 mb-5">收支統計</h1>
+  <form action="/analysis/filter" class="row d-flex align-items-center justify-content-around mb-5" onchange="submit()">
+      <div class="form-check col-lg-1">
+        <input class="form-check-input" type="radio" name="type" id="income" value="income"{{#if (isSelected type 'income' ) }}checked{{/if}}>
+        <label class="form-check-label" for="income">
+          收入
+        </label>
+      </div>
+      <div class="form-check col-lg-1">
+        <input class="form-check-input" type="radio" name="type" id="expense" value="expense"{{#if (isSelected type 'expense' ) }}checked{{/if}}>
+        <label class="form-check-label" for="expense">
+          支出
+        </label>
+      </div>
+      <div class="form-check col-lg-1">
+        <input class="form-check-input" type="radio" name="type" id="total" value="total" {{#if (isSelected type 'total' ) }}checked{{/if}}>
+        <label class="form-check-label" for="total">
+          全部
+        </label>
+      </div>
+      <div class="form-select col-lg-2.5 d-flex align-items-center">
+        <label for="month">月份：</label>
+        <select class="form-select-month form-control w-auto" aria-label=".form-select example" name="date"
+          id="month">
+          <option value="all" name="all" {{#if (isSelected date 'all' ) }}selected{{/if}}>全部</option>
+          {{#each monthOptions}}
+          <option value="{{this}}" name="{{this}}" {{#if (isSelected ../date this ) }}selected{{/if}}>{{this}}
+          </option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-select col-lg-2.5 d-flex align-items-center">
+        <label for="category">類別：</label>
+        <select class="form-category form-select form-control w-auto" aria-label=".form-select-lg example"
+          name="category" id="category">
+          <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option>
+          {{#each categoryOptions }}
+          <option value="{{this}}" name="{{this}}" {{#if (isSelected ../category this ) }}selected{{/if}}>{{this}}
+          </option>
+          {{/each}}
+        </select>
+      </div>
+    </form>
+  <div class="chart-container m-2">
+    <canvas id="myChart" height: "500px"; width="500px"></canvas>
+  </div>
+</div>
+
+<script>
+
+async function getData() {
+}
+
+function createChart() {
+  const records = document.querySelector('#myChart').innerText
+  console.log(records)
+  const xlabels = []
+  const ctx = document.querySelector('#myChart')
+  const myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['hi', 'on', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  })
+}
+
+getData()
+createChart()
+  
+</script>
