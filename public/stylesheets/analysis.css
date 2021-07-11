@@ -1,11 +1,11 @@
 .analysis-container {
-	height: calc(100vh - 6px);
+	height: calc(100vh - 60px);
 }
 
 .developing {
 	background-color: #ffffff;
 	width: 100%;
-	height: calc(100% - 120px);
+	height: calc(100% - 60px);
 	position: fixed;
 	left: 0;
 	z-index: 3;
