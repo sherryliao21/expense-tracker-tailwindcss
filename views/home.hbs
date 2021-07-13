@@ -99,4 +99,11 @@
       {{/each}}
     </ul>
   </div>
+  <nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center" id="paginator">
+  {{#each pages}}
+      <li class="page-item"><a class="page-link" href="/filter?page={{this}}&type={{../type}}&date={{../date}}&category={{../category}}">{{this}}</a></li>
+  {{/each}}
+    </ul>
+  </nav>
 </div>

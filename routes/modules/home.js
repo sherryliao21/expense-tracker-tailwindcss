@@ -6,12 +6,12 @@ router.get("/", async (req, res) => {
 	try {
 		const userId = req.user._id
 		const records = await Record.find({ userId }).sort({ date: "desc" }).lean()
-		let totalAmount = 0
 		const monthOptions = new Set()
 		const categoryOptions = new Set()
 		const type = "total"
+		let totalAmount = 0
 
-		await records.forEach(record => {
+		records.forEach(record => {
 			const date = new Date(record.date)
 			monthOptions.add(
 				date.getFullYear().toString() + "-" + (date.getMonth() + 1).toString()
@@ -26,12 +26,19 @@ router.get("/", async (req, res) => {
 			}
 		})
 
-		return res.render("index", {
-			records,
+		const limit = 6
+		const RECORDS_PER_PAGE = records.length / limit
+		const pages = Array.from(Array(Math.ceil(RECORDS_PER_PAGE)).keys()).map(
+			page => page + 1
+		)
+
+		return res.render("home", {
+			records: records.slice(0, limit),
 			monthOptions,
 			categoryOptions,
 			type,
 			totalAmount,
+			pages,
 		})
 	} catch (error) {
 		console.log(error)
@@ -41,7 +48,7 @@ router.get("/", async (req, res) => {
 router.get("/filter", async (req, res) => {
 	try {
 		const userId = req.user._id
-		const { category, date, type } = req.query
+		let { category, date, type } = req.query
 		const monthOptions = new Set()
 		const categoryOptions = new Set()
 
@@ -54,6 +61,8 @@ router.get("/filter", async (req, res) => {
 				...filterCondition,
 				recordType: type,
 			}
+		} else {
+			type = "total"
 		}
 		// add month filter
 		if (date && date !== "all") {
@@ -67,6 +76,8 @@ router.get("/filter", async (req, res) => {
 					$lt: endDate.toISOString().split("T")[0],
 				},
 			}
+		} else {
+			date = "all"
 		}
 		// add category filter
 		if (category && category !== "all") {
@@ -74,6 +85,8 @@ router.get("/filter", async (req, res) => {
 				...filterCondition,
 				category,
 			}
+		} else {
+			category = "all"
 		}
 		const records = await Record.find(filterCondition)
 			.sort({ date: "desc" })
@@ -96,14 +109,32 @@ router.get("/filter", async (req, res) => {
 			}
 		})
 
-		return res.render("index", {
-			records,
+		const page = req.query.page || 1
+		const limit = 2
+		const offset = (page - 1) * limit
+		const endIndex = offset + limit - 1
+		const RECORDS_PER_PAGE = records.length / limit
+		const pages = Array.from(Array(Math.ceil(RECORDS_PER_PAGE)).keys()).map(
+			page => page + 1
+		)
+		console.log(pages)
+
+		// const result = await Record.find(filterCondition)
+		// 	.sort({ date: "desc" })
+		// 	.limit(RECORDS_PER_PAGE)
+		// 	.skip(offset)
+		// 	.lean()
+
+		return res.render("home", {
+			records: records.slice(offset, endIndex),
 			monthOptions,
 			categoryOptions,
 			category,
 			date,
 			type,
 			totalAmount,
+			// result,
+			pages,
 		})
 	} catch (error) {
 		console.log(error)
