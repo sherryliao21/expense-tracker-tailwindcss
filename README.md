@@ -1,44 +1,65 @@
 # Expense Tracker
 
-![Imgur](https://imgur.com/L73AdG4.png)
-Expense Tracker is a Naruto-themed expense tracker web app built with Node.js, Express & MongoDB. You can keep track of your income & expenses and browse the records in different months/types/categoires!
-\
+<p align="center">
+   <img src="https://imgur.com/L73AdG4.png" width="800" height="500">
+</p>
+
+<br />
+Expense Tracker is a Naruto-themed expense tracker web app built with Node.js, Express & MongoDB. Keep track of your income & expenses and browse the records in different months/types/categoires!
+<br/>
+<br/>
 This project is live on Heroku: [https://expense-tracker-naruto.herokuapp.com/](https://expense-tracker-naruto.herokuapp.com/)
+
 You can register your own account or login with Facebook or the default user account:
 
 ```
 email: user1@example.com
 password: 123
 ```
-
-\
+<br/>
 
 ## Features
 
 1. Users are able to register a new account
-   ![Imgur](https://imgur.com/1ptITWW.png)
+<p align="center">
+   <img src="https://imgur.com/1ptITWW.png" width="800" height="500">
+</p>
 
 or login with local or Facebook account
 
-![Imgur](https://imgur.com/oDAlq2X.png)
+<p align="center">
+   <img src="https://imgur.com/oDAlq2X.png" width="800" height="500">
+</p>
 
 2. Users are able to browse a list of expense/income records with selecting customized filters
-   ![Imgur](https://imgur.com/qv65qkF.png)
+
+<p align="center">
+   <img src="https://imgur.com/qv65qkF.png" width="800" height="500">
+</p>
 
 3. Users are able to create, edit, delete expense/income records
-   ![Imgur](https://imgur.com/KFvbiSd.png)
-   create
-   \
-   ![Imgur](https://imgur.com/XiBYejj.png)
-   edit
 
-4. Users are able to filter items by category, month, and expense/inceom type
-   ![Imgur](https://imgur.com/qv65qkF.png)
+<p align="center">
+   <img src="https://imgur.com/KFvbiSd.png" width="800" height="500">
+</p>
 
-5. Users are able to change their profile picture & login password
-   ![Imgur](https://imgur.com/9vYPbqB.png)
+  create
 
-6. (Coming soon) Users are able to see their expense/income records in chart visualizations
+<p align="center">
+   <img src="https://imgur.com/XiBYejj.png" width="800" height="500">
+</p>
+
+  edit
+
+4. Users are able to change their profile picture & login password
+
+
+<p align="center">
+   <img src="https://imgur.com/9vYPbqB.png" width="800" height="500">
+</p>
+
+5. (Coming soon) Users are able to see their expense/income records in chart visualizations
+
 
 ## Prerequisites
 
