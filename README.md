@@ -8,7 +8,7 @@
 This is a Naruto-themed expense tracker web app built with Node.js, Express & MongoDB. Keep track of your income & expenses and browse the records in different months/types/categoires!
 <br/>
 <br/>
-This project is live on[Heroku](https://expense-tracker-naruto.herokuapp.com/)
+This project is live on Heroku: https://expense-tracker-naruto.herokuapp.com
 
 You can register your own account or login with Facebook or the default user account:
 
