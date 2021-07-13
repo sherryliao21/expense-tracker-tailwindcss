@@ -76,7 +76,7 @@ npm run seed
 5. Run project
 
 ```
-npm run start
+npm run 
 ```
 
 6. Open your browser and enter path
