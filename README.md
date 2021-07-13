@@ -5,10 +5,10 @@
 </p>
 
 <br />
-Expense Tracker is a Naruto-themed expense tracker web app built with Node.js, Express & MongoDB. Keep track of your income & expenses and browse the records in different months/types/categoires!
+This is a Naruto-themed expense tracker web app built with Node.js, Express & MongoDB. Keep track of your income & expenses and browse the records in different months/types/categoires!
 <br/>
 <br/>
-This project is live on Heroku: [https://expense-tracker-naruto.herokuapp.com/](https://expense-tracker-naruto.herokuapp.com/)
+This project is live on[Heroku](https://expense-tracker-naruto.herokuapp.com/)
 
 You can register your own account or login with Facebook or the default user account:
 
@@ -16,6 +16,7 @@ You can register your own account or login with Facebook or the default user acc
 email: user1@example.com
 password: 123
 ```
+
 <br/>
 
 ## Features
@@ -43,23 +44,21 @@ or login with local or Facebook account
    <img src="https://imgur.com/KFvbiSd.png" width="800" height="500">
 </p>
 
-  create
+create
 
 <p align="center">
    <img src="https://imgur.com/XiBYejj.png" width="800" height="500">
 </p>
 
-  edit
+edit
 
 4. Users are able to change their profile picture & login password
-
 
 <p align="center">
    <img src="https://imgur.com/9vYPbqB.png" width="800" height="500">
 </p>
 
 5. (Coming soon) Users are able to see their expense/income records in chart visualizations
-
 
 ## Prerequisites
 
@@ -97,7 +96,7 @@ npm run seed
 5. Run project
 
 ```
-npm run 
+npm run
 ```
 
 6. Open your browser and enter path
