@@ -49,6 +49,7 @@ router.get("/filter", async (req, res) => {
 	try {
 		const userId = req.user._id
 		let { category, date, type } = req.query
+
 		const monthOptions = new Set()
 		const categoryOptions = new Set()
 
@@ -61,8 +62,6 @@ router.get("/filter", async (req, res) => {
 				...filterCondition,
 				recordType: type,
 			}
-		} else {
-			type = "total"
 		}
 		// add month filter
 		if (date && date !== "all") {
@@ -76,8 +75,6 @@ router.get("/filter", async (req, res) => {
 					$lt: endDate.toISOString().split("T")[0],
 				},
 			}
-		} else {
-			date = "all"
 		}
 		// add category filter
 		if (category && category !== "all") {
@@ -85,13 +82,13 @@ router.get("/filter", async (req, res) => {
 				...filterCondition,
 				category,
 			}
-		} else {
-			category = "all"
 		}
+
 		const records = await Record.find(filterCondition)
 			.sort({ date: "desc" })
 			.lean()
 
+		// render total amount & category/month options
 		let totalAmount = 0
 
 		await records.forEach(record => {
@@ -109,21 +106,15 @@ router.get("/filter", async (req, res) => {
 			}
 		})
 
+		// render pagination
 		const page = req.query.page || 1
-		const limit = 2
+		const limit = 6
 		const offset = (page - 1) * limit
-		const endIndex = offset + limit - 1
+		const endIndex = offset + limit
 		const RECORDS_PER_PAGE = records.length / limit
 		const pages = Array.from(Array(Math.ceil(RECORDS_PER_PAGE)).keys()).map(
 			page => page + 1
 		)
-		console.log(pages)
-
-		// const result = await Record.find(filterCondition)
-		// 	.sort({ date: "desc" })
-		// 	.limit(RECORDS_PER_PAGE)
-		// 	.skip(offset)
-		// 	.lean()
 
 		return res.render("home", {
 			records: records.slice(offset, endIndex),
@@ -133,7 +124,7 @@ router.get("/filter", async (req, res) => {
 			date,
 			type,
 			totalAmount,
-			// result,
+			page,
 			pages,
 		})
 	} catch (error) {
