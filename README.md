@@ -58,7 +58,11 @@ edit
    <img src="https://imgur.com/9vYPbqB.png" width="800" height="500">
 </p>
 
-5. (Coming soon) Users are able to see their expense/income records in chart visualizations
+5. Users are able to see their expense/income records in chart visualizations
+
+<p align="center">
+   <img src="https://imgur.com/3bB2eQh.png" width="800" height="500">
+</p>
 
 ## Prerequisites
 
