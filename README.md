@@ -87,19 +87,31 @@ cd expense-tracker
 npm install
 ```
 
-4. Run seeder
+4. Add .env file and fill in your credentials
+
+```
+FACEBOOK_ID=(your facebook app client id)
+FACEBOOK_SECRET=(your facebook app client secret)
+FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
+PORT=3000
+SESSION_SECRET=(your app session secret)
+MONGODB_URI=(your mongoDB URI)
+IMGUR_CLIENT_ID=(your imgur client id)
+```
+
+5. Run seeder
 
 ```
 npm run seed
 ```
 
-5. Run project
+6. Run project
 
 ```
-npm run
+npm run start
 ```
 
-6. Open your browser and enter path
+7. Open your browser and enter path
 
 ```
 localhost:3000
