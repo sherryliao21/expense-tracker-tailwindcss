@@ -2,7 +2,7 @@
 	height: calc(100vh - 60px);
 }
 
-.developing {
+/* .developing {
 	background-color: #ffffff;
 	width: 100%;
 	height: calc(100% - 60px);
@@ -22,7 +22,7 @@
 
 .developing-title {
 	color: #000000;
-}
+} */
 
 .row {
 	width: 700px;

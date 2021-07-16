@@ -1,12 +1,8 @@
 <head>
 	<link rel="stylesheet" href="/stylesheets/analysis.css" />
+  <link rel="stylesheet" href="/stylesheets/index.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"></script>
 </head>
-
-<div class="developing">
-  <h2 class="developing-title mb-2">This Feature Is Under Development</h2>
-  <h1 class="coming-soon">Coming Soon</h1>
-</div>
 
 <div class="analysis-container d-flex flex-column align-items-center">
 	<h1 class="analysis-title mt-5 mb-5">收支統計</h1>
@@ -52,60 +48,51 @@
         </select>
       </div>
     </form>
-  {{#if records }}
-  <div class="chart-container m-2">
-    <canvas id="myChart" height: "500px"; width="500px"></canvas>
+    <div class="chart-and-amount d-flex justify-content-center align-items-center">
+      <div class="chart-container">
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+      <div class="d-flex flex-column justify-content-between mt-3">
+        <div class="col-4">
+          <h2 id="total-amount" style="width: 150px;">總金額：</h2>
+        </div>
+        <div class="col-4">
+          <h1 id="total-amount-display">{{ totalAmount }}</h1>
+        </div>
+      </div>
+    </div>
+  
+  <div class="categoryAmount" hidden>{{categoryAmount}}</div>
+
+  <div class="records mt-3" hidden>
+    <ul class="list-group d-flex flex-column justify-content-center">
+      {{#each records}}
+      <li class="list-group-item d-flex row justify-content-between align-items-center">
+        <div class="col-lg-1" >
+          <i class="item-icon {{ this.icon }}" {{#if (isSelected this.recordType 'expense') }} style="color: rgb(252, 174, 86);" 
+          {{else}}
+          style="color: rgb(99, 187, 99);"
+          {{/if}}></i>
+        </div>
+        <div class="col-lg-1.5">
+          {{#if (isSelected this.recordType 'expense') }}<span style="color: rgb(252, 174, 86);">支出</span>
+          {{else}}
+          <span style="color: rgb(99, 187, 99);">收入</span>
+          {{/if}}
+        </div>
+        <div class="col-lg-7 d-flex flex-column justify-content-center">
+          <h2 class="item-title">{{ this.name }}</h2>
+          <h3 class="item-date">{{ this.date }} - <span class="item-merchant">{{this.merchant}}</span></h3>
+        </div>
+        <div class="individual-amount col-lg-1 d-flex justify-content-end">
+          <h2 class="item-amount">{{ this.amount }}</h2>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
   </div>
-  {{/if}}
 </div>
 
-<script>
-
-async function getData() {
-}
-
-function createChart() {
-  const records = document.querySelector('#myChart').innerText
-  console.log(records)
-  const xlabels = []
-  const ctx = document.querySelector('#myChart')
-  const myChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['hi', 'on', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  })
-}
-
-getData()
-createChart()
   
-</script>
+
+<script src="/javascripts/analysis.js"></script>
