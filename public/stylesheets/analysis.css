@@ -1,5 +1,5 @@
 .analysis-container {
-	height: calc(100vh - 60px);
+	height: calc(100vh - 120px);
 }
 
 /* .developing {
@@ -26,7 +26,6 @@
 
 .row {
 	width: 700px;
-	margin-bottom: 60px;
 }
 
 .form-check-label {
