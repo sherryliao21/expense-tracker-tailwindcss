@@ -1,183 +1,187 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  background-image: url('/naruto_background.jpg');
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  z-index: -5;
-  position: relative;
+	background-image: url("/naruto_background.jpg");
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-size: cover;
+	z-index: -5;
+	position: relative;
 }
 
 .container {
-  min-height: calc(100vh - 168px);
-  /* margin-bottom: auto; */
+	min-height: calc(100vh - 168px);
+	/* margin-bottom: auto; */
 }
 
 .background-overlay {
-  background-color: rgba(255, 255, 255, 0.85);
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  z-index: -1;
+	background-color: rgba(255, 255, 255, 0.85);
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	z-index: -1;
 }
 
 .navbar-secondary {
-  background-color: rgb(73, 70, 68);
-  position: relative;
-  height: 60px;
-  width: 100vw;
-  position: sticky;
-  top: 0;
-  z-index: 999;
+	background-color: rgb(73, 70, 68);
+	position: relative;
+	height: 60px;
+	width: 100vw;
+	position: sticky;
+	top: 0;
+	z-index: 999;
 }
 
 .navbar-toggle-label {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 30px;
-  margin: 0px;
-  display: flex;
-  align-items: center;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 30px;
+	margin: 0px;
+	display: flex;
+	align-items: center;
 }
 
 .navbar-toggle-label:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .hamburger,
 .hamburger::before,
 .hamburger::after {
-  content: ' ';
-  width: 20px;
-  height: 1.8px;
-  background-color: #ffffff;
+	content: " ";
+	width: 20px;
+	height: 1.8px;
+	background-color: #ffffff;
 }
 
 .hamburger::before {
-  position: absolute;
-  top: 22px;
+	position: absolute;
+	top: 22px;
 }
 
 .hamburger::after {
-  position: absolute;
-  bottom: 22px;
+	position: absolute;
+	bottom: 22px;
 }
 
 .nav-settings {
-  position: absolute;
-  top: 60px;
-  left: 0px;
-  background: #ffffff;
-  width: 320px;
-  height: calc(100vh - 60px);
-  box-shadow: 7px 6px 15px -8px rgba(87, 82, 82, 0.75);
-  -webkit-box-shadow: 7px 6px 15px -8px rgba(87, 82, 82, 0.75);
-  -moz-box-shadow: 7px 6px 15px -8px rgba(87, 82, 82, 0.75);
-  /* 移除這行：display: none; */
-  /* 修改下列這行，將 display 改成 transform */
-  transition: transform 0.2s ease-out;
-  /* 加入下列這行 */
-  transform-origin: top;
-  transform: scale(1, 0);
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	background: #ffffff;
+	width: 320px;
+	height: calc(100vh - 60px);
+	box-shadow: 7px 6px 15px -8px rgba(87, 82, 82, 0.75);
+	-webkit-box-shadow: 7px 6px 15px -8px rgba(87, 82, 82, 0.75);
+	-moz-box-shadow: 7px 6px 15px -8px rgba(87, 82, 82, 0.75);
+	/* 移除這行：display: none; */
+	/* 修改下列這行，將 display 改成 transform */
+	transition: transform 0.2s ease-out;
+	/* 加入下列這行 */
+	transform-origin: top;
+	transform: scale(1, 0);
 }
 
 .navbar-toggle {
-  /*不佔空間*/
-  visibility: hidden;
-  position: absolute;
+	/*不佔空間*/
+	visibility: hidden;
+	position: absolute;
 }
 
 .navbar-toggle:checked ~ .nav-settings {
-  transform: scale(1, 1);
+	transform: scale(1, 1);
 }
 
 .nav-list {
-  padding: 50px 0px;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	padding: 50px 0px;
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .nav-item {
-  margin: 10px 0;
-  /*預設透明度 0*/
-  opacity: 0;
+	margin: 10px 0;
+	/*預設透明度 0*/
+	opacity: 0;
 }
 .navbar-toggle:checked ~ .nav-settings .nav-item {
-  /*開啟時透明度為1*/
-  transition: opacity 0.2s ease-out 0.1s;
-  opacity: 1;
+	/*開啟時透明度為1*/
+	transition: opacity 0.2s ease-out 0.1s;
+	opacity: 1;
 }
 
 .nav-item-avatar > img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	margin-bottom: 20px;
 }
 
 .nav-item-name {
-  font-weight: bold;
-  color: #818181;
-  margin-bottom: 40px;
+	font-weight: bold;
+	color: #818181;
+	margin-bottom: 40px;
 }
 
 .navbar-brand {
-  text-decoration: none;
-  color: #fff;
-  margin-left: 50px;
+	text-decoration: none;
+	color: #fff;
+	margin-left: 50px;
 }
 
 .greetings {
-  color: #fff;
-  position: absolute;
-  right: 160px;
-  font-size: 18px;
+	color: #fff;
+	position: absolute;
+	right: 160px;
+	font-size: 18px;
 }
 
 .nav-link {
-  text-decoration: none;
-  color: #818181;
+	text-decoration: none;
+	color: #818181;
 }
 
 .navbar-brand:hover {
-  text-decoration: none;
-  color: #fff;
+	text-decoration: none;
+	color: #fff;
 }
 
 .fa-wallet {
-  margin-right: 8px;
-  color: rgb(255, 190, 116);
+	margin-right: 8px;
+	color: rgb(255, 190, 116);
 }
 
 .btn-outline-light {
-  background-color: rgb(245, 162, 67);
-  position: absolute;
-  right: 30px;
+	background-color: rgb(245, 162, 67);
+	position: absolute;
+	right: 30px;
 }
 
 .delete-record {
-  margin: 0;
+	margin: 0;
 }
 
 .edit-btn {
-  padding: 6px 0;
+	padding: 6px 0;
 }
 
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(44, 44, 44);
-  width: 100vw;
-  height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(44, 44, 44);
+	width: 100vw;
+	height: 60px;
 }
 
 #footer-text {
-  color: #ffffff;
+	color: #ffffff;
 }
