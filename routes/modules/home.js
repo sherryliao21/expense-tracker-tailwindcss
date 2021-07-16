@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
 			}
 		})
 
-		const limit = 6
+		const limit = 4
 		const RECORDS_PER_PAGE = records.length / limit
 		const pages = Array.from(Array(Math.ceil(RECORDS_PER_PAGE)).keys()).map(
 			page => page + 1
@@ -108,7 +108,7 @@ router.get("/filter", async (req, res) => {
 
 		// render pagination
 		const page = req.query.page || 1
-		const limit = 6
+		const limit = 4
 		const offset = (page - 1) * limit
 		const endIndex = offset + limit
 		const RECORDS_PER_PAGE = records.length / limit
