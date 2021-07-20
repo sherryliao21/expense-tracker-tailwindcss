@@ -1,7 +1,7 @@
 # Expense Tracker
 
 <p align="center">
-   <img src="https://imgur.com/L73AdG4.png" width="800" height="500">
+   <img src="https://imgur.com/kkVsYFR.png" width="800" height="500">
 </p>
 
 <br />
@@ -23,13 +23,13 @@ password: 123
 
 1. Users are able to register a new account
 <p align="center">
-   <img src="https://imgur.com/1ptITWW.png" width="800" height="500">
+   <img src="https://imgur.com/IjqaTlv.png" width="800" height="500">
 </p>
 
-or login with local or Facebook account
+or login with local, Facebook or Google account
 
 <p align="center">
-   <img src="https://imgur.com/oDAlq2X.png" width="800" height="500">
+   <img src="https://imgur.com/8HORctK.png" width="800" height="500">
 </p>
 
 2. Users are able to browse a list of expense/income records with selecting customized filters
@@ -41,13 +41,13 @@ or login with local or Facebook account
 3. Users are able to create, edit, delete expense/income records
 
 <p align="center">
-   <img src="https://imgur.com/KFvbiSd.png" width="800" height="500">
+   <img src="https://imgur.com/j6HKxSh.png" width="800" height="500">
 </p>
 
 create
 
 <p align="center">
-   <img src="https://imgur.com/XiBYejj.png" width="800" height="500">
+   <img src="https://imgur.com/yyoQI1P.png" width="800" height="500">
 </p>
 
 edit
@@ -55,13 +55,13 @@ edit
 4. Users are able to change their profile picture & login password
 
 <p align="center">
-   <img src="https://imgur.com/9vYPbqB.png" width="800" height="500">
+   <img src="https://imgur.com/qPclLtz.png" width="800" height="500">
 </p>
 
-5. Users are able to see their expense/income records in chart visualizations
+5. Users are able to see their expense/income records in a doughnut chart visualization
 
 <p align="center">
-   <img src="https://imgur.com/3bB2eQh.png" width="800" height="500">
+   <img src="https://imgur.com/44si3zb.png" width="800" height="500">
 </p>
 
 ## Prerequisites
@@ -101,6 +101,9 @@ PORT=3000
 SESSION_SECRET=(your app session secret)
 MONGODB_URI=(your mongoDB URI)
 IMGUR_CLIENT_ID=(your imgur client id)
+GOOGLE_CLIENT_ID=(your google app client id)
+GOOGLE_CLIENT_SECRET=(your google app client id)
+GOOGLE_CALLBACK=http://localhost:3000/auth/google/callback
 ```
 
 5. Run seeder
