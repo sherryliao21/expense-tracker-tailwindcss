@@ -2,62 +2,65 @@
   <link rel='stylesheet' href='/stylesheets/settings.css' />
 </head>
 
-<div
-  class='container d-flex flex-column justify-content-center align-items-center mt-5'
->
-  {{> message}}
-
-  <h1 class='title'>編輯個人資料</h1>
-  <div class='user-avatar' style="background-image: url({{ user.avatar }});">
+    {{> message}}
+<div class="row">
+  <div class="col-6 d-flex justify-content-center align-items-center">
+    <div class='user-avatar' style="background-image: url({{ user.avatar }});"></div>
   </div>
-  <form action='/users/settings?_method=PUT' method='POST' class='mt-4' enctype="multipart/form-data">
-    <div class='d-flex flex-column'>
-      <div
-        class='labels d-flex flex-column justify-content-between align-items-start'
-      >
-        <div class='name d-flex align-items-center mb-2'>
-          <label class='label' for='name'>名稱：</label>
-          <input
-            type='text'
-            class='form-control'
-            name='name'
-            value='{{user.name}}'
-          />
-        </div>
-        <div class='merchant d-flex align-items-center mb-2'>
-          <label class='label' for='email'>Email：</label>
-          <input
-            type='text'
-            class='form-control'
-            name='email'
-            value='{{user.email}}' disabled
-          />
-        </div>
-        <div class='amount d-flex align-items-center mb-2'>
-          <label class='label' for='newPassword'>新密碼：</label>
-          <input
-            type='text'
-            class='form-control amount'
-            placeholder='新密碼'
-            name='newPassword'
-          />
-        </div>
-        <div class='amount d-flex align-items-center mb-3'>
-          <label class='label' for='confirmPassword'>確認新密碼：</label>
-          <input
-            type='text'
-            class='form-control amount'
-            placeholder='確認密碼'
-            name='confirmPassword'
-          />
-        </div>
-        <div class="avatar d-flex align-items-center mb-3">
-          <label class='label' for='avatar'>頭像：</label>
-          <input type="file" class="form" id="avatar" name="avatar">
+  <div
+    class='container col-4 d-flex flex-column justify-content-center align-items-center mt-5'
+  >
+
+    <h1 class='title'>編輯個人資料</h1>
+    <form action='/users/settings?_method=PUT' method='POST' class='mt-4' enctype="multipart/form-data">
+      <div class='d-flex flex-column'>
+        <div
+          class='labels d-flex flex-column justify-content-between align-items-start'
+        >
+          <div class='name d-flex align-items-center mb-2'>
+            <label class='label' for='name'>名稱：</label>
+            <input
+              type='text'
+              class='form-control'
+              name='name'
+              value='{{user.name}}'
+            />
+          </div>
+          <div class='merchant d-flex align-items-center mb-2'>
+            <label class='label' for='email'>Email：</label>
+            <input
+              type='text'
+              class='form-control'
+              name='email'
+              value='{{user.email}}' disabled
+            />
+          </div>
+          <div class='amount d-flex align-items-center mb-2'>
+            <label class='label' for='newPassword'>新密碼：</label>
+            <input
+              type='text'
+              class='form-control amount'
+              placeholder='新密碼'
+              name='newPassword'
+            />
+          </div>
+          <div class='amount d-flex align-items-center mb-3'>
+            <label class='label' for='confirmPassword'>確認新密碼：</label>
+            <input
+              type='text'
+              class='form-control amount'
+              placeholder='確認密碼'
+              name='confirmPassword'
+            />
+          </div>
+          <div class="avatar d-flex align-items-center mb-3">
+            <label class='label' for='avatar'>頭像：</label>
+            <input type="file" class="form" id="avatar" name="avatar">
+          </div>
         </div>
       </div>
-    </div>
-    <button type='submit' class='btn mt-4 save-btn'>儲存</button>
-    <a href='/' class="btn mt-4 back-btn">返回 </a>
-  </form>
+      <button type='submit' class='btn mt-4 save-btn'>儲存</button>
+      <a href='/' class="btn mt-4 back-btn">返回 </a>
+    </form>
+  </div>
 </div>
