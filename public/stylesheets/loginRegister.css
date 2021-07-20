@@ -29,6 +29,7 @@
   border: 1px solid rgb(168, 165, 165);
 }
 
-.google {
-  margin-bottom: 1px;
+.google,
+.facebook {
+  margin-left: 5px;
 }
