@@ -1,3 +1,13 @@
+.register-container,
+.login-container {
+  height: 100vh;
+  padding-top: 80px;
+}
+
+.register-container {
+  padding-top: 40px;
+}
+
 .btn-info {
   background-color: rgb(245, 162, 67);
   border: none;

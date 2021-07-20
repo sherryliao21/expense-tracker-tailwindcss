@@ -175,7 +175,7 @@ footer {
   align-items: center;
   background-color: rgb(44, 44, 44);
   width: 100vw;
-  height: 60px;
+  min-height: 60px;
 }
 
 #footer-text {
