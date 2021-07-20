@@ -1,5 +1,5 @@
 <head>
-  <link rel="stylesheet" href="/stylesheets/index.css">
+  <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 
 <div class="container d-flex flex-column justify-content-start mt-5">
@@ -53,21 +53,6 @@
   </div>
   <div class="records mt-3">
     <ul class="list-group d-flex flex-column justify-content-center">
-      <a class="add-new-item" href="./records/new">
-        <div id="add-new-btn" class="list-group-item d-flex row justify-content-between align-items-center">
-          <div class="col-sm-1"><i class="far fa-hand-point-right"></i></div>
-          <div class="col-sm-8">
-            <h2 class="add-new-title">點擊新增支出項目</h2>
-            <h3 class="add-new-date">新增日期 - <span class="add-new-date">商家</span></h3>
-          </div>
-          <div class="col-sm-1 d-flex justify-content-end">
-            <h2 class="add-new-amount">$$$</h2>
-          </div>
-          <div class="col-sm-1 d-flex justify-content-end">
-            <i class="fas fa-plus-circle"></i>
-          </div>
-        </div>
-      </a>
       {{#each records}}
       <li class="list-group-item d-flex row justify-content-between align-items-center">
         <div class="col-lg-1" >
@@ -107,3 +92,7 @@
     </ul>
   </nav>
 </div>
+
+<a class="add-new-item" href="./records/new">
+  <div class="add-new-button d-flex justify-content-center align-items-center"><i class="fas fa-pen"></i></div>
+</a>

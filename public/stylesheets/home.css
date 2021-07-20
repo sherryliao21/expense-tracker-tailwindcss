@@ -30,39 +30,6 @@ label {
   color: rgb(245, 162, 67);
 }
 
-.add-new-item:link {
-  text-decoration: none;
-}
-
-#add-new-btn {
-  background-color: rgb(243, 239, 239);
-}
-
-.fa-hand-point-right {
-  font-size: 20px;
-  color: rgb(179, 176, 176);
-}
-
-.add-new-title {
-  font-size: 20px;
-  color: rgb(179, 176, 176);
-}
-
-.add-new-date {
-  font-size: 12px;
-  color: rgb(179, 176, 176);
-}
-
-.add-new-amount {
-  font-size: 24px;
-  color: rgb(179, 176, 176);
-}
-
-.fa-plus-circle {
-  font-size: 20px;
-  color: rgb(179, 176, 176);
-}
-
 .item-icon {
   font-size: 20px;
   color: rgb(245, 162, 67);
@@ -93,4 +60,29 @@ label {
   color: rgb(255, 82, 2);
   position: relative;
   bottom: 6px;
+}
+
+.add-new-button {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  background-color: rgb(245, 162, 67);
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: bold;
+  box-shadow: 16px 15px 34px -21px rgba(113, 80, 80, 0.72);
+  -webkit-box-shadow: 16px 15px 34px -21px rgba(113, 80, 80, 0.72);
+  -moz-box-shadow: 16px 15px 34px -21px rgba(113, 80, 80, 0.72);
+  position: fixed;
+  bottom: 120px;
+  right: 200px;
+}
+
+.add-new-button:hover {
+  transform: translate(3px, 3px);
+  cursor: pointer;
+}
+
+.fas .fa-pen {
+  color: #ffffff;
 }
