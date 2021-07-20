@@ -1,5 +1,6 @@
 .analysis-container {
   height: 100vh;
+  padding: 0 100px;
 }
 
 .list-group-item {
@@ -20,4 +21,14 @@ label {
 
 .form-category {
   width: 630px;
+}
+
+.chart-container {
+  position: relative;
+}
+
+.total-amount {
+  font-size: 60px;
+  margin-left: 20px;
+  color: rgb(245, 162, 67);
 }

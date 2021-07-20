@@ -53,17 +53,15 @@
       <div class="category-amount" hidden>{{categoryAmount}}</div>
     </div>
   </div>
-  <div class="row">
-    <div class="chart-container col-5">
-      <canvas id="myChart" width="400" height="400"></canvas>
+  <div class="row d-flex justify-content-around align-items-center">
+    <div class="chart-container col-4">
+      <canvas id="myChart" width="200" height="200"></canvas>
     </div>
-    <div class="col-6">
-      <div class="d-flex flex-column justify-content-between mt-3">
-        <h2 id="total-amount" style="width: 150px;">總金額：</h2>
-          <h1 id="total-amount-display">{{ totalAmount }}</h1>
+    <div class="col-6 d-flex flex-column align-items-center">
+      <div class="d-flex justify-content-center align-items-center total-amount-container">
+        總金額：<span class="total-amount">{{ totalAmount }}</span>
       </div>    
-      <div class="record container row">
-        <div class="records col-8">
+        <div class="records">
           <ul class="list-group d-flex flex-column justify-content-center">
             {{#each records}}
             <li class="list-group-item d-flex row justify-content-between align-items-center">
@@ -90,12 +88,15 @@
             {{/each}}
           </ul>
         </div>
-      </div>
     </div>
   </div>
+  <nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center" id="paginator">
+  {{#each pages}}
+      <li class="page-item"><a class="page-link" href="/analysis/filter?type={{ ../type }}&date={{ ../date }}&category={{ ../category }}&page={{this}}">{{this}}</a></li>
+  {{/each}}
+    </ul>
+  </nav>
 </div>
-
-
-  
 
 <script src="/javascripts/analysis.js"></script>

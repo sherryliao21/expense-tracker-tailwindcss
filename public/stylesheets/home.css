@@ -3,6 +3,10 @@
   margin-bottom: 60px;
 }
 
+.home-container {
+  height: 100vh;
+}
+
 .form-check-label {
   width: 50px;
 }
