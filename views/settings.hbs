@@ -8,12 +8,7 @@
   {{> message}}
 
   <h1 class='title'>編輯個人資料</h1>
-  <div class='edit-img' style="background-image: url({{ user.avatar }});">
-    {{!-- <img
-      class='naruto-wallet-img'
-      src='{{user.avatar}}'
-      alt='profile avatar'
-    /> --}}
+  <div class='user-avatar' style="background-image: url({{ user.avatar }});">
   </div>
   <form action='/users/settings?_method=PUT' method='POST' class='mt-4' enctype="multipart/form-data">
     <div class='d-flex flex-column'>
@@ -63,6 +58,6 @@
       </div>
     </div>
     <button type='submit' class='btn mt-4 save-btn'>儲存</button>
+    <a href='/' class="btn mt-4 back-btn">返回 </a>
   </form>
-  <a href='/'><button class='btn mt-4 back-btn'>返回</button></a>
 </div>
