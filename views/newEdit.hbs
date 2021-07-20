@@ -2,12 +2,17 @@
   <link rel="stylesheet" href="/stylesheets/newEdit.css">
 </head>
 
-<div class="container d-flex flex-column justify-content-center align-items-center mt-5">
+<div class="row">
+  <div class="col-6 d-flex justify-content-center align-items-center">
+    {{#if record}}
+    <div class="edit-img"></div>
+    {{else}}
+    <div class="new-img"></div>
+    {{/if}}
+  </div>
+  <div class="container col-4 d-flex flex-column justify-content-center align-items-center mt-5">
   {{#if record }}
   <h1 class="title">編輯單筆紀錄</h1>
-  <div class="edit-img">
-    <img class="naruto-wallet-img" src="/naruto_wallet.jpg" alt="naruto_wallet">
-  </div>
   <form action="/records/{{ record._id }}?_method=PUT" method="POST" class="mt-4">
     <div class="d-flex flex-column">
       <div class="d-flex row justify-content-center type-checkbox">
@@ -52,15 +57,14 @@
         </div>
       </div>
     </div>
-      <button type="submit" class="btn mt-4 save-btn" onclick="return checkForm()">儲存</button>
+    <div class="buttons d-flex justify-content-around mb-3">
+      <button type="submit" class="submit-new-btn btn mt-4" onclick="return checkForm()">儲存</button>
+      <a href='/' class="btn mt-4 back-btn">返回 </a>
+    </div>
   </form>
-  <a href="/"><button class="btn mt-4 back-btn" onclick="return confirmBack()">返回</button></a>
     
   {{else}}
   <h1 class="title">新增紀錄</h1>
-  <div class="new-img">
-    <img class="naruto-wallet-img" src="/naruto_wallet_2.jpg" alt="naruto_wallet">
-  </div>
   <form action="/records" method="POST" class="mt-4" id="form-new">
     <div class="d-flex row justify-content-center type-checkbox">
       <div class="form-check col-lg-3">
@@ -103,10 +107,12 @@
         <label class="label" for="amount">金額：</label>
         <input type="number" class="form-control amount" placeholder="ex: 120" name="amount">
       </div>
-      <div class="button d-flex justify-content-center">
-        <button type="submit" class="submit-new-btn btn mt-3" onclick="return checkForm()">建立</button>
-      </div>
+    </div>
+    <div class="buttons d-flex justify-content-around mb-3">
+      <button type="submit" class="submit-new-btn btn mt-4" onclick="return checkForm()">建立</button>
+      <a href='/' class="btn mt-4 back-btn">返回 </a>
     </div>
   </form>
   {{/if}}
+</div>
 </div>
