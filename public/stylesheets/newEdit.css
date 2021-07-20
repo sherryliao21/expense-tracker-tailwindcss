@@ -1,3 +1,7 @@
+.new-edit-container {
+  height: 100vh;
+}
+
 .container {
   position: relative;
 }
