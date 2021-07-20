@@ -1,6 +1,6 @@
 .register-container,
 .login-container {
-  height: 100vh;
+  height: calc(100vh + 150px);
   padding-top: 80px;
 }
 
@@ -8,15 +8,27 @@
   padding-top: 40px;
 }
 
-.btn-info {
-  background-color: rgb(245, 162, 67);
-  border: none;
+.submit {
+  background-color: rgb(247, 183, 111);
+  color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid rgb(253, 251, 251);
 }
 
-.btn-info:hover {
+.submit:hover {
   background-color: rgb(231, 136, 27);
+  color: #ffffff;
 }
 
 .row {
   margin-bottom: 60px;
+}
+
+.login {
+  border-radius: 10px;
+  border: 1px solid rgb(168, 165, 165);
+}
+
+.google {
+  margin-bottom: 1px;
 }

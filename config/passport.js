@@ -58,7 +58,11 @@ module.exports = app => {
         console.log(error)
         return done(error, false)
       }
-  }))
+    }
+  ))
+  
+  
+
   // store/get data
   passport.serializeUser((user, done) => {
     done(null, user.id)
