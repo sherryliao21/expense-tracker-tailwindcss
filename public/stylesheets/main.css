@@ -140,6 +140,14 @@ body {
   font-size: 18px;
 }
 
+.user-avatar {
+  position: absolute;
+  right: 100px;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
 .nav-link {
   text-decoration: none;
   color: #818181;

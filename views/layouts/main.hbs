@@ -56,6 +56,13 @@
         {{/if}}
         <span class="greetings">{{#if isAuthenticated}}Hi,
             {{user.name}}{{/if}}</span>
+        {{#if isAuthenticated}}
+          <img
+            src="{{user.avatar}}"
+            alt="user_avatar"
+            class="user-avatar"
+          />
+        {{/if}}
         <a class="navbar-brand" href="/">
           {{#if isAuthenticated}}{{user.name}}
             の 記帳本
@@ -64,7 +71,7 @@
           {{/if}}
         </a>
         {{#if isAuthenticated}}
-          <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+          {{! <a href="/users/logout" class="btn btn-outline-light">Logout</a> }}
         {{else}}
           <a href="/users/login" class="btn btn-outline-light">Login</a>
         {{/if}}
