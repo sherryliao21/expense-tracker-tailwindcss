@@ -20,7 +20,7 @@ router.get(
 router.get(
   "/google",
   passport.authenticate("google", {
-    scope: ["https://www.googleapis.com/auth/plus.login"],
+    scope: ["https://www.googleapis.com/auth/plus.login", "profile", "email"],
   })
 )
 

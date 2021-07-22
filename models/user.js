@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 const userSchema = new Schema({
   name: {
@@ -15,8 +15,12 @@ const userSchema = new Schema({
   },
   avatar: {
     type: String,
-    required: true,
-    default: '/Portrait_Placeholder.png',
+    required: false,
+    default: "/Portrait_Placeholder.png",
+  },
+  googleId: {
+    type: Number,
+    required: false,
   },
   createdAt: {
     type: Date,
@@ -24,4 +28,4 @@ const userSchema = new Schema({
   },
 })
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model("User", userSchema)

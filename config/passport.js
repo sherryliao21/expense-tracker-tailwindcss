@@ -77,12 +77,22 @@ module.exports = app => {
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
-          await User.findOrCreate(
-            { googleId: profile.id },
-            function (err, user) {
-              return done(err, user)
-            }
-          )
+          const user = await User.findOne({ googleId: profile.id })
+          console.log("=======profile:", profile)
+          if (!user) {
+            const randomPassword = Math.random.toString(36).slice(-8)
+            const salt = await bcrypt.genSalt(10)
+            const hash = await bcrypt.hash(randomPassword, salt)
+            await User.create({
+              name: profile.displayName,
+              email: profile.emails[0].value,
+              password: hash,
+              avatar: profile.photos[0].value,
+              googleId: profile.id,
+            })
+            return done(null, user)
+          }
+          return done(null, user)
         } catch (error) {
           console.log(error)
         }
