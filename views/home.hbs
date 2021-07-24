@@ -8,7 +8,7 @@
             <a class="m-auto" href="/records/new">
               <i class="fas fa-pen"></i></a>
           </div>
-          <img src="/assets/froggy.png" alt="froggy-wallet" class="h-full w-50">
+          <img src="/assets/froggy.png" alt="froggy-wallet" class="h-full w-64">
         </div>
         <div class="total-amount w-4/5 h-40 m-auto flex justify-center items-center text-gray-700">
           <h1 class="text-xl font-bold">Balance <span id="total-amount-display"
@@ -17,18 +17,18 @@
               }}</span></h1>
         </div>
         <form action="/filter?type={{type}}&date={{date}}&category={{category}}&page=1" onchange="submit()"
-          class="w-4/5 h-40 md:w-8/12 max-w-md m-auto rounded-xl bg-opacity-80 text-gray-600 bg-white">
+          class="w-4/5 h-40 md:4/5 max-w-md m-auto rounded-xl bg-opacity-80 text-gray-600 bg-white">
           <div class="type flex justify-around text-xl py-4">
             <div class="form-check inline-block">
               <label class="inline-flex items-center" for="income">
-                <input type="radio" class="form-radio text-indigo-600" name="type" id="income" value="income" {{#if
+                <input type="radio" class="form-radio text-yellow-600" name="type" id="income" value="income" {{#if
                   (isSelected type 'income' ) }}checked{{/if}}>
                 <span class="ml-2">Income</span>
               </label>
             </div>
             <div class="form-check inline-block">
               <label class="inline-flex items-center" for="expense">
-                <input type="radio" class="form-radio text-indigo-600" name="type" id="expense" value="expense" {{#if
+                <input type="radio" class="form-radio text-yellow-600" name="type" id="expense" value="expense" {{#if
                   (isSelected type 'expense' ) }}checked{{/if}}>
                 <span class="ml-2">Expense</span>
               </label>
@@ -72,11 +72,11 @@
         </form>
       </div>
       <div class="right-container h-full lg:py-20">
-        <div class="record-table w-4/5 m-auto mt-16 p-2 rounded-lg shadow-lg bg-white  overflow-auto">
+        <div class="record-table w-4/5 m-auto mt-16 p-2 rounded-lg shadow-lg bg-white overflow-auto">
           <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <table class="min-w-full divide-y divide-gray-200">
+                <table class="min-w-full divide-y divide-gray-200 lg:text-4xl">
                   <thead class="bg-gray-50">
                     <tr>
                       <th scope="col"
