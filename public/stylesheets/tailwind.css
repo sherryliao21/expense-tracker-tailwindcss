@@ -49,7 +49,7 @@
 		@apply w-4/5 md:w-8/12 max-w-md m-auto text-lg;
 	}
 	.form-select {
-		@apply block text-sm py-1 px-2 rounded-lg w-80 ml-5 border-gray-200 border-2;
+		@apply block text-sm py-1 px-2 rounded-lg w-80  border-gray-200 border-2;
 	}
 	.total-amount-container {
 		@apply flex justify-center py-5 m-auto mt-10 bg-white rounded-lg h-20 w-4/5 md:w-4/5 bg-opacity-80 text-yellow-500 font-bold text-3xl md:text-2xl shadow-md;
@@ -68,5 +68,25 @@
 	}
 	.page-item {
 		@apply bg-white h-8 w-8 text-yellow-500 rounded flex justify-center;
+	}
+
+	/* New & Edit Page */
+	.banner {
+		@apply h-80 w-full bg-cover;
+	}
+	.form-container {
+		@apply overflow-auto m-auto mt-16 max-w-lg bg-white rounded-lg shadow-lg flex-col;
+	}
+	.form-title {
+		@apply text-center mt-6 mb-3 text-3xl font-bold tracking-wider pl-5;
+	}
+	.checkboxes {
+		@apply my-5 flex justify-center space-x-6;
+	}
+	.new-edit-submit {
+		@apply block mt-10 px-5 py-3 w-full rounded-full shadow-sm bg-yellow-400 text-white text-xl mb-2;
+	}
+	.back-btn {
+		@apply mt-4 py-3 w-full rounded-full shadow-sm bg-gray-500 text-white text-xl mb-2 flex justify-center;
 	}
 }

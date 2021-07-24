@@ -1,20 +1,19 @@
 <div class="flex-col m-auto w-full h-full mb-80">
   <div class="images mx-auto mt-16">
     {{#if record}}
-    <div class="edit-img h-80 w-full bg-cover" style="background-image: url('/naruto_wallet_2.jpeg');"></div>
+    <div class="banner" style="background-image: url('/naruto_wallet_2.jpeg');"></div>
     {{else}}
-    <div class="new-img h-80 w-full bg-cover" style="background-image: url('/naruto_wallet.jpg');"></div>
+    <div class="banner" style="background-image: url('/naruto_wallet.jpg');"></div>
     {{/if}}
   </div>
-  <div
-    class="form-container overflow-auto m-auto mt-16 w-10/12 h-11/12 md:w-8/12 max-w-lg bg-white rounded-lg shadow-lg flex-col">
+  <div class="form-container w-4/5 h-11/12 md:w-8/12">
     <div class="title flex justify-center align-middle relative">
-      <img src="/assets/konoha.png" alt="konoha-symbol" class="h-5 w-5 my-auto absolute top-8 mr-28">
-      <h1 class="text-center mt-6 mb-3 text-3xl font-bold tracking-wider pl-5">{{#if record}}Edit{{else}}New{{/if}}</h1>
+      <img src="/assets/konoha.png" alt="konoha-symbol" class="konoha-symbol top-8 mr-28">
+      <h1 class="form-title">{{#if record}}Edit{{else}}New{{/if}}</h1>
     </div>
     {{#if record }}
     <form class="input-group w-8/12 m-auto" action="/records/{{ record._id }}?_method=PUT" method="POST">
-      <div class="checkboxes my-5 flex justify-center space-x-6">
+      <div class="checkboxes">
         <div class="form-check inline-block">
           <label class="inline-flex items-center" for="income">
             <input type="radio" class="form-radio text-yellow-500" name="type" id="income" value="income" {{#if
@@ -33,15 +32,14 @@
       <div class="labels">
         <label class="block mb-4" for="name">
           <span class="text-md">Title</span>
-          <input type="text"
-            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+          <input type="text" class="form-input focus:ring focus: ring-offset-2 focus: ring-yellow-300"
             placeholder="Lunch" id="name" name="name" value="{{record.name}}" required>
         </label>
         <label class="block mb-4" for="date">
           <span class="text-md">Date</span>
           <input type="date"
-            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
-            id="date" name="date" value="{{record.date}}" required>
+            class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300" id="date"
+            name="date" value="{{record.date}}" required>
         </label>
         <label class="block mb-4" for="category">
           <span class="text-gray-700 mr-2">Category</span>
@@ -59,26 +57,23 @@
         <label class="block mb-4" for="merchant">
           <span class="text-md">Merchant</span>
           <input type="text"
-            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
             placeholder="Lunch" id="merchant" name="merchant" value="{{record.merchant}}" required>
         </label>
         <label class="block mb-4" for="amount">
           <span class="text-md">Amount</span>
           <input type="number"
-            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
             placeholder="Lunch" id="amount" name="amount" value="{{record.amount}}" required>
         </label>
       </div>
-      <button type="submit"
-        class="submit block mt-10 px-5 py-3 w-full rounded-full shadow-sm bg-yellow-400 text-white text-xl mb-2 hover:bg-yellow-600"
-        onclick="return checkForm()">Submit</button>
-      <a href='/'
-        class="btn mt-4 back-btn py-3 w-full rounded-full shadow-sm bg-gray-500 text-white text-xl mb-2 hover:bg-gray-700 flex justify-center">Back
+      <button type="submit" class="new-edit-submit hover:bg-yellow-600" onclick="return checkForm()">Submit</button>
+      <a href='/' class="back-btn hover:bg-gray-700">Back
       </a>
     </form>
     {{else}}
     <form class="input-group w-8/12 m-auto" action="/records" method="POST">
-      <div class="checkboxes my-5 flex justify-center space-x-6">
+      <div class="checkboxes">
         <div class="form-check inline-block">
           <label class="inline-flex items-center" for="income">
             <input type="radio" class="form-radio text-yellow-500" name="type" id="income" value="income" {{#if
@@ -98,19 +93,19 @@
         <label class="block mb-4" for="name">
           <span class="text-md">Title</span>
           <input type="text"
-            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
             placeholder="Lunch" id="name" name="name" required>
         </label>
         <label class="block mb-4" for="date">
           <span class="text-md">Date</span>
           <input type="date"
-            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
-            id="date" name="date" required>
+            class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300" id="date"
+            name="date" required>
         </label>
         <label class="block mb-4" for="category">
           <span class="text-gray-700 mr-2">Category</span>
           <select
-            class="form-select py-3 px-5 rounded-xl  focus:outline-none focus:ring focus: ring-offset-2  focus:ring-yellow-300 w-full border-gray-300 border-2"
+            class="form-select py-3 px-5 rounded-xl w-full border-gray-300 border-2  focus:outline-none focus:ring focus: ring-offset-2  focus:ring-yellow-300 "
             name="category" id="category">
             <option value="" disabled selected>All Categories</option>
             {{#each categoryOptions}}
@@ -123,21 +118,18 @@
         <label class="block mb-4" for="merchant">
           <span class="text-md">Merchant</span>
           <input type="text"
-            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
             placeholder="Lunch" id="merchant" name="merchant" required>
         </label>
         <label class="block mb-4" for="amount">
           <span class="text-md">Amount</span>
           <input type="number"
-            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
             placeholder="Lunch" id="amount" name="amount" required>
         </label>
       </div>
-      <button type="submit"
-        class="submit block mt-10 px-5 py-3 w-full rounded-full shadow-sm bg-yellow-400 text-white text-xl mb-2 hover:bg-yellow-600"
-        onclick="return checkForm()">Submit</button>
-      <a href='/'
-        class="btn mt-4 back-btn py-3 w-full rounded-full shadow-sm bg-gray-500 text-white text-xl mb-2 hover:bg-gray-700 flex justify-center">Back
+      <button type="submit" class="new-edit-submit hover:bg-yellow-600" onclick="return checkForm()">Submit</button>
+      <a href='/' class="back-btn hover:bg-gray-700 ">Back
       </a>
     </form>
     {{/if}}
