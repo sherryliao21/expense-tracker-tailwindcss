@@ -1,4 +1,5 @@
 <div class="flex-col m-auto w-full h-full mb-80">
+  {{> message}}
   <div class="images mx-auto mt-16">
     {{#if record}}
     <div class="banner" style="background-image: url('/assets/naruto_wallet_2.jpeg');"></div>
@@ -94,7 +95,7 @@
           <span class="text-md">Title</span>
           <input type="text"
             class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
-            placeholder="Lunch" id="name" name="name" required>
+            placeholder="Lunch" id="name" name="name" pattern="^\S+$" required>
         </label>
         <label class="block mb-4" for="date">
           <span class="text-md">Date</span>
@@ -119,7 +120,7 @@
           <span class="text-md">Merchant</span>
           <input type="text"
             class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
-            placeholder="Lunch" id="merchant" name="merchant" required>
+            placeholder="Lunch" id="merchant" pattern="^\S+$" name="merchant" required>
         </label>
         <label class="block mb-4" for="amount">
           <span class="text-md">Amount</span>
