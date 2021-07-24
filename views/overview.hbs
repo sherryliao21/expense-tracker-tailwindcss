@@ -1,0 +1,144 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/home.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"></script>
+</head>
+
+<div class="overview-container mb-4">
+  <div class="chat-record mt-28">
+    <div class="flex flex-col align-middle">
+      <h1 class="overview-title mt-5 mb-5 m-auto text-gray-600 text-3xl font-bold">Overview</h1>
+      <form action="/overview/filter?type={{type}}&date={{date}}&category={{category}}&page=1" onchange="submit()"
+        class="w-4/5 h-40 md:w-8/12 max-w-md m-auto rounded-xl bg-opacity-80 text-gray-600 bg-white shadow-md">
+        <div class="type flex justify-around text-xl py-4">
+          <div class="form-check inline-block">
+            <label class="inline-flex items-center" for="income">
+              <input type="radio" class="form-radio text-indigo-600" name="type" id="income" value="income" {{#if
+                (isSelected type 'income' ) }}checked{{/if}}>
+              <span class="ml-2">Income</span>
+            </label>
+          </div>
+          <div class="form-check inline-block">
+            <label class="inline-flex items-center" for="expense">
+              <input type="radio" class="form-radio text-indigo-600" name="type" id="expense" value="expense" {{#if
+                (isSelected type 'expense' ) }}checked{{/if}}>
+              <span class="ml-2">Expense</span>
+            </label>
+          </div>
+          <div class="form-check inline-block">
+            <label class="inline-flex items-center" for="total">
+              <input type="radio" class="form-radio text-indigo-600" name="type" id="total" value="total" {{#if
+                (isSelected type 'total' ) }}checked{{/if}}>
+              <span class="ml-2">Total</span>
+            </label>
+          </div>
+        </div>
+        <div class="month-category w-4/5 md:w-8/12 max-w-md m-auto text-lg">
+          <div class="select w-full">
+            <label class="flex mb-2" for="month">
+              <span class="text-gray-700 mr-2">Month</span>
+              <select class="form-select block text-sm py-1 px-2 rounded-lg w-80 ml-5 border-gray-200 border-2"
+                name="date" id="month">
+                <option value="all" name="all" {{#if (isSelected date 'all' ) }}selected{{/if}}>All Months</option>
+                {{#each monthOptions}}
+                <option value="{{this}}" name="{{this}}" {{#if (isSelected ../date this ) }}selected{{/if}}>{{this}}
+                </option>
+                {{/each}}
+              </select>
+            </label>
+            <label class="flex" for="category">
+              <span class="text-gray-700 mr-2">Category</span>
+              <select class="form-select block text-sm py-1 px-2 rounded-lg w-full border-gray-200 border-2"
+                name="category" id="category">
+                <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>All Categories
+                </option>
+                {{#each categoryOptions}}
+                <option value="{{this}}" name="{{this}}" {{#if (isSelected ../category this ) }}selected{{/if}}>
+                  {{this}}
+                </option>
+                {{/each}}
+              </select>
+            </label>
+          </div>
+        </div>
+      </form>
+      <div class="category-amount" hidden>{{categoryAmount}}</div>
+    </div>
+  </div>
+  <div
+    class="total-amount-container flex justify-center py-5 m-auto mt-10 bg-white rounded-lg h-20 w-4/5 md:w-3/5 max-w-md bg-opacity-80 text-yellow-500 font-bold text-3xl shadow-md">
+    Total：<span class="total-amount">{{ totalAmount }}</span>
+  </div>
+  <div class="block m-auto mt-16">
+    <div class="chart-container h-96 w-96 m-auto">
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="flex flex-col align-middle">
+      <div class="record-table w-4/5 md:w-3/5 max-w-md m-auto mt-16 p-2 rounded-lg shadow-lg bg-white  overflow-auto">
+        <div class="flex flex-col">
+          <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Title & Date
+                    </th>
+                    <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      From
+                    </th>
+                    <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Amount
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                  {{#each records}}
+                  <tr>
+                    <td class="py-4 whitespace-nowrap flex justify-start align-middle">
+                      <div class="category my-2 mx-4 lg:mx-6">
+                        <i class="{{this.icon}} {{#if (isSelected this.recordType 'expense' ) }}text-yellow-500
+                        {{else}} text-green-400 {{/if}}"></i>
+                      </div>
+                      <div class="title-date">
+                        <div class="text-sm text-gray-900">{{this.name}}</div>
+                        <div class="text-sm text-gray-500">{{this.date}}</div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="text-sm text-gray-900">{{this.merchant}}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{#if (isSelected this.recordType 'expense' ) }}text-green-800
+                        {{else}}text-yellow-600 {{/if}}">
+                        {{#if (isSelected this.amount 'expense') }}
+                        {{this.amount}}
+                        {{else}}
+                        {{this.amount}}
+                        {{/if}}
+                      </span>
+                    </td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav aria-label="Page navigation" class="m-auto w-4/5 mt-10">
+        <ul class="pagination flex justify-center rounded-lg" id="paginator">
+          {{#each pages}}
+          <li class="page-item  bg-white h-8 w-8 text-yellow-500 rounded flex justify-center"><a
+              class="page-link m-auto"
+              href="/overview/filter?type={{ ../type }}&date={{ ../date }}&category={{ ../category }}&page={{this}}">{{this}}</a>
+          </li>
+          {{/each}}
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <script src="/javascripts/overview.js"></script>
