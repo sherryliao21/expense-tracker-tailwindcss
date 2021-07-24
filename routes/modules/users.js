@@ -10,132 +10,125 @@ const multer = require('multer') // file upload middleware
 const upload = multer({ dest: 'temp/' }) // upload to temp folder
 
 router.get('/login', (req, res) => {
-  res.render('login')
+	res.render('login')
 })
 
 router.get('/register', (req, res) => {
-  res.render('register')
+	res.render('register')
 })
 
 router.get('/logout', (req, res) => {
-  req.logOut() // a function which eliminates this session at the moment, provided by passport.js
-  req.flash('success_msg', '你已成功登出！')
-  res.redirect('/users/login')
+	req.logOut() // a function which eliminates this session at the moment, provided by passport.js
+	req.flash('success_msg', '你已成功登出！')
+	res.redirect('/users/login')
 })
 
 router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/users/login',
-    failureFlash: true,
-  })
+	'/login',
+	passport.authenticate('local', {
+		successRedirect: '/',
+		failureRedirect: '/users/login',
+		failureFlash: true
+	})
 )
 
 router.post('/register', async (req, res) => {
-  try {
-    const { name, email, password, confirmPassword } = req.body
-    const errors = []
-    if (!name || !email || !password || !confirmPassword) {
-      errors.push({ message: '所有欄位都是必填！' })
-    }
-    if (password !== confirmPassword) {
-      errors.push({ message: '密碼與確認密碼不一致！' })
-    }
-    if (errors.length) {
-      return res.render('register', {
-        errors,
-        name,
-        email,
-        password,
-        confirmPassword,
-      })
-    }
-    const user = await User.findOne({ email })
-    if (user) {
-      errors.push({ message: '此信箱已註冊過' })
-      res.render('login', {
-        errors,
-        name,
-        email,
-        password,
-        confirmPassword,
-      })
-    } else {
-      const salt = await bcrypt.genSalt(10)
-      const hash = await bcrypt.hash(password, salt)
-      await User.create({
-        name,
-        email,
-        password: hash,
-      })
-      return res.redirect('/')
-    }
-  } catch (error) {
-    console.log(error)
-  }
+	try {
+		const { name, email, password, confirmPassword } = req.body
+		const errors = []
+		if (!name || !email || !password || !confirmPassword) {
+			errors.push({ message: '所有欄位都是必填！' })
+		}
+		if (password !== confirmPassword) {
+			errors.push({ message: '密碼與確認密碼不一致！' })
+		}
+		if (errors.length) {
+			return res.render('register', {
+				errors,
+				name,
+				email,
+				password,
+				confirmPassword
+			})
+		}
+		const user = await User.findOne({ email })
+		if (user) {
+			errors.push({ message: '此信箱已註冊過' })
+			res.render('login', {
+				errors,
+				name,
+				email,
+				password,
+				confirmPassword
+			})
+		} else {
+			const salt = await bcrypt.genSalt(10)
+			const hash = await bcrypt.hash(password, salt)
+			await User.create({
+				name,
+				email,
+				password: hash
+			})
+			return res.redirect('/')
+		}
+	} catch (error) {
+		console.log(error)
+	}
 })
 
 router.route('/settings/edit').get(authenticator, async (req, res) => {
-  try {
-    const { _id } = req.user
-    const user = await User.findOne({ _id }).lean()
-    return res.render('settings', {
-      user,
-    })
-  } catch (error) {
-    console.log(error)
-  }
+	try {
+		const { _id } = req.user
+		const user = await User.findOne({ _id }).lean()
+		return res.render('settings', {
+			user
+		})
+	} catch (error) {
+		console.log(error)
+	}
 })
 
 router
-  .route('/settings')
-  .put(authenticator, upload.single('avatar'), async (req, res) => {
-    try {
-      const { _id } = req.user
-      const user = await User.findOne({ _id })
+	.route('/settings')
+	.put(authenticator, upload.single('avatar'), async (req, res) => {
+		try {
+			const { _id } = req.user
+			const user = await User.findOne({ _id })
 
-      const { name, newPassword, confirmPassword } = req.body
+			const { name } = req.body
 
-      const errors = []
-      if (!name || !newPassword || !confirmPassword) {
-        errors.push({ message: '所有欄位都是必填！' })
-      }
-      if (newPassword !== confirmPassword) {
-        errors.push({ message: '密碼與確認密碼不一致！' })
-      }
+			const errors = []
+			if (!name) {
+				errors.push({ message: '所有欄位都是必填！' })
+			}
 
-      if (errors.length) {
-        return res.render('settings', {
-          errors,
-          user: user.toJSON(),
-        })
-      }
+			if (errors.length) {
+				return res.render('settings', {
+					errors,
+					user: user.toJSON()
+				})
+			}
 
-      const salt = await bcrypt.genSalt(10)
-      const hash = await bcrypt.hash(newPassword, salt)
-      user.name = name || user.name
-      user.email = user.email
-      user.password = hash
+			user.name = name || user.name
 
-      const file = req.file
-      if (file) {
-        imgur.setClientID(IMGUR_CLIENT_ID)
-        await new Promise((resolve, reject) => {
-          imgur.upload(file.path, (err, img) => {
-            resolve((user.avatar = img.data.link))
-          })
-        })
-      } else {
-        user.avatar = user.avatar
-      }
+			const file = req.file
+			if (file) {
+				imgur.setClientID(IMGUR_CLIENT_ID)
+				await new Promise((resolve, reject) => {
+					imgur.upload(file.path, (err, img) => {
+						resolve((user.avatar = img.data.link))
+					})
+				})
+			} else {
+				user.avatar = user.avatar
+			}
 
-      await user.save()
+			await user.save()
 
-      return res.redirect('/')
-    } catch (error) {
-      console.log(error)
-    }
-  })
+			return res.redirect('/')
+		} catch (error) {
+			console.log(error)
+		}
+	})
 
 module.exports = router

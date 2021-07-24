@@ -6,7 +6,8 @@
     <div class="new-img h-80 w-full bg-cover" style="background-image: url('/naruto_wallet.jpg');"></div>
     {{/if}}
   </div>
-  <div class="form-container m-auto mt-16 w-10/12 h-5/6 md:w-8/12 max-w-lg bg-white rounded-lg shadow-lg flex-col">
+  <div
+    class="form-container overflow-auto m-auto mt-16 w-10/12 h-5/6 md:w-8/12 max-w-lg bg-white rounded-lg shadow-lg flex-col">
     <div class="title flex justify-center align-middle relative">
       <img src="/assets/konoha.png" alt="konoha-symbol" class="h-5 w-5 my-auto absolute top-8 mr-28">
       <h1 class="text-center mt-6 mb-3 text-3xl font-bold tracking-wider pl-5">{{#if record}}Edit{{else}}New{{/if}}</h1>
@@ -142,60 +143,3 @@
     {{/if}}
   </div>
 </div>
-
-
-{{!-- <div class="container col-4 d-flex flex-column justify-content-center align-items-center mt-5">
-  {{#if record }}
-  <h1 class="title">編輯單筆紀錄</h1>
-  <form action="/records/{{ record._id }}?_method=PUT" method="POST" class="mt-4">
-    <div class="d-flex flex-column">
-      <div class="d-flex row justify-content-center type-checkbox">
-        <div class="form-check col-lg-3">
-          <input class="form-check-input" type="radio" name="type" id="income" value="income" {{#if (isSelected
-            record.recordType 'income' ) }}checked{{/if}}>
-          <label class="form-check-label" for="income">
-            收入
-          </label>
-        </div>
-        <div class="form-check col-lg-3">
-          <input class="form-check-input" type="radio" name="type" id="expense" value="expense" {{#if (isSelected
-            record.recordType 'expense' ) }}checked{{/if}}>
-          <label class="form-check-label" for="expense">
-            支出
-          </label>
-        </div>
-      </div>
-      <div class="labels d-flex flex-column justify-content-between align-items-center mt-1">
-        <div class="name d-flex align-items-center mb-2">
-          <label class="label" for="name">名稱：</label>
-          <input type="text" class="form-control" placeholder="名稱" name="name" value="{{ record.name }}">
-        </div>
-        <div class="date d-flex align-items-center mb-2">
-          <label class="label-long" for="date">日期：</label>
-          <input type="date" class="form-control form-date" placeholder="日期" name="date" value="{{ record.date }}">
-        </div>
-        <div class="category d-flex justify-content-center align-items-center mb-2">
-          <label class="label-long" for="category">類別：</label>
-          <select class="form-select form-control" name="category" aria-label=".form-select-lg example">
-            {{#each categoryOptions}}
-            <option value="{{this}}" name="{{this}}" {{#if (isSelected ../record.category this ) }}selected{{/if}}>
-              {{this}}</option>
-            {{/each}}
-          </select>
-        </div>
-        <div class="merchant d-flex align-items-center mb-2">
-          <label class="label" for="merchant">商家：</label>
-          <input type="text" class="form-control" placeholder="商家名稱" name="merchant" value="{{ record.merchant }}">
-        </div>
-        <div class="amount d-flex align-items-center mb-2">
-          <label class="label" for="amount">金額：</label>
-          <input type="number" class="form-control amount" placeholder="金額" name="amount" value="{{ record.amount }}">
-        </div>
-      </div>
-    </div>
-    <div class="buttons d-flex justify-content-around mb-3">
-      <button type="submit" class="submit-new-btn btn mt-4" onclick="return checkForm()">儲存</button>
-      <a href='/' class="btn mt-4 back-btn">返回 </a>
-    </div>
-  </form>
-</div> --}}
