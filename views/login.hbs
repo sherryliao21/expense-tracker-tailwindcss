@@ -1,31 +1,27 @@
-<div class="w-screen h-screen flex align-middle text-gray-700">
-	<div class="login-container m-auto w-10/12 h-2/3 md:h-1/2 md:w-8/12 max-w-lg bg-white rounded-lg shadow-lg flex-col">
+<div class="container-settings">
+	<div class="login-container forms-bg w-10/12 h-2/3 md:h-1/2">
 		<div class="title flex justify-center align-middle relative">
-			<img src="/assets/konoha.png" alt="konoha-symbol" class="h-5 w-5 my-auto absolute top-8 mr-28">
-			<h1 class="text-center mt-6 mb-3 text-3xl font-bold tracking-wider pl-5">Login</h1>
+			<img src="/assets/konoha.png" alt="konoha-symbol" class="konoha-symbol top-8 mr-28">
+			<h1 class="lr-forms-title mt-6 mb-3">Login</h1>
 		</div>
-		<form class="input-group w-8/12 m-auto" action="/users/login" method="POST">
+		<form class="lr-form" action="/users/login" method="POST">
 			<label class="block mb-4" for="email">
 				<span class="text-md">Email</span>
-				<input type="email"
-					class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
-					placeholder="john@example.com" id="email" name="email" required>
+				<input type="email" class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus:ring-yellow-300"
+					placeholder="naruto@example.com" id="email" name="email" required>
 			</label>
 			<label class="block mb-8" for="password">
 				<span>Password</span>
 				<input type="password"
-					class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+					class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus:ring-yellow-300"
 					placeholder="12345678" id="password" name="password" required>
 			</label>
 			<div class="login-btns flex-col">
-				<button type="submit"
-					class="submit block m-auto px-5 py-1 w-full rounded-full shadow-sm bg-yellow-500 text-white mb-2 hover:bg-yellow-600">Login</button>
-				<a href="/auth/google"
-					class="btn-login m-auto px-5 py-1 w-full rounded-full shadow-sm border-2 flex justify-center mb-2">
+				<button type="submit" class="lr-submit hover:bg-yellow-600">Login</button>
+				<a href="/auth/google" class="btn-login mb-2">
 					Login
 					with <img src="/google.svg" alt="google_logo" class="google ml-2" width=20 height=20></a>
-				<a href="/auth/facebook"
-					class="btn-login m-auto px-5 py-1 w-full rounded-full shadow-sm border-2 flex justify-center mb-3">Login
+				<a href="/auth/facebook" class="btn-login mb-3">Login
 					with
 					<img src="/facebook.svg" alt="facebook_logo" class="facebook ml-2" width=24 height=24></a>
 			</div>

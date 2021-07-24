@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	/* Login & Register Page */
+	.container-settings {
+		@apply w-screen h-screen flex align-middle text-gray-700;
+	}
+	.forms-bg {
+		@apply md:w-8/12 max-w-lg bg-white rounded-lg shadow-lg flex-col m-auto;
+	}
+	.konoha-symbol {
+		@apply h-5 w-5 my-auto absolute;
+	}
+	.lr-forms-title {
+		@apply text-center font-bold tracking-wider pl-5 text-3xl;
+	}
+	.lr-form {
+		@apply w-8/12 m-auto;
+	}
+	.form-input {
+		@apply mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl;
+	}
+	.lr-submit {
+		@apply block m-auto px-5 py-1 w-full rounded-full shadow-sm bg-yellow-500 text-white mb-2;
+	}
+	.btn-login {
+		@apply m-auto px-5 py-1 w-full rounded-full shadow-sm border-2 flex justify-center;
+	}
+  
+}
