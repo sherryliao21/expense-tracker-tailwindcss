@@ -13,13 +13,13 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
-<body class="relative w-screen min-h-screen bg-yellow-200">
+<body class="relative w-screen  bg-yellow-200">
   {{!-- <div class="background-overlay bg-white w-screen h-screen"></div> --}}
   <header>
     <nav
       class="navbar w-full h-16 margin-auto bg-gray-800 shadow-lg fixed top-0 flex justify-between align-middle z-10">
       <div class="navbar-brand {{#if isAuthenticated}}{{else}}m-auto{{/if}} w-3/5 grid grid-cols-5">
-        <div class="user-name m-auto col-span-3  md:col-span-2">
+        <div class="user-name m-auto {{#if isAuthenticated}}col-span-3{{/if}} col-span-5  md:col-span-2">
           <a href="/" class="m-auto text-xl text-gray-200">
             {{#if isAuthenticated}}{{user.name}}
             の 記帳本
@@ -68,10 +68,12 @@
   </header>
   {{> message}}
   {{{body}}}
-  <footer class="w-screen h-16 bg-gray-700 flex justify-center align-middle">
-    <span class="footer-text text-gray-200 m-auto">Made with
+  <footer class="inline-block w-screen h-16 bg-gray-700 mt-36 lg:mt-0">
+    <div class="flex justify-center p-5 text-gray-200">
+      Made with
       <span class="text-red-400">&#9829;</span>
-      by Sherry Liao &copy; 2021</span>
+      by Sherry Liao &copy; 2021
+    </div>
   </footer>
   <script type="text/javascript" src="/javascripts/utility.js"></script>
   <script src="/javascripts/main.js"></script>
