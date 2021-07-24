@@ -2,23 +2,22 @@
   <div class="w-screen h-screen text-gray-500 flex-col min-h-screen mb-96 lg:mb-0">
     <div class="grid h-screen lg:grid-cols-2 lg:mt-36">
       <div class="left-container h-full">
-        <div class="froggy-wallet flex justify-center align-middle mt-16 mx-auto w-3/6 h-72 relative">
-          <div
-            class="add-new-btn flex justify-center align-middle absolute -bottom-8 -right-4 text-3xl bg-yellow-500 h-20 w-20 rounded-full text-white shadow-lg  hover:bg-yellow-600  hover:translate-x-1 hover:translate-y-1 transform">
+        <div class="froggy-wallet">
+          <div class="add-new-btn hover:bg-yellow-600  hover:translate-x-1 hover:translate-y-1 ">
             <a class="m-auto" href="/records/new">
               <i class="fas fa-pen"></i></a>
           </div>
           <img src="/assets/froggy.png" alt="froggy-wallet" class="h-full w-64">
         </div>
-        <div class="total-amount w-4/5 h-40 m-auto flex justify-center items-center text-gray-700">
+        <div class="balance-container">
           <h1 class="text-xl font-bold">Balance <span id="total-amount-display"
               class="text-yellow-500 text-7xl font-medium ml-6">{{
               totalAmount
               }}</span></h1>
         </div>
         <form action="/filter?type={{type}}&date={{date}}&category={{category}}&page=1" onchange="submit()"
-          class="w-4/5 h-40 md:4/5 max-w-md m-auto rounded-xl bg-opacity-80 text-gray-600 bg-white">
-          <div class="type flex justify-around text-xl py-4">
+          class="filter-container">
+          <div class="type">
             <div class="form-check inline-block">
               <label class="inline-flex items-center" for="income">
                 <input type="radio" class="form-radio text-yellow-600" name="type" id="income" value="income" {{#if
@@ -41,12 +40,11 @@
               </label>
             </div>
           </div>
-          <div class="month-category w-4/5 md:w-8/12 max-w-md m-auto text-lg">
+          <div class="month-category">
             <div class="select w-full">
               <label class="flex mb-2" for="month">
                 <span class="text-gray-700 mr-2">Month</span>
-                <select class="form-select block text-sm py-1 px-2 rounded-lg w-80 ml-5 border-gray-200 border-2"
-                  name="date" id="month">
+                <select class="form-select" name="date" id="month">
                   <option value="all" name="all" {{#if (isSelected date 'all' ) }}selected{{/if}}>All Months</option>
                   {{#each monthOptions}}
                   <option value="{{this}}" name="{{this}}" {{#if (isSelected ../date this ) }}selected{{/if}}>{{this}}
@@ -56,8 +54,7 @@
               </label>
               <label class="flex" for="category">
                 <span class="text-gray-700 mr-2">Category</span>
-                <select class="form-select block text-sm py-1 px-2 rounded-lg w-full border-gray-200 border-2"
-                  name="category" id="category">
+                <select class="form-select" name="category" id="category">
                   <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>All Categories
                   </option>
                   {{#each categoryOptions}}
@@ -72,23 +69,20 @@
         </form>
       </div>
       <div class="right-container h-full lg:py-20">
-        <div class="record-table w-4/5 m-auto mt-16 p-2 rounded-lg shadow-lg bg-white overflow-auto">
+        <div class="table-container">
           <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <table class="min-w-full divide-y divide-gray-200 lg:text-4xl">
                   <thead class="bg-gray-50">
                     <tr>
-                      <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" class="th-title">
                         Title & Date
                       </th>
-                      <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" class="th-title">
                         From
                       </th>
-                      <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" class="th-title">
                         Amount
                       </th>
                       <th scope="col" class="relative px-6 py-3">
@@ -99,7 +93,7 @@
                   <tbody class="bg-white divide-y divide-gray-200">
                     {{#each records}}
                     <tr>
-                      <td class="py-4 whitespace-nowrap flex justify-start align-middle">
+                      <td class="td-content flex justify-start align-middle">
                         <div class="category my-2 mx-4 lg:mx-6">
                           <i class="{{this.icon}} {{#if (isSelected this.recordType 'expense' ) }}text-yellow-500
                       {{else}} text-green-400 {{/if}}"></i>
@@ -109,10 +103,10 @@
                           <div class="text-sm text-gray-500">{{this.date}}</div>
                         </div>
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
+                      <td class="px-6 td-content">
                         <div class="text-sm text-gray-900">{{this.merchant}}</div>
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
+                      <td class="px-6 td-content">
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{#if (isSelected this.recordType 'expense' ) }}text-green-800
                     {{else}}text-yellow-600 {{/if}}">
                           {{#if (isSelected this.amount 'expense') }}
@@ -122,7 +116,7 @@
                           {{/if}}
                         </span>
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex space-x-4">
+                      <td class="px-6 td-content text-right text-sm font-medium flex space-x-4">
                         <a href="./records/{{ this._id }}/edit" class="edit-btn text-yellow-500">Edit</a>
                         <form action="/records/{{ this._id }}?_method=DELETE" method="POST"
                           class="d-flex align-items-center delete-record">
@@ -139,9 +133,9 @@
           </div>
         </div>
         <nav aria-label="Page navigation" class="m-auto w-4/5 mt-10">
-          <ul class="pagination flex justify-center rounded-lg" id="paginator">
+          <ul class="pagination " id="paginator">
             {{#each pages}}
-            <li class="page-item  bg-white h-8 w-8 text-yellow-500 rounded flex justify-center"><a
+            <li class="page-item"><a
                 class="page-link m-auto"
                 href="/filter?type={{ ../type }}&date={{ ../date }}&category={{ ../category }}&page={{this}}">{{this}}</a>
             </li>
