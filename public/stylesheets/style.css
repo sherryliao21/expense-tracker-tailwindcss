@@ -1136,6 +1136,45 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+/* Message Template */
+
+.message {
+  position: absolute;
+  top: -5rem;
+  left: 3.5rem;
+  margin: auto;
+  display: flex;
+  height: 4rem;
+  width: 80%;
+  justify-content: center;
+  border-radius: 0.375rem;
+  border-width: 4px;
+}
+
+@media (min-width: 1024px) {
+  .message {
+    top: -7rem;
+  }
+}
+
+.alert-success {
+  --tw-border-opacity: 1;
+  border-color: rgba(110, 231, 183, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(209, 250, 229, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(4, 120, 87, var(--tw-text-opacity));
+}
+
+.alert-warning {
+  --tw-border-opacity: 1;
+  border-color: rgba(252, 165, 165, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(254, 226, 226, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(185, 28, 28, var(--tw-text-opacity));
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

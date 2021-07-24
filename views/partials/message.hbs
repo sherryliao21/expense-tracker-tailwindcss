@@ -1,55 +1,25 @@
 {{#if success_msg}}
-  <div class="row d-flex justify-content-center m-0">
-    <div
-      class="alert alert-warning alert-dismissible fade show col-8"
-      role="alert"
-    >
-      {{success_msg}}
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+<div class="message alert-success">
+  <div class="m-auto" role="alert">
+    {{success_msg}}
   </div>
+</div>
 {{/if}}
 
 {{#if warning_msg}}
-  <div class="row d-flex justify-content-center m-0">
-    <div
-      class="alert alert-warning alert-dismissible fade show col-8"
-      role="alert"
-    >
-      {{warning_msg}}
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+<div class="message alert-warning">
+  <div class="m-auto" role="alert">
+    {{warning_msg}}
   </div>
+</div>
 {{/if}}
 
 {{#if errors}}
-  <div class="row d-flex justify-content-center col-8 m-0">
-    {{#each errors}}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{this.message}}
-        <button
-          type="button"
-          class="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    {{/each}}
+<div class="message alert-warning">
+  {{#each errors}}
+  <div class="m-auto" role="alert">
+    {{this.message}}
   </div>
+  {{/each}}
+</div>
 {{/if}}

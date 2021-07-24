@@ -89,4 +89,15 @@
 	.back-btn {
 		@apply mt-4 py-3 w-full rounded-full shadow-sm bg-gray-500 text-white text-xl mb-2 flex justify-center;
 	}
+
+	/* Message Template */
+	.message {
+		@apply flex justify-center m-auto absolute -top-20 lg:-top-28 left-14 h-16 w-4/5 border-4 rounded-md;
+	}
+	.alert-success {
+		@apply bg-green-100 text-green-700  border-green-300;
+	}
+	.alert-warning {
+		@apply bg-red-100 text-red-700 border-red-300;
+	}
 }
