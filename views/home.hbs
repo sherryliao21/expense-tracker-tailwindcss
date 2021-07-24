@@ -34,7 +34,7 @@
             </div>
             <div class="form-check inline-block">
               <label class="inline-flex items-center" for="total">
-                <input type="radio" class="form-radio text-indigo-600" name="type" id="total" value="total" {{#if
+                <input type="radio" class="form-radio text-yellow-600" name="type" id="total" value="total" {{#if
                   (isSelected type 'total' ) }}checked{{/if}}>
                 <span class="ml-2">Total</span>
               </label>
@@ -135,8 +135,7 @@
         <nav aria-label="Page navigation" class="m-auto w-4/5 mt-10">
           <ul class="pagination " id="paginator">
             {{#each pages}}
-            <li class="page-item"><a
-                class="page-link m-auto"
+            <li class="page-item"><a class="page-link m-auto"
                 href="/filter?type={{ ../type }}&date={{ ../date }}&category={{ ../category }}&page={{this}}">{{this}}</a>
             </li>
             {{/each}}
