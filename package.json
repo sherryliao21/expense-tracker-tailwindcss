@@ -1,33 +1,37 @@
 {
-  "name": "expense-tracker",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "seed": "node models/seeds/categorySeeder.js && node models/seeds/recordSeeder.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "chart.js": "^3.4.1",
-    "connect-flash": "^0.1.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
-    "express-session": "^1.17.1",
-    "imgur-node-api": "^0.1.0",
-    "method-override": "^3.0.0",
-    "mongoose": "^5.11.14",
-    "multer": "^1.4.2",
-    "passport": "^0.4.1",
-    "passport-facebook": "^3.0.0",
-    "passport-google-oauth": "^2.0.0",
-    "passport-local": "^1.0.0"
-  }
+	"name": "expense-tracker",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js",
+		"dev": "nodemon app.js",
+		"seed": "node models/seeds/categorySeeder.js && node models/seeds/recordSeeder.js",
+		"tailwind:build": "postcss public/styles/tailwind.css -o public/styles/style.css"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"autoprefixer": "^10.3.1",
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.19.0",
+		"chart.js": "^3.4.1",
+		"connect-flash": "^0.1.1",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-handlebars": "^5.2.0",
+		"express-session": "^1.17.1",
+		"imgur-node-api": "^0.1.0",
+		"method-override": "^3.0.0",
+		"mongoose": "^5.11.14",
+		"multer": "^1.4.2",
+		"passport": "^0.4.1",
+		"passport-facebook": "^3.0.0",
+		"passport-google-oauth": "^2.0.0",
+		"passport-local": "^1.0.0",
+		"postcss": "^8.3.6",
+		"postcss-cli": "^8.3.1",
+		"tailwindcss": "^2.2.7"
+	}
 }
