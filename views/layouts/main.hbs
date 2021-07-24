@@ -1,105 +1,70 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{#if isAuthenticated}}{{user.name}}
-        の 記帳本
-      {{else}}
-        私 の 記帳本
-      {{/if}}</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
-      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{#if isAuthenticated}}{{user.name}}
+    の 記帳本
+    {{else}}
+    私 の 記帳本
+    {{/if}}</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
 
-  </head>
-
-  <body>
-    <div class="background-overlay"></div>
-    <nav class="navbar navbar-secondary">
-      <div class="container-fluid d-flex justify-content-start">
-        {{#if isAuthenticated}}
-          <input type="checkbox" class="navbar-toggle" id="navbar-toggle" />
-          <nav class="nav-settings">
-            <ul class="nav-list">
-              <li class="nav-item nav-item-avatar">
-                <img class="avatar" src="{{user.avatar}}" alt="user-avatar" />
-              </li>
-              <li class="nav-item nav-item-name">
-                {{#if isAuthenticated}}{{user.name}}{{/if}}
-              </li>
-              <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-              <li class="nav-item"><a
-                  class="nav-link"
-                  href="/users/settings/edit"
-                >Account Settings</a></li>
-              <li class="nav-item"><a class="nav-link" href="/analysis">Charts /
-                  Analysis</a></li>
-              <li class="nav-item">
-                <a class="nav-link" href="/users/logout">Logout</a>
-              </li>
-            </ul>
-          </nav>
-          <label class="navbar-toggle-label" for="navbar-toggle">
-            <span class="hamburger"></span>
-          </label>
-        {{/if}}
-        <span class="greetings">{{#if isAuthenticated}}Hi,
-            {{user.name}}{{/if}}</span>
-        {{#if isAuthenticated}}
-          <img
-            src="{{user.avatar}}"
-            alt="user_avatar"
-            class="user-avatar"
-          />
-        {{/if}}
-        <a class="navbar-brand" href="/">
+<body class="relative w-screen min-h-screen bg-green-400">
+  <div class="background-overlay" hidden></div>
+  <header>
+    <nav
+      class="navbar w-full h-16 margin-auto bg-gray-800 shadow-lg fixed top-0 flex justify-between align-middle z-10">
+      <div class="navbar-brand {{#if isAuthenticated}}{{else}}m-auto{{/if}} flex align-middle w-60">
+        <a href="/" class="m-auto text-xl text-gray-200">
           {{#if isAuthenticated}}{{user.name}}
-            の 記帳本
+          の 記帳本
           {{else}}
-            私 の 記帳本
+          私 の 記帳本
           {{/if}}
         </a>
-        {{#if isAuthenticated}}
-          {{! <a href="/users/logout" class="btn btn-outline-light">Logout</a> }}
-        {{else}}
-          <a href="/users/login" class="btn btn-outline-light">Login</a>
-        {{/if}}
       </div>
+      {{#if isAuthenticated}}
+      <div class="hamburger-list-items flex justify-start items-center text-white">
+        <input type="checkbox" class="navbar-toggle hidden absolute" id="navbar-toggle" />
+        <label class="navbar-toggle-label flex items-center" for="navbar-toggle">
+          <span class="user-name mr-4"><i class="fas fa-caret-down mr-2"></i>{{user.name}}</span>
+          <img src="{{user.avatar}}" alt="user-avatar" class="user-avatar rounded-full w-10 h-10 mr-4" />
+        </label>
+        {{!-- come back and fix this --}}
+        <nav class="nav-settings bg-gray-50 text-gray-500 z-50 w-screen h-screen hidden">
+          <ul class="nav-list w-full py-12 list-none flex-col align-middle">
+            <li class="nav-item nav-item-avatar">
+              <img class="avatar rounded-full h-20 w-20" src="{{user.avatar}}" alt="user-avatar" />
+            </li>
+            <li class="nav-item nav-item-name">
+              {{#if isAuthenticated}}{{user.name}}{{/if}}
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/users/settings/edit">Account Settings</a></li>
+            <li class="nav-item"><a class="nav-link" href="/analysis">Charts /
+                Analysis</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/logout">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      {{/if}}
     </nav>
-    {{{body}}}
-    <footer>
-      <span id="footer-text">Made with
-        <span style="color: #e25555;">&#9829;</span>
-        by Sherry Liao &copy; 2021</span>
-    </footer>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-      crossorigin="anonymous"
-    ></script>
-    <script type="text/javascript" src="/javascripts/utility.js"></script>
-    <script src="/javascripts/main.js"></script>
-  </body>
+  </header>
+  {{> message}}
+  {{{body}}}
+  <footer class="w-screen h-16 bg-gray-700 flex justify-center align-middle">
+    <span class="footer-text text-gray-200 m-auto">Made with
+      <span class="text-red-400">&#9829;</span>
+      by Sherry Liao &copy; 2021</span>
+  </footer>
+  <script type="text/javascript" src="/javascripts/utility.js"></script>
+  <script src="/javascripts/main.js"></script>
+</body>
 
 </html>

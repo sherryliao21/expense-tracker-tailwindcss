@@ -1,100 +1,154 @@
-<head>
-  <link rel="stylesheet" href="/stylesheets/home.css">
-</head>
-
-<div class="home-container">
-  <div class="container d-flex flex-column justify-content-start mt-5">
-    <div class="filter d-flex justify-content-between">
-      <form action="/filter?type={{type}}&date={{date}}&category={{category}}&page=1" class="row d-flex align-items-center justify-content-around mb-3" onchange="submit()">
-        <div class="form-check col-lg-1">
-          <input class="form-check-input" type="radio" name="type" id="income" value="income"{{#if (isSelected type 'income' ) }}checked{{/if}}>
-          <label class="form-check-label" for="income">
-            收入
-          </label>
+<div class="home-container mb-96">
+  <div class="w-screen h-screen text-gray-500 flex-col">
+    <div class="grid lg:grid-cols-2 lg:mt-36">
+      <div class="left-container">
+        <div class="froggy-wallet flex justify-center align-middle mt-16 mx-auto w-3/6 h-72 relative">
+          <div
+            class="add-new-btn flex justify-center align-middle absolute -bottom-8 -right-4 text-3xl bg-yellow-500 h-20 w-20 rounded-full text-white shadow-lg z-30 hover:bg-yellow-600  hover:translate-x-1 hover:translate-y-1 transform">
+            <a class="m-auto" href="/records/new">
+              <i class="fas fa-pen"></i></a>
+          </div>
+          <img src="/assets/froggy.png" alt="froggy-wallet" class="h-full w-50">
         </div>
-        <div class="form-check col-lg-1">
-          <input class="form-check-input" type="radio" name="type" id="expense" value="expense"{{#if (isSelected type 'expense' ) }}checked{{/if}}>
-          <label class="form-check-label" for="expense">
-            支出
-          </label>
+        <div class="total-amount w-4/5 h-40 m-auto flex justify-center items-center text-gray-700">
+          <h1 class="text-xl font-bold">Balance <span id="total-amount-display"
+              class="text-yellow-500 text-7xl font-medium ml-6">{{
+              totalAmount
+              }}</span></h1>
         </div>
-        <div class="form-check col-lg-1">
-          <input class="form-check-input" type="radio" name="type" id="total" value="total" {{#if (isSelected type 'total' ) }}checked{{/if}}>
-          <label class="form-check-label" for="total">
-            全部
-          </label>
-        </div>
-        <label for="month">月份：</label>
-        <select class="form-select-month form-control col-lg-2" aria-label=".form-select-lg example" name="date"
-          id="month">
-          <option value="all" name="all" {{#if (isSelected date 'all' ) }}selected{{/if}}>全部</option>
-          {{#each monthOptions}}
-          <option value="{{this}}" name="{{this}}" {{#if (isSelected ../date this ) }}selected{{/if}}>{{this}}
-          </option>
-          {{/each}}
-        </select>
-        <label for="category">類別：</label>
-        <select class="form-category form-select form-control col-lg-2" aria-label=".form-select-lg example"
-          name="category" id="category">
-          <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>全部</option>
-          {{#each categoryOptions }}
-          <option value="{{this}}" name="{{this}}" {{#if (isSelected ../category this ) }}selected{{/if}}>{{this}}
-          </option>
-          {{/each}}
-        </select>
-      </form>
-    </div>
-    <div class="d-flex justify-content-between mt-3 row">
-      <div class="col-sm-4">
-        <h2 id="total-amount">總金額：</h2>
+        <form action="/filter?type={{type}}&date={{date}}&category={{category}}&page=1" onchange="submit()"
+          class="w-4/5 h-40 md:w-8/12 max-w-md m-auto rounded-xl bg-opacity-80 text-gray-600 bg-white">
+          <div class="type flex justify-around text-xl py-4">
+            <div class="form-check inline-block">
+              <label class="inline-flex items-center" for="income">
+                <input type="radio" class="form-radio text-indigo-600" name="type" id="income" value="income" {{#if
+                  (isSelected type 'income' ) }}checked{{/if}}>
+                <span class="ml-2">Income</span>
+              </label>
+            </div>
+            <div class="form-check inline-block">
+              <label class="inline-flex items-center" for="expense">
+                <input type="radio" class="form-radio text-indigo-600" name="type" id="expense" value="expense" {{#if
+                  (isSelected type 'expense' ) }}checked{{/if}}>
+                <span class="ml-2">Expense</span>
+              </label>
+            </div>
+            <div class="form-check inline-block">
+              <label class="inline-flex items-center" for="total">
+                <input type="radio" class="form-radio text-indigo-600" name="type" id="total" value="total" {{#if
+                  (isSelected type 'total' ) }}checked{{/if}}>
+                <span class="ml-2">Total</span>
+              </label>
+            </div>
+          </div>
+          <div class="month-category w-4/5 md:w-8/12 max-w-md m-auto text-lg">
+            <div class="select w-full">
+              <label class="flex mb-2" for="month">
+                <span class="text-gray-700 mr-2">Month</span>
+                <select class="form-select block text-sm py-1 px-2 rounded-lg w-80 ml-5 border-gray-200 border-2"
+                  name="date" id="month">
+                  <option value="all" name="all" {{#if (isSelected date 'all' ) }}selected{{/if}}>All Months</option>
+                  {{#each monthOptions}}
+                  <option value="{{this}}" name="{{this}}" {{#if (isSelected ../date this ) }}selected{{/if}}>{{this}}
+                  </option>
+                  {{/each}}
+                </select>
+              </label>
+              <label class="flex" for="category">
+                <span class="text-gray-700 mr-2">Category</span>
+                <select class="form-select block text-sm py-1 px-2 rounded-lg w-full border-gray-200 border-2"
+                  name="category" id="category">
+                  <option value="all" name="all" {{#if (isSelected category 'all' ) }}selected{{/if}}>All Categories
+                  </option>
+                  {{#each categoryOptions}}
+                  <option value="{{this}}" name="{{this}}" {{#if (isSelected ../category this ) }}selected{{/if}}>
+                    {{this}}
+                  </option>
+                  {{/each}}
+                </select>
+              </label>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="col-sm-8">
-        <h1 id="total-amount-display">{{ totalAmount }}</h1>
+      <div class="right-container lg:py-20">
+        <div class="record-table w-4/5 m-auto mt-16 p-2 rounded-lg shadow-lg bg-white  overflow-auto">
+          <div class="flex flex-col">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <table class="min-w-full divide-y divide-gray-200">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Title & Date
+                      </th>
+                      <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        From
+                      </th>
+                      <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Amount
+                      </th>
+                      <th scope="col" class="relative px-6 py-3">
+                        <span class="sr-only">Edit</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-200">
+                    {{#each records}}
+                    <tr>
+                      <td class="py-4 whitespace-nowrap flex justify-start align-middle">
+                        <div class="category my-2 mx-4 lg:mx-6">
+                          <i class="{{this.icon}} {{#if (isSelected this.recordType 'expense' ) }}text-yellow-500
+                      {{else}} text-green-400 {{/if}}"></i>
+                        </div>
+                        <div class="title-date">
+                          <div class="text-sm text-gray-900">{{this.name}}</div>
+                          <div class="text-sm text-gray-500">{{this.date}}</div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">{{this.merchant}}</div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{#if (isSelected this.recordType 'expense' ) }}text-green-800
+                    {{else}}text-yellow-600 {{/if}}">
+                          {{#if (isSelected this.amount 'expense') }}
+                          {{this.amount}}
+                          {{else}}
+                          {{this.amount}}
+                          {{/if}}
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex space-x-4">
+                        <a href="./records/{{ this._id }}/edit" class="edit-btn text-yellow-500">Edit</a>
+                        <form action="/records/{{ this._id }}?_method=DELETE" method="POST"
+                          class="d-flex align-items-center delete-record">
+                          <button type="submit" class="btn btn-delete text-red-600"
+                            onclick="return confirmDelete()">Delete</button>
+                        </form>
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav aria-label="Page navigation" class="m-auto w-4/5 mt-10">
+          <ul class="pagination flex justify-center rounded-lg" id="paginator">
+            {{#each pages}}
+            <li class="page-item  bg-white h-8 w-8 text-yellow-500 rounded flex justify-center"><a
+                class="page-link m-auto"
+                href="/filter?type={{ ../type }}&date={{ ../date }}&category={{ ../category }}&page={{this}}">{{this}}</a>
+            </li>
+            {{/each}}
+          </ul>
+        </nav>
       </div>
     </div>
-    <div class="records mt-3">
-      <ul class="list-group d-flex flex-column justify-content-center">
-        {{#each records}}
-        <li class="list-group-item d-flex row justify-content-between align-items-center">
-          <div class="col-lg-1" >
-            <i class="item-icon {{ this.icon }}" {{#if (isSelected this.recordType 'expense') }} style="color: rgb(252, 174, 86);" 
-            {{else}}
-            style="color: rgb(99, 187, 99);"
-            {{/if}}></i>
-          </div>
-          <div class="col-lg-1.5">
-            {{#if (isSelected this.recordType 'expense') }}<span style="color: rgb(252, 174, 86);">支出</span>
-            {{else}}
-            <span style="color: rgb(99, 187, 99);">收入</span>
-            {{/if}}
-          </div>
-          <div class="col-lg-7 d-flex flex-column justify-content-center">
-            <h2 class="item-title">{{ this.name }}</h2>
-            <h3 class="item-date">{{ this.date }} - <span class="item-merchant">{{this.merchant}}</span></h3>
-          </div>
-          <div class="individual-amount col-lg-1 d-flex justify-content-end">
-            <h2 class="item-amount">{{ this.amount }}</h2>
-          </div>
-          <div class="col-lg-1 d-flex justify-content-between">
-            <a href="./records/{{ this._id }}/edit" class="edit-btn"><i class="far fa-edit"></i></a>
-            <form action="/records/{{ this._id }}?_method=DELETE" method="POST" class="d-flex align-items-center delete-record">
-              <button type="submit" class="btn btn-delete" onclick="return confirmDelete()">X</button>
-            </form>
-          </div>
-        </li>
-        {{/each}}
-      </ul>
-    </div>
-    <nav aria-label="Page navigation" class="mt-4">
-      <ul class="pagination justify-content-center" id="paginator">
-    {{#each pages}}
-        <li class="page-item"><a class="page-link" href="/filter?type={{ ../type }}&date={{ ../date }}&category={{ ../category }}&page={{this}}">{{this}}</a></li>
-    {{/each}}
-      </ul>
-    </nav>
   </div>
-
-  <a class="add-new-item" href="./records/new">
-    <div class="add-new-button d-flex justify-content-center align-items-center"><i class="fas fa-pen"></i></div>
-  </a>
 </div>
