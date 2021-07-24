@@ -1,33 +1,169 @@
-<head>
-  <link rel="stylesheet" href="/stylesheets/newEdit.css">
-</head>
-
-<div class="row new-edit-container">
-  <div class="col-6 d-flex justify-content-center align-items-center">
+<div class="flex-col m-auto w-full h-full mb-80">
+  <div class="images mx-auto mt-16">
     {{#if record}}
-    <div class="edit-img"></div>
+    <div class="edit-img h-80 w-full bg-cover" style="background-image: url('/naruto_wallet_2.jpeg');"></div>
     {{else}}
-    <div class="new-img"></div>
+    <div class="new-img h-80 w-full bg-cover" style="background-image: url('/naruto_wallet.jpg');"></div>
     {{/if}}
   </div>
-  <div class="container col-4 d-flex flex-column justify-content-center align-items-center mt-5">
+  <div class="form-container m-auto mt-16 w-10/12 h-5/6 md:w-8/12 max-w-lg bg-white rounded-lg shadow-lg flex-col">
+    <div class="title flex justify-center align-middle relative">
+      <img src="/assets/konoha.png" alt="konoha-symbol" class="h-5 w-5 my-auto absolute top-8 mr-28">
+      <h1 class="text-center mt-6 mb-3 text-3xl font-bold tracking-wider pl-5">{{#if record}}Edit{{else}}New{{/if}}</h1>
+    </div>
+    {{#if record }}
+    <form class="input-group w-8/12 m-auto" action="/records/{{ record._id }}?_method=PUT" method="POST">
+      <div class="checkboxes my-5 flex justify-center space-x-6">
+        <div class="form-check inline-block">
+          <label class="inline-flex items-center" for="income">
+            <input type="radio" class="form-radio text-yellow-500" name="type" id="income" value="income" {{#if
+              (isSelected record.recordType 'income' ) }}checked{{/if}}>
+            <span class="ml-2">Income</span>
+          </label>
+        </div>
+        <div class="form-check inline-block">
+          <label class="inline-flex items-center" for="expense">
+            <input type="radio" class="form-radio text-yellow-500" name="type" id="expense" value="expense" {{#if
+              (isSelected record.recordType 'expense' ) }}checked{{/if}}>
+            <span class="ml-2">Expense</span>
+          </label>
+        </div>
+      </div>
+      <div class="labels">
+        <label class="block mb-4" for="name">
+          <span class="text-md">Title</span>
+          <input type="text"
+            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            placeholder="Lunch" id="name" name="name" value="{{record.name}}" required>
+        </label>
+        <label class="block mb-4" for="date">
+          <span class="text-md">Date</span>
+          <input type="date"
+            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            id="date" name="date" value="{{record.date}}" required>
+        </label>
+        <label class="block mb-4" for="category">
+          <span class="text-gray-700 mr-2">Category</span>
+          <select
+            class="form-select py-3 px-5 rounded-xl  focus:outline-none focus:ring focus: ring-offset-2  focus:ring-yellow-300 w-full border-gray-300 border-2"
+            name="category" id="category">
+            <option value="" disabled selected>All Categories</option>
+            {{#each categoryOptions}}
+            <option value="{{this}}" name="{{this}}" {{#if (isSelected ../record.category this ) }}selected{{/if}}>
+              {{this}}
+            </option>
+            {{/each}}
+          </select>
+        </label>
+        <label class="block mb-4" for="merchant">
+          <span class="text-md">Merchant</span>
+          <input type="text"
+            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            placeholder="Lunch" id="merchant" name="merchant" value="{{record.merchant}}" required>
+        </label>
+        <label class="block mb-4" for="amount">
+          <span class="text-md">Amount</span>
+          <input type="number"
+            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            placeholder="Lunch" id="amount" name="amount" value="{{record.amount}}" required>
+        </label>
+      </div>
+      <button type="submit"
+        class="submit block mt-10 px-5 py-3 w-full rounded-full shadow-sm bg-yellow-400 text-white text-xl mb-2 hover:bg-yellow-600"
+        onclick="return checkForm()">Submit</button>
+      <a href='/'
+        class="btn mt-4 back-btn py-3 w-full rounded-full shadow-sm bg-gray-500 text-white text-xl mb-2 hover:bg-gray-700 flex justify-center">Back
+      </a>
+    </form>
+    {{else}}
+    <form class="input-group w-8/12 m-auto" action="/records" method="POST">
+      <div class="checkboxes my-5 flex justify-center space-x-6">
+        <div class="form-check inline-block">
+          <label class="inline-flex items-center" for="income">
+            <input type="radio" class="form-radio text-yellow-500" name="type" id="income" value="income" {{#if
+              (isSelected record.recordType 'income' ) }}checked{{/if}} required>
+            <span class="ml-2">Income</span>
+          </label>
+        </div>
+        <div class="form-check inline-block">
+          <label class="inline-flex items-center" for="expense">
+            <input type="radio" class="form-radio text-yellow-500" name="type" id="expense" value="expense" {{#if
+              (isSelected record.recordType 'expense' ) }}checked{{/if}} required>
+            <span class="ml-2">Expense</span>
+          </label>
+        </div>
+      </div>
+      <div class="labels">
+        <label class="block mb-4" for="name">
+          <span class="text-md">Title</span>
+          <input type="text"
+            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            placeholder="Lunch" id="name" name="name" required>
+        </label>
+        <label class="block mb-4" for="date">
+          <span class="text-md">Date</span>
+          <input type="date"
+            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            id="date" name="date" required>
+        </label>
+        <label class="block mb-4" for="category">
+          <span class="text-gray-700 mr-2">Category</span>
+          <select
+            class="form-select py-3 px-5 rounded-xl  focus:outline-none focus:ring focus: ring-offset-2  focus:ring-yellow-300 w-full border-gray-300 border-2"
+            name="category" id="category">
+            <option value="" disabled selected>All Categories</option>
+            {{#each categoryOptions}}
+            <option value="{{this}}" name="{{this}}">
+              {{this}}
+            </option>
+            {{/each}}
+          </select>
+        </label>
+        <label class="block mb-4" for="merchant">
+          <span class="text-md">Merchant</span>
+          <input type="text"
+            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            placeholder="Lunch" id="merchant" name="merchant" required>
+        </label>
+        <label class="block mb-4" for="amount">
+          <span class="text-md">Amount</span>
+          <input type="number"
+            class="form-input mt-1 px-5 py-3 block w-full border-gray-300 border-2 rounded-xl focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
+            placeholder="Lunch" id="amount" name="amount" required>
+        </label>
+      </div>
+      <button type="submit"
+        class="submit block mt-10 px-5 py-3 w-full rounded-full shadow-sm bg-yellow-400 text-white text-xl mb-2 hover:bg-yellow-600"
+        onclick="return checkForm()">Submit</button>
+      <a href='/'
+        class="btn mt-4 back-btn py-3 w-full rounded-full shadow-sm bg-gray-500 text-white text-xl mb-2 hover:bg-gray-700 flex justify-center">Back
+      </a>
+    </form>
+    {{/if}}
+  </div>
+</div>
+
+
+{{!-- <div class="container col-4 d-flex flex-column justify-content-center align-items-center mt-5">
   {{#if record }}
   <h1 class="title">編輯單筆紀錄</h1>
   <form action="/records/{{ record._id }}?_method=PUT" method="POST" class="mt-4">
     <div class="d-flex flex-column">
       <div class="d-flex row justify-content-center type-checkbox">
         <div class="form-check col-lg-3">
-        <input class="form-check-input" type="radio" name="type" id="income" value="income"{{#if (isSelected record.recordType 'income' ) }}checked{{/if}}>
-        <label class="form-check-label" for="income">
-          收入
-        </label>
-      </div>
-      <div class="form-check col-lg-3">
-        <input class="form-check-input" type="radio" name="type" id="expense" value="expense"{{#if (isSelected record.recordType 'expense' ) }}checked{{/if}}>
-        <label class="form-check-label" for="expense">
-          支出
-        </label>
-      </div>
+          <input class="form-check-input" type="radio" name="type" id="income" value="income" {{#if (isSelected
+            record.recordType 'income' ) }}checked{{/if}}>
+          <label class="form-check-label" for="income">
+            收入
+          </label>
+        </div>
+        <div class="form-check col-lg-3">
+          <input class="form-check-input" type="radio" name="type" id="expense" value="expense" {{#if (isSelected
+            record.recordType 'expense' ) }}checked{{/if}}>
+          <label class="form-check-label" for="expense">
+            支出
+          </label>
+        </div>
       </div>
       <div class="labels d-flex flex-column justify-content-between align-items-center mt-1">
         <div class="name d-flex align-items-center mb-2">
@@ -62,57 +198,4 @@
       <a href='/' class="btn mt-4 back-btn">返回 </a>
     </div>
   </form>
-    
-  {{else}}
-  <h1 class="title">新增紀錄</h1>
-  <form action="/records" method="POST" class="mt-4" id="form-new">
-    <div class="d-flex row justify-content-center type-checkbox">
-      <div class="form-check col-lg-3">
-        <input class="form-check-input" type="radio" name="type" id="income" value="income" >
-        <label class="form-check-label" for="income">
-          收入
-        </label>
-      </div>
-      <div class="form-check col-lg-3">
-        <input class="form-check-input" type="radio" name="type" id="expense" value="expense" checked>
-        <label class="form-check-label" for="expense">
-          支出
-        </label>
-      </div>
-    </div>
-    <div class="labels d-flex flex-column justify-content-between align-items-start mt-1">
-      <div class="name d-flex align-items-center mb-2">
-        <label class="label" for="name">名稱：</label>
-        <input type="text" class="form-control" placeholder="ex: 請佐助吃飯" name="name">
-      </div>
-      <div class="date d-flex align-items-center mb-2">
-        <label class="label-long" for="date">日期：</label>
-        <input type="date" class="form-control form-date" placeholder="請選擇" name="date">
-      </div>
-      <div class="category d-flex justify-content-center align-items-center mb-2">
-        <label class="label-long" for="category">類別：</label>
-        <select class="form-select form-control" name="category" aria-label=".form-select-lg example">
-          <option name="" disabled selected>請選擇</option>
-          {{#each categoryOptions}}
-          <option value="{{this}}" name="{{this}}">{{this}}</option>
-          {{/each}}
-          </option>
-        </select>
-      </div>
-      <div class="merchant d-flex align-items-center mb-2">
-        <label class="label" for="merchant">商家：</label>
-        <input type="text" class="form-control" placeholder="ex: 一樂拉麵" name="merchant">
-      </div>
-      <div class="amount d-flex align-items-center mb-2">
-        <label class="label" for="amount">金額：</label>
-        <input type="number" class="form-control amount" placeholder="ex: 120" name="amount">
-      </div>
-    </div>
-    <div class="buttons d-flex justify-content-around mb-3">
-      <button type="submit" class="submit-new-btn btn mt-4" onclick="return checkForm()">建立</button>
-      <a href='/' class="btn mt-4 back-btn">返回 </a>
-    </div>
-  </form>
-  {{/if}}
-</div>
-</div>
+</div> --}}
