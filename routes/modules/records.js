@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 			!merchant.trim() ||
 			!type
 		) {
-			errors.push({ message: '所有欄位都是必填！' })
+			errors.push({ message: 'All fields are required!' })
 		}
 		if (errors.length) {
 			console.log(errors)

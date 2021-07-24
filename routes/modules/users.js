@@ -19,7 +19,7 @@ router.get('/register', (req, res) => {
 
 router.get('/logout', (req, res) => {
 	req.logOut() // a function which eliminates this session at the moment, provided by passport.js
-	req.flash('success_msg', '你已成功登出！')
+	req.flash('success_msg', 'Successfully logged out!')
 	res.redirect('/users/login')
 })
 
@@ -37,11 +37,11 @@ router.post('/register', async (req, res) => {
 		const { name, email, password, confirmPassword } = req.body
 		const errors = []
 		if (!name || !email || !password || !confirmPassword) {
-			errors.push({ message: '所有欄位都是必填！' })
+			errors.push({ message: 'All fields are required!' })
 			console.log(errors)
 		}
 		if (password !== confirmPassword) {
-			errors.push({ message: '密碼與確認密碼不一致！' })
+			errors.push({ message: 'Password different!' })
 			console.log(errors)
 		}
 		if (errors.length) {
@@ -56,7 +56,7 @@ router.post('/register', async (req, res) => {
 		}
 		const user = await User.findOne({ email })
 		if (user) {
-			errors.push({ message: '此信箱已註冊過' })
+			errors.push({ message: 'This email has been registered!' })
 			res.render('login', {
 				errors,
 				name,
@@ -102,7 +102,7 @@ router
 
 			const errors = []
 			if (!name) {
-				errors.push({ message: '所有欄位都是必填！' })
+				errors.push({ message: 'Please fill out every filed!' })
 			}
 
 			if (errors.length) {
@@ -127,8 +127,8 @@ router
 			}
 
 			await user.save()
-
-			return res.redirect('/')
+			req.flash('success_msg', 'Successfully updated!')
+			return res.redirect('/users/settings/edit')
 		} catch (error) {
 			console.log(error)
 		}
