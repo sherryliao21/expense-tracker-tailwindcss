@@ -18,7 +18,7 @@
     <nav
       class="navbar w-full h-16 margin-auto bg-gray-800 shadow-lg fixed top-0 flex justify-between align-middle z-10">
       <div class="navbar-brand {{#if isAuthenticated}}{{else}}m-auto{{/if}} w-3/5 grid grid-cols-5">
-        <div class="user-name m-auto {{#if isAuthenticated}}col-span-3{{/if}} col-span-5  md:col-span-2 lg:col-span-5">
+        <div class="user-name m-auto {{#if isAuthenticated}}col-span-3{{else}}col-span-5 md:col-span-5 {{/if}}">
           <a href="/" class="m-auto text-xl text-gray-200">
             {{#if isAuthenticated}}{{user.name}}
             の 記帳本

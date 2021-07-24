@@ -28,5 +28,6 @@
 	.btn-login {
 		@apply m-auto px-5 py-1 w-full rounded-full shadow-sm border-2 flex justify-center;
 	}
-  
+
+  // 
 }
