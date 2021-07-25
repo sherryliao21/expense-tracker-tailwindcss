@@ -66,7 +66,7 @@ router.post('/register', async (req, res) => {
 		const user = await User.findOne({ email })
 		if (user) {
 			errors.push({ message: 'This email has been registered!' })
-			res.render('login', {
+			res.render('register', {
 				errors,
 				name,
 				email,
@@ -85,7 +85,7 @@ router.post('/register', async (req, res) => {
 			await Record.create({
 				name: 'example',
 				icon: 'fas fa-pen',
-				category: '其他',
+				category: 'Others',
 				merchant: 'example',
 				amount: 100,
 				userId: user.id,
