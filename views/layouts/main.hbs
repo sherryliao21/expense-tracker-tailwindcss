@@ -11,15 +11,20 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
     integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous" />
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/dropdown.css">
 </head>
 
-<body class="relative w-screen  bg-yellow-400 bg-opacity-50">
+<body class="relative w-screen  bg-yellow-400 bg-opacity-50 flex-col">
+
   <header>
     <nav
       class="navbar w-full h-16 margin-auto bg-gray-800 shadow-lg fixed top-0 flex justify-between align-middle z-10">
-      <div class="navbar-brand {{#if isAuthenticated}}{{else}}m-auto{{/if}} w-3/5 grid grid-cols-5">
-        <div class="user-name m-auto {{#if isAuthenticated}}col-span-3{{else}}col-span-5 md:col-span-5 {{/if}}">
-          <a href="/" class="m-auto text-xl text-gray-200">
+      {{!-- website title --}}
+      <div class="navbar-brand {{#if isAuthenticated}}ml-2{{else}}m-auto{{/if}} w-3/5 grid grid-cols-5">
+        {{!-- User name display if logged in --}}
+        <div
+          class="user-name m-auto {{#if isAuthenticated}}col-span-3  md:col-span-2{{else}}col-span-5 md:col-span-5 {{/if}}">
+          <a href="/" class="m-auto text-2xl font-bold text-gray-200">
             {{#if isAuthenticated}}{{user.name}}
             の 記帳本
             {{else}}
@@ -27,39 +32,40 @@
             {{/if}}
           </a>
         </div>
+        {{!-- Links for RWD-lg --}}
         {{#if isAuthenticated}}
-        <div class="links hidden lg:block md:col-span-2 lg:my-auto">
-          <ul class="list-none overflow-auto whitespace-nowrap text-gray-50 space-x-6">
-            <li class="nav-item inline-block"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item inline-block"><a class="nav-link" href="/users/settings/edit">Settings</a></li>
-            <li class="nav-item inline-block"><a class="nav-link" href="/overview">Overview</a>
+        <div class="links hidden lg:block md:col-span-3 lg:my-auto">
+          <ul class="list-none overflow-auto whitespace-nowrap text-gray-50 space-x-12">
+            <li class="nav-item inline-block lg:text-xl"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item inline-block lg:text-xl"><a class="nav-link" href="/users/settings/edit">Settings</a>
+            </li>
+            <li class="nav-item inline-block lg:text-xl"><a class="nav-link" href="/overview">Overview</a></li>
+            <li class="nav-item inline-block lg:text-lg rounded-lg py-1 bg-yellow-500 hover:bg-yellow-600 ">
+              <a class="nav-link w-full h-full p-4" href="/users/logout">Logout</a>
             </li>
           </ul>
         </div>
       </div>
-      <div class="hamburger-list-items flex justify-start items-center text-white">
-        <input type="checkbox" class="navbar-toggle hidden absolute" id="navbar-toggle" />
-        <label class="navbar-toggle-label flex items-center" for="navbar-toggle">
+      {{!-- mobile hambuger list --}}
+      <div class="hamburger flex justify-start items-center text-white ">
+        <input type="checkbox" class="navbar-toggle hidden" id="navbar-toggle" />
+        <label class="flex items-center" for="navbar-toggle">
           <span class="user-name mr-4"><i class="fas fa-caret-down mr-2"></i>{{user.name}}</span>
           <img src="{{user.avatar}}" alt="user-avatar" class="user-avatar rounded-full w-10 h-10 mr-4" />
         </label>
-        {{!-- come back and fix this --}}
-        <nav class="nav-settings bg-gray-50 text-gray-500 z-50 w-screen h-screen hidden">
-          <ul class="nav-list w-full py-12 list-none flex-col align-middle">
-            <li class="nav-item nav-item-avatar">
-              <img class="avatar rounded-full h-20 w-20" src="{{user.avatar}}" alt="user-avatar" />
-            </li>
-            <li class="nav-item nav-item-name">
-              {{#if isAuthenticated}}{{user.name}}{{/if}}
-            </li>
-            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/users/settings/edit">Account Settings</a></li>
-            <li class="nav-item"><a class="nav-link" href="/analysis">Charts /
-                Analysis</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/logout">Logout</a>
-            </li>
-          </ul>
+        {{!-- nav-list --}}
+        <nav class="nav-settings bg-blue-200 text-gray-500 z-50 w-screen h-screen absolute top-16 left-0 lg:hidden">
+          <img class="avatar rounded-full h-60 w-60 m-auto mt-10" src="{{user.avatar}}" alt="user-avatar" />
+          <p class="user-name text-4xl py-10 flex justify-center text-gray-700 font-bold">
+            {{#if isAuthenticated}}{{user.name}}{{/if}}
+          </p>
+          <a class="nav-link py-5 flex justify-center rounded text-4xl hover:bg-blue-900 mt-5" href="/">Home</a>
+          <a class="nav-link py-5 flex justify-center rounded text-4xl hover:bg-blue-900"
+            href="/users/settings/edit">Account
+            Settings</a>
+          <a class="nav-link py-5 flex justify-center rounded text-4xl hover:bg-blue-900" href="/overview">Overview</a>
+          <a class="nav-link py-5 flex justify-center rounded text-4xl hover:bg-blue-900"
+            href="/users/logout">Logout</a>
         </nav>
       </div>
       {{/if}}
