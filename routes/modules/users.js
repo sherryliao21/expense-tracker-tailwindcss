@@ -8,6 +8,7 @@ const imgur = require('imgur-node-api')
 const IMGUR_CLIENT_ID = process.env.IMGUR_CLIENT_ID
 const multer = require('multer') // file upload middleware
 const upload = multer({ dest: 'temp/' }) // upload to temp folder
+const validator = require('validator')
 
 router.get('/login', (req, res) => {
 	res.render('login')
@@ -40,10 +41,17 @@ router.post('/register', async (req, res) => {
 			errors.push({ message: 'All fields are required!' })
 			console.log(errors)
 		}
-		if (password !== confirmPassword) {
-			errors.push({ message: 'Password different!' })
+		if (!validator.equals(password, confirmPassword)) {
+			errors.push({ message: 'Passwords do not match!' })
 			console.log(errors)
 		}
+		if (!validator.isEmail(email)) {
+			errors.push({ message: 'Please enter valid email address!'})
+		}
+		if (!validator.isByteLength(password, { min: 4, max: 8 })) {
+    	errors.push({ message: 'Password does not meet the required length!' })
+ 		}
+
 		if (errors.length) {
 			console.log(errors)
 			return res.render('register', {

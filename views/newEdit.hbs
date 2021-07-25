@@ -34,7 +34,7 @@
         <label class="block mb-4" for="name">
           <span class="text-md">Title</span>
           <input type="text" class="form-input focus:ring focus: ring-offset-2 focus: ring-yellow-300"
-            placeholder="Lunch" id="name" name="name" value="{{record.name}}" required>
+            placeholder="ex: Lunch" id="name" name="name" value="{{record.name}}" required>
         </label>
         <label class="block mb-4" for="date">
           <span class="text-md">Date</span>
@@ -59,13 +59,13 @@
           <span class="text-md">Merchant</span>
           <input type="text"
             class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
-            placeholder="Lunch" id="merchant" name="merchant" value="{{record.merchant}}" required>
+            placeholder="Ichiraku Ramen" id="merchant" name="merchant" value="{{record.merchant}}" required>
         </label>
         <label class="block mb-4" for="amount">
           <span class="text-md">Amount</span>
           <input type="number"
             class="form-input focus:outline-none focus:ring focus: ring-offset-2 focus: ring-yellow-300"
-            placeholder="Lunch" id="amount" name="amount" value="{{record.amount}}" required>
+            placeholder="1200" id="amount" name="amount" value="{{record.amount}}" required>
         </label>
       </div>
       <button type="submit" class="new-edit-submit hover:bg-yellow-600" onclick="return checkForm()">Submit</button>

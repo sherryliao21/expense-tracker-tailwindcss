@@ -15,9 +15,9 @@
 {{/if}}
 
 {{#if errors}}
-<div class="message alert-warning">
+<div class="alert-warning message flex-col m-auto p-2">
   {{#each errors}}
-  <div class="m-auto" role="alert">
+  <div class="flex justify-center m-auto" role="alert">
     {{this.message}}
   </div>
   {{/each}}
