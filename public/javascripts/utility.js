@@ -14,12 +14,12 @@ function checkForm() {
     }
   })
   if (checkInputs === false || selection.value === '請選擇' || !checkboxes) {
-    if (confirm('請完整填寫表格')) return false
+    if (confirm('Please fill out all fields')) return false
     return false
   }
 }
 
 function confirmBack() {
-  if (confirm('尚未編輯完成，直接返回？')) return true
+  if (confirm('Are you sure to go back？')) return true
   return false
 }
