@@ -11,14 +11,12 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
     integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous" />
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <link rel="stylesheet" href="/stylesheets/dropdown.css">
+  <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 
-<body class="relative w-screen  bg-yellow-400 bg-opacity-50 flex-col">
-
+<body class="relative w-screen   bg-opacity-50 flex-col">
   <header>
-    <nav
-      class="navbar w-full h-16 margin-auto bg-gray-800 shadow-lg fixed top-0 flex justify-between align-middle z-10">
+    <nav class="navbar w-full h-16 bg-gray-800 shadow-lg fixed top-0 flex justify-between align-middle z-10">
       {{!-- website title --}}
       <div class="navbar-brand {{#if isAuthenticated}}ml-2{{else}}m-auto{{/if}} w-3/5 grid grid-cols-5">
         {{!-- User name display if logged in --}}
@@ -54,7 +52,7 @@
           <img src="{{user.avatar}}" alt="user-avatar" class="user-avatar rounded-full w-10 h-10 mr-4" />
         </label>
         {{!-- nav-list --}}
-        <nav class="nav-settings bg-blue-200 text-gray-500 z-50 w-screen h-screen absolute top-16 left-0 lg:hidden">
+        <nav class="nav-settings bg-yellow-100 text-gray-500 z-50 w-screen h-screen absolute top-16 left-0 lg:hidden">
           <img class="avatar rounded-full h-60 w-60 m-auto mt-10" src="{{user.avatar}}" alt="user-avatar" />
           <p class="user-name text-4xl py-10 flex justify-center text-gray-700 font-bold">
             {{#if isAuthenticated}}{{user.name}}{{/if}}

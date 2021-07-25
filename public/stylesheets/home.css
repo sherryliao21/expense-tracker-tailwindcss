@@ -1,0 +1,28 @@
+body {
+  background-image: url(/assets/background_mobile.png);
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  background-repeat: no-repeat;
+}
+
+.nav-settings {
+  display: none;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 0.3s ease-out;
+}
+.navbar-toggle:checked ~ .nav-settings {
+  display: block;
+  transform: scale(1, 1);
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    background-image: url(/assets/naruto_background.png);
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    background-repeat: no-repeat;
+  }
+}
