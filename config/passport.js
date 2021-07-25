@@ -21,12 +21,12 @@ module.exports = app => {
         try {
           const user = await User.findOne({ email })
           if (!user) {
-            req.flash("warning_msg", "此信箱未註冊")
+            req.flash("warning_msg", "This email is not registered!")
             return done(null, false)
           }
           const isMatch = await bcrypt.compare(password, user.password)
           if (!isMatch) {
-            req.flash("warning_msg", "信箱或密碼輸入錯誤")
+            req.flash("warning_msg", "Email or password is wrong")
             return done(null, false)
           }
           return done(null, user)

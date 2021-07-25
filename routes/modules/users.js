@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../../models/user')
+const Record = require('../../models/record')
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const { authenticator } = require('../../middleware/auth')
@@ -75,10 +76,21 @@ router.post('/register', async (req, res) => {
 		} else {
 			const salt = await bcrypt.genSalt(10)
 			const hash = await bcrypt.hash(password, salt)
-			await User.create({
+			const user = await User.create({
 				name,
 				email,
 				password: hash
+			})
+			const date = new Date()
+			await Record.create({
+				name: 'example',
+				icon: 'fas fa-pen',
+				category: '其他',
+				merchant: 'example',
+				amount: 100,
+				userId: user.id,
+				recordType: 'expense',
+				date: date.getFullYear().toString() + "-" + (date.getMonth() + 1).toString()
 			})
 			return res.redirect('/')
 		}
