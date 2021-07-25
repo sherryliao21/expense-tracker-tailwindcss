@@ -9,7 +9,7 @@ const categoryAmountValue = []
 categoryAmount.map(item => {
 	categoryAmountValue.push(Number(item))
 })
-const labels = ['餐飲食品', '家居物業', '交通出行', '休閒娛樂', '其他']
+const labels = ['Food', 'Housing', 'Traffic', 'Entertainment', 'Others']
 
 // // chart image
 // const image = new Image()

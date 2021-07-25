@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 		const type = 'total'
 		let totalAmount = 0
 
-		const categories = ['餐飲食品', '家居物業', '交通出行', '休閒娛樂', '其他']
+		const categories = ['Food', 'Housing', 'Traffic', 'Entertainment', 'Others']
 		const categoryAmount = [0, 0, 0, 0, 0]
 
 		records.forEach(record => {
@@ -108,7 +108,7 @@ router.get('/filter', async (req, res) => {
 		// render total amount & category/month options
 		let totalAmount = 0
 
-		const categories = ['餐飲食品', '家居物業', '交通出行', '休閒娛樂', '其他']
+		const categories = ['Food', 'Housing', 'Traffic', 'Entertainment', 'Others']
 		const categoryAmount = [0, 0, 0, 0, 0]
 
 		await records.forEach(record => {
