@@ -1152,8 +1152,9 @@ select {
 
 .banner {
   height: 20rem;
-  width: 100%;
+  width: 80%;
   background-size: cover;
+  background-position: center;
 }
 
 .form-container {
@@ -1230,6 +1231,12 @@ select {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
   --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+@media (min-width: 1024px) {
+  .back-btn {
+    margin-top: 0.5rem;
+  }
 }
 
 /* Message Template */

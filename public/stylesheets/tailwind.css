@@ -96,7 +96,7 @@
 
 	/* New & Edit Page */
 	.banner {
-		@apply h-80 w-full bg-cover;
+		@apply h-80 w-4/5 bg-cover bg-center;
 	}
 	.form-container {
 		@apply overflow-auto m-auto mt-16 max-w-lg bg-white rounded-lg shadow-lg flex-col;
@@ -111,7 +111,7 @@
 		@apply block mt-10 px-5 py-3 w-full rounded-full shadow-sm bg-yellow-400 text-white text-xl mb-2;
 	}
 	.back-btn {
-		@apply mt-4 py-3 w-full rounded-full shadow-sm bg-gray-500 text-white text-xl mb-2 flex justify-center;
+		@apply mt-4 lg:mt-2 py-3 w-full rounded-full shadow-sm bg-gray-500 text-white text-xl mb-2 flex justify-center;
 	}
 
 	/* Message Template */
