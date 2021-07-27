@@ -14,56 +14,47 @@
   <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 
-<body class="relative w-screen flex-col">
-  <header class="h-16">
-    <nav class="navbar w-full h-16 bg-gray-800 shadow-lg fixed top-0 flex justify-between align-middle z-10">
-      {{!-- website title --}}
-      <div class="navbar-brand {{#if isAuthenticated}}ml-2{{else}}m-auto{{/if}} w-3/5 grid grid-cols-5">
-        {{!-- User name display if logged in --}}
-        <div
-          class="user-name m-auto {{#if isAuthenticated}}col-span-3  md:col-span-2{{else}}col-span-5 md:col-span-5 {{/if}}">
-          <a href="/" class="m-auto text-2xl font-bold text-gray-200">
-            {{#if isAuthenticated}}{{user.name}}
-            の 記帳本
-            {{else}}
-            私 の 記帳本
-            {{/if}}
-          </a>
-        </div>
-        {{!-- Links for RWD-lg --}}
-        {{#if isAuthenticated}}
-        <div class="links hidden lg:block md:col-span-3 lg:my-auto">
-          <ul class="list-none overflow-auto whitespace-nowrap text-gray-50 space-x-12">
-            <li class="nav-item inline-block lg:text-xl"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item inline-block lg:text-xl"><a class="nav-link" href="/users/settings/edit">Settings</a>
-            </li>
-            <li class="nav-item inline-block lg:text-xl"><a class="nav-link" href="/overview">Overview</a></li>
-            <li class="nav-item inline-block lg:text-lg rounded-lg py-1 bg-yellow-500 hover:bg-yellow-600 ">
-              <a class="nav-link w-full h-full p-4" href="/users/logout">Logout</a>
-            </li>
-          </ul>
-        </div>
+<body class="relative w-screen flex-col items-center background">
+  <header class="h-16 w-screen">
+    <nav class="navbar">
+      {{!-- User name display if logged in --}}
+      <div class="{{#if isAuthenticated}}lg:ml-4{{else}}m-auto{{/if}}">
+        <a href="/" class="m-auto text-2xl font-bold text-gray-200">
+          {{#if isAuthenticated}}{{user.name}}
+          の 記帳本
+          {{else}}
+          私 の 記帳本
+          {{/if}}
+        </a>
+      </div>
+      {{#if isAuthenticated}}
+      {{!-- Links for RWD-lg --}}
+      <div class="links hidden lg:block lg:w-2/6 xl:w-3/5">
+        <ul class="w-full h-full list-none flex items-center text-gray-50">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/users/settings/edit">Settings</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/overview">Overview</a></li>
+        </ul>
       </div>
       {{!-- mobile hambuger list --}}
-      <div class="hamburger flex justify-start items-center text-white ">
+      <div class="hamburger flex justify-start items-center text-white">
+        <a href="/users/logout" class="hidden lg:block"><button class="logout-btn">Logout</button></a>
         <input type="checkbox" class="navbar-toggle hidden" id="navbar-toggle" />
         <label class="flex items-center" for="navbar-toggle">
-          <span class="user-name mr-4"><i class="fas fa-caret-down mr-2"></i>{{user.name}}</span>
-          <img src="{{user.avatar}}" alt="user-avatar" class="user-avatar rounded-full w-10 h-10 mr-4" />
+          <span class="user-name mr-4 hidden lg:block"><i class="fas fa-caret-down mr-2"></i>{{user.name}}</span>
+          <img src="{{user.avatar}}" alt="user-avatar" class="user-avatar rounded-full w-10 h-10 lg:mr-4" />
         </label>
-        {{!-- nav-list --}}
-        <nav class="nav-settings bg-yellow-100 text-gray-500 z-50 w-screen h-screen absolute top-16 left-0 lg:hidden">
-          <img class="avatar rounded-full h-60 w-60 m-auto mt-10" src="{{user.avatar}}" alt="user-avatar" />
-          <p class="user-name text-4xl py-10 flex justify-center text-gray-700 font-bold">
-            {{#if isAuthenticated}}{{user.name}}{{/if}}
-          </p>
-          <a class="nav-link py-5 flex justify-center rounded text-4xl hover:bg-blue-900 mt-5" href="/">Home</a>
-          <a class="nav-link py-5 flex justify-center rounded text-4xl hover:bg-blue-900"
-            href="/users/settings/edit">Account
+        {{!-- mobile hambuger list --}}
+        <nav class="nav-settings bg-gray-700 text-gray-400 z-10 w-screen h-screen absolute top-16 left-0 py-10">
+          <img class="avatar rounded-full h-40 w-40 lg:h-60 lg:w-60 m-auto" src="{{user.avatar}}" alt="user-avatar" />
+          <p class="hamburger-name">{{user.name}}</p>
+          <a class="hamburger-link hover:bg-blue-900 hover:text-white" href="/">Home</a>
+          <a class="hamburger-link hover:bg-blue-900" href="/users/settings/edit">Account
             Settings</a>
-          <a class="nav-link py-5 flex justify-center rounded text-4xl hover:bg-blue-900" href="/overview">Overview</a>
-          <a class="nav-link py-5 flex justify-center rounded text-4xl hover:bg-blue-900"
-            href="/users/logout">Logout</a>
+          <a class="hamburger-link hover:bg-blue-900" href="/overview">Overview</a>
+          <a class="hamburger-link hover:bg-blue-900" href="/users/logout">Logout</a>
         </nav>
       </div>
       {{/if}}
