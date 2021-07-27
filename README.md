@@ -1,7 +1,7 @@
 # Expense Tracker
 
 <p align="center">
-   <img src="https://imgur.com/kkVsYFR.png" width="800" height="500">
+   <img src="https://imgur.com/qpTdgtj.png" width="800" height="500">
 </p>
 
 <br />
@@ -23,45 +23,45 @@ password: 123
 
 1. Users are able to register a new account
 <p align="center">
-   <img src="https://imgur.com/IjqaTlv.png" width="800" height="500">
+   <img src="https://imgur.com/cJiORw2.png" width="800" height="500">
 </p>
 
 or login with local, Facebook or Google account
 
 <p align="center">
-   <img src="https://imgur.com/8HORctK.png" width="800" height="500">
+   <img src="https://imgur.com/wNNvxdc.png" width="800" height="500">
 </p>
 
-2. Users are able to browse a list of expense/income records with selecting customized filters
+2. Users are able to browse a list of expense/income records with selecting customized filter
 
 <p align="center">
-   <img src="https://imgur.com/qv65qkF.png" width="800" height="500">
+   <img src="https://imgur.com/qpTdgtj.png" width="800" height="500">
 </p>
 
 3. Users are able to create, edit, delete expense/income records
 
 <p align="center">
-   <img src="https://imgur.com/j6HKxSh.png" width="800" height="500">
+   <img src="https://imgur.com/AIRsXHO.png" width="800" height="500">
 </p>
 
 create
 
 <p align="center">
-   <img src="https://imgur.com/yyoQI1P.png" width="800" height="500">
+   <img src="https://imgur.com/Kmyn8Zj.png" width="800" height="500">
 </p>
 
 edit
 
-4. Users are able to change their profile picture & login password
+4. Users are able to change their profile picture & user name
 
 <p align="center">
-   <img src="https://imgur.com/qPclLtz.png" width="800" height="500">
+   <img src="https://imgur.com/C4d9GVT.png" width="800" height="500">
 </p>
 
 5. Users are able to see their expense/income records in a doughnut chart visualization
 
 <p align="center">
-   <img src="https://imgur.com/44si3zb.png" width="800" height="500">
+   <img src="https://imgur.com/CMmmC1l.png" width="800" height="500">
 </p>
 
 ## Prerequisites
