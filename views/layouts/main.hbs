@@ -15,7 +15,7 @@
 </head>
 
 <body class="relative w-screen flex-col">
-  <header>
+  <header class="h-16">
     <nav class="navbar w-full h-16 bg-gray-800 shadow-lg fixed top-0 flex justify-between align-middle z-10">
       {{!-- website title --}}
       <div class="navbar-brand {{#if isAuthenticated}}ml-2{{else}}m-auto{{/if}} w-3/5 grid grid-cols-5">
@@ -69,6 +69,7 @@
       {{/if}}
     </nav>
   </header>
+  {{> message}}
   {{{body}}}
   <footer class="inline-block w-screen h-16 bg-gray-700 mt-36 lg:mt-0">
     <div class="flex justify-center p-5 text-gray-200">

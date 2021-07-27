@@ -3,12 +3,36 @@
 @tailwind utilities;
 
 @layer components {
+		/* Main Settings */
+	.background {
+		@apply bg-center bg-cover bg-fixed
+	}
+	.navbar {
+		@apply w-full relative h-16 bg-gray-800 shadow-lg flex justify-around items-center
+	}
+	.nav-item {
+		@apply text-xl mr-6
+	}
+	.nav-link {
+		@apply tracking-wide
+	}
+	.logout-btn {
+		@apply text-lg px-6 rounded-lg bg-yellow-500 ring ring-offset-1 ring-white hover:bg-yellow-600 mr-4
+	}
+	.hamburger-name {
+		@apply text-4xl py-10 flex justify-center text-gray-100 font-bold tracking-wide
+	}
+	.hamburger-link {
+		@apply  py-3 lg:py-5 flex justify-center rounded text-lg lg:text-4xl transform ease-in-out duration-300 
+	}
+
+
 	/* Login & Register Page */
 	.container-settings {
-		@apply w-screen h-screen flex align-middle text-gray-700;
+		@apply w-screen h-screen flex justify-center text-gray-700;
 	}
 	.forms-bg {
-		@apply md:w-8/12 max-w-lg bg-white rounded-lg shadow-lg flex-col m-auto;
+		@apply md:w-8/12 max-w-lg bg-white rounded-lg shadow-lg flex-col;
 	}
 	.konoha-symbol {
 		@apply h-5 w-5 my-auto absolute;
@@ -92,7 +116,7 @@
 
 	/* Message Template */
 	.message {
-		@apply flex justify-center m-auto absolute -top-20 lg:-top-28 left-14 h-16 w-4/5 border-4 rounded-md;
+		@apply flex justify-center relative m-auto top-4 lg:top-20 h-16 w-3/5 lg:w-1/5 xl:w-2/5 border-2 rounded-md;
 	}
 	.alert-success {
 		@apply bg-green-100 text-green-700  border-green-300;
