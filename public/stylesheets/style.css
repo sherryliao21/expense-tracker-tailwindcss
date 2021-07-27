@@ -1157,6 +1157,12 @@ select {
   background-position: center;
 }
 
+@media (min-width: 1024px) {
+  .banner {
+    width: 100%;
+  }
+}
+
 .form-container {
   margin: auto;
   margin-top: 4rem;

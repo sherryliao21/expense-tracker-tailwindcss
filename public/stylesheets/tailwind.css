@@ -96,7 +96,7 @@
 
 	/* New & Edit Page */
 	.banner {
-		@apply h-80 w-4/5 bg-cover bg-center;
+		@apply h-80 w-4/5 lg:w-full bg-cover bg-center;
 	}
 	.form-container {
 		@apply overflow-auto m-auto mt-16 max-w-lg bg-white rounded-lg shadow-lg flex-col;
