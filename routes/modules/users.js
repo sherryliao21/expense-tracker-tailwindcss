@@ -116,15 +116,13 @@ router
 	.put(authenticator, upload.single('avatar'), async (req, res) => {
 		try {
 			const { _id } = req.user
+			const { name } = req.body
+			const errors = []
 			const user = await User.findOne({ _id })
 
-			const { name } = req.body
-
-			const errors = []
 			if (!name) {
-				errors.push({ message: 'Please fill out every filed!' })
+				errors.push({ message: 'Please fill out every field!' })
 			}
-
 			if (errors.length) {
 				return res.render('settings', {
 					errors,
@@ -133,7 +131,6 @@ router
 			}
 
 			user.name = name || user.name
-
 			const file = req.file
 			if (file) {
 				imgur.setClientID(IMGUR_CLIENT_ID)

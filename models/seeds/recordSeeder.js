@@ -22,42 +22,38 @@ const SEED_USERS = [
   },
 ]
 
-db.once('open', () => {
-  SEED_USERS.forEach((user, index) => {
-    bcrypt
-      .genSalt(10)
-      .then((salt) => bcrypt.hash(user.password, salt))
-      .then((hash) =>
-        User.create({
-          name: user.name,
-          email: user.email,
-          password: hash,
-          avatar: '/Portrait_Placeholder.png',
-        })
+db.once('open', async () => {
+  try {
+    SEED_USERS.forEach(async (user, index) => {
+      const salt = await bcrypt.genSalt(10)
+      const password = await bcrypt.hash(user.password, salt)
+      const userSeed = await User.create({
+        name: user.name,
+        email: user.email,
+        password,
+        avatar: '/Portrait_Placeholder.png'
+      })
+      const userId = userSeed._id
+      const recordItem = recordList
+      await Promise.all(
+        Array.from({ length: 3 }, (_, i) =>
+          Record.create({
+            name: recordItem[i + index * 3].name,
+            icon: recordItem[i + index * 3].icon,
+            category: recordItem[i + index * 3].category,
+            date: recordItem[i + index * 3].date,
+            merchant: recordItem[i + index * 3].merchant,
+            amount: recordItem[i + index * 3].amount,
+            userId,
+            recordType: recordItem[i + index * 3].recordType,
+          })
+        )
       )
-      .then((userSeed) => {
-        const userId = userSeed._id
-        const recordItem = recordList
-        return Promise.all(
-          Array.from({ length: 3 }, (_, i) =>
-            Record.create({
-              name: recordItem[i + index * 3].name,
-              icon: recordItem[i + index * 3].icon,
-              category: recordItem[i + index * 3].category,
-              date: recordItem[i + index * 3].date,
-              merchant: recordItem[i + index * 3].merchant,
-              amount: recordItem[i + index * 3].amount,
-              userId,
-              recordType: recordItem[i + index * 3].recordType,
-            })
-          )
-        ).then(() => {
-          console.log('done creating seed data')
-          process.exit()
-        })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  })
+      console.log('done creating seed data!')
+      process.exit()
+    })
+  }
+  catch (error) {
+    console.log(error)
+  }
 })

@@ -2,7 +2,7 @@
   {
     "name": "午餐-拉麵",
     "icon": "fas fa-utensils",
-    "category": "餐飲食品",
+    "category": "Food",
     "date": "2019-04-23",
     "merchant": "一樂拉麵",
     "amount": 60,
@@ -11,7 +11,7 @@
   {
     "name": "晚餐-拉麵",
     "icon": "fas fa-utensils",
-    "category": "餐飲食品",
+    "category": "Food",
     "date": "2019-04-23",
     "merchant": "一樂拉麵",
     "amount": 60,
@@ -20,7 +20,7 @@
   {
     "name": "任務報酬",
     "icon": "fas fa-shuttle-van",
-    "category": "交通出行",
+    "category": "Traffic",
     "date": "2019-04-23",
     "merchant": "火影辦公室",
     "amount": 25000,
@@ -29,7 +29,7 @@
   {
     "name": "跟鹿丸泡溫泉",
     "icon": "fas fa-grin-beam",
-    "category": "休閒娛樂",
+    "category": "Entertainment",
     "date": "2019-04-23",
     "merchant": "木葉溫泉",
     "amount": 220,
@@ -38,7 +38,7 @@
   {
     "name": "幫大和隊長蓋房子",
     "icon": "fas fa-home",
-    "category": "家居物業",
+    "category": "Housing",
     "date": "2019-04-01",
     "merchant": "大和",
     "amount": 300,
@@ -47,7 +47,7 @@
   {
     "name": "到風之國找我愛羅",
     "icon": "fas fa-shuttle-van",
-    "category": "交通出行",
+    "category": "Traffic",
     "date": "2019-04-02",
     "merchant": "雷車",
     "amount": 750,
