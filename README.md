@@ -1,7 +1,7 @@
 # Expense Tracker
 
 <p align="center">
-   <img src="https://imgur.com/qpTdgtj.png" width="800" height="500">
+   <img src="https://github.com/sherryliao21/expense-tracker-tailwindcss/blob/master/demo.gif" width="800" height="500">
 </p>
 
 <br />
